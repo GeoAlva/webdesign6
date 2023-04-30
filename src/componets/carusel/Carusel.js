@@ -2,6 +2,12 @@ import "./Carusel.css"
 
 function Carusel() {
 
+    return (
+        <div className="carusel">
+
+        </div>
+    )
+
 }
 
-default export Carusel
+export default Carusel;
