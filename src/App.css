@@ -1,0 +1,13 @@
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+.left {
+    width: 50vw;
+    left: 0;
+}
+.right {
+    width: fit-content;
+    right: 0;
+}

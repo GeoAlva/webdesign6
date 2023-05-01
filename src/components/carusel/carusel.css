@@ -1,0 +1,58 @@
+.carousel-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 180px;
+}
+
+.slide {
+    display: none;
+    margin: 20px;
+}
+
+.slide.active {
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Open Sans Bold", sans-serif;
+    font-size: 50px;
+}
+
+p {
+    font-family: "Open Sans Light", sans-serif;
+    font-size: 21px;
+}
+
+.dots {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 45px;
+    margin-left: 440px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1.5px solid #000;
+}
+
+.dot.active {
+    background-color: #008080;
+    border-color: #008080;
+}
