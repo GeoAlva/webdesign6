@@ -3,12 +3,13 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button"
-import LinkTab from "@mui/material/Tab";
+import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import "./header.css"
 import { Box } from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
+import { Link, useLocation } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -21,15 +22,12 @@ const theme = createTheme({
 
 
 
+
 function AppHeader() {
 
+    const location = useLocation();
 
 
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
     return (
         <ThemeProvider theme={theme}>
             <AppBar color="transparent" elevation={0} >
@@ -51,15 +49,26 @@ function AppHeader() {
 
 
                     <Box sx={{ width: '100%' }}>
-                        <Tabs value={value} onChange={handleChange} aria-label="nav tabs" textColor="primary"
+                        <Tabs value={location.pathname} aria-label="nav tabs" textColor="primary"
                             indicatorColor="primary">
-                            <LinkTab label="Home" href="/home" />
-                            <LinkTab label="About" href="/contacts" />
+                            <Tab
+                                label="Home"
+                                value="/"
+                                component={Link}
+                                to="/"
+                            />
+                            <Tab
+                                label="Contatti"
+                                value="/contacts"
+                                component={Link}
+                                to="/contacts"
+                            />
                         </Tabs>
                     </Box>
 
 
                     <Button variant="text"
+                        href="/login"
                         sx={{
                             px: 3,
                             mx: 2,
@@ -75,7 +84,7 @@ function AppHeader() {
                     >Accedi</Button>
 
                     <Button variant="outlined"
-
+                        href="/signup"
                         sx={{
                             px: 3,
                             mr: 4,
