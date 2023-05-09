@@ -38,6 +38,17 @@
     align-items: center;
 }
 
+.bg {
+    position: absolute;
+    background-color: #cce0e1;
+    min-height: 100%;
+    margin: 0;
+    color: #cce0e1;
+    right: 0;
+    z-index: -1;
+    width: 30vw;
+}
+
 .right-form .form {
     background-color: #087987;
     padding: 4vh 4vw 4vh 4vw;
@@ -92,6 +103,7 @@
     font-size: 18px;
     cursor: text;
     transition: top 200ms ease-in, font-size 200ms ease-in;
+
     font-family: sans-serif;
 }
 
