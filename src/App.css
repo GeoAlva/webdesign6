@@ -4,7 +4,7 @@
     justify-content: left;
 }
 .left {
-    width: 60vw;
+    width: 50vw;
     left: 0;
 
     background-image: url("../public/img/Sfondo.png");
@@ -16,4 +16,5 @@
 .right {
     width: fit-content;
     right: 0;
+    width: 40vw;
 }
