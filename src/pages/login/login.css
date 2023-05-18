@@ -3,13 +3,14 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+    margin-top: 7vh;
+    bottom: 0;
 }
 
 .login .left-slogan {
     float: left;
     width: 50%;
-    height: 100%;
-    background: none;
+    height: 10%;
     align-items: center;
     justify-content: left;
 }
@@ -41,12 +42,12 @@
 .bg {
     position: absolute;
     background-color: #cce0e1;
-    min-height: 100%;
-    margin: 0;
+    height: 100%;
     color: #cce0e1;
     right: 0;
+    bottom: 0;
     z-index: -1;
-    width: 30vw;
+    width: 22vw;
 }
 
 .right-form .form {
@@ -89,14 +90,19 @@
     font-size: 16px;
     border-radius: 10px;
     box-sizing: border-box;
-    padding-left: 1em;
+    padding-left: 3.5em;
     padding-top: 0.85em;
     border: none;
+}
+
+.form-input:focus {
+    outline: none;
 }
 
 .floating-label {
     position: absolute;
     width: 100%;
+    padding-left: 2.2em;
     top: 19%;
     left: 1em;
     color: #087987;
@@ -112,6 +118,7 @@
     top: 0.5em;
     font-size: 0.75rem;
     padding: 0 0.125em;
+    padding-left: 3em;
 }
 
 .form .forgot {
@@ -157,7 +164,13 @@
     color: #ffffff;
 }
 
-a:hover {
+.login a:hover {
     text-decoration: underline;
     color: #ffffff;
+}
+
+.icons {
+    height: 3.2em;
+    position: absolute;
+    z-index: 1;
 }

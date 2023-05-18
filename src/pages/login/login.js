@@ -33,14 +33,13 @@ export default function Login() {
                     </div>
                     <a href="#" class="forgot">Password dimenticata?</a>
 
-                    <input type="submit" id="submit" name="submit" value="Accedi" class="btn" /> <br />
+                    <input type="submit" id="submit" name="submit" value="Accedi" class="btn" />
                     <p class="account"> Non hai un account?</p>
-                    <a href="index.html">Registrati</a>
+                    <a href="/signup">Registrati</a>
                     <br />
                 </form>
 
                 <div class="bg">
-                    <div>a</div>
                 </div>
 
 

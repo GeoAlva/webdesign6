@@ -3,7 +3,7 @@ import "../login/login.css"
 export default function Signin() {
     return (
 
-        <div class="login">
+        <div class="login" >
             <div class="left-slogan">
 
                 <h1 class="slogan">Ciao</h1>
@@ -33,16 +33,20 @@ export default function Signin() {
 
                     <div class="form-element">
                         <img src="images/Lucchetto.png" alt="" class="icons" />
-                        <input type="password" id="Confirm_pass" name="Confirm_pass" class="form-input" placeholder=" " required />
-                        <label class="floating-label" for="pass">Conferma password</label>
+                        <input type="password" id="confirm_pass" name="confirm_pass" class="form-input" placeholder=" " required />
+                        <label class="floating-label" for="confirm_pass">Conferma password</label>
                     </div>
                     <a href="#" class="forgot">Password dimenticata?</a>
 
-                    <input type="submit" id="submit" name="submit" value="Accedi" class="btn" /> <br />
+                    <input type="submit" id="submit" name="submit" value="Registrati" class="btn" />
                     <p class="account"> hai già un account?</p>
-                    <a href="index.html">Accedi</a>
+                    <a href="/login">Accedi</a>
                     <br />
                 </form>
+
+                <div class="bg">
+
+                </div>
 
 
             </div>
