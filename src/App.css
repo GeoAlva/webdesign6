@@ -7,12 +7,6 @@
 .left {
     width: 50vw;
     left: 0;
-
-    background-image: url("../public/img/Sfondo.png");
-    background-repeat: no-repeat;
-    background-size: 85%;
-    background-position-y: 75%;
-    background-position-x: 50%;
 }
 .right {
     width: fit-content;
