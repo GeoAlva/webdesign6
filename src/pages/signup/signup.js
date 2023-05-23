@@ -1,4 +1,6 @@
 import "../login/login.css"
+import Airtable from 'airtable';
+import React,{ useEffect,useState } from 'react';
 
 export default function Signin() {
     return (
@@ -48,10 +50,46 @@ export default function Signin() {
 
                 </div>
 
-
+            
             </div>
+            <UserExistsComponent/>
         </div >
 
 
     )
 }
+
+function UserExistsComponent() {
+  const [userExists, setUserExists] = useState(false);
+
+  const email = 'marco@jh'; // Replace with the user's email you want to check
+
+  useEffect(() => {
+    checkUserExists(email)
+      .then((exists) => setUserExists(exists))
+      .catch((error) => console.error('Error checking user existence:', error));
+  }, [email]);
+
+  return <div>{userExists ? 'User exists' : 'User does not exist'}</div>;
+}
+
+function checkUserExists(email) {
+    const base = new Airtable({ apiKey: 'keyIXV1o7EbmywgbWZE' }).base('appHcO1NO4VD6sc');
+    const table = base('Table 2');
+
+  return new Promise((resolve, reject) => {
+    table
+      .select({
+        filterByFormula: `Username = '${email}'`, // Replace 'Email' with the actual field name in your Airtable
+        maxRecords: 1,
+      })
+      .firstPage((err, records) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(records.length > 0);
+      });
+  });
+}
+      
