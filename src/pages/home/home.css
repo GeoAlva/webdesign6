@@ -3,9 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    background-image: url("../../../public/images/Sfondo.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .carousel {
+    position: sticky;
+    box-sizing: content-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,14 +29,14 @@
     display: block;
 }
 
-h1,
+.home h1,
 h2,
 h3 {
     font-family: "Open Sans Bold", sans-serif;
     font-size: 50px;
 }
 
-p {
+.home p {
     font-family: "Open Sans Light", sans-serif;
     font-size: 21px;
 }
@@ -52,7 +58,19 @@ p {
     border: 1.5px solid #000;
 }
 
+.dot:hover {
+    background-color: #00808052;
+    border-color: #00808052;
+}
+
 .dot.active {
     background-color: #008080;
     border-color: #008080;
+}
+
+.searchBar-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
