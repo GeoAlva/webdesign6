@@ -91,6 +91,7 @@ export default function Home() {
                                     inputProps={{ 'aria-label': 'Cerca nel server' }}
                                 />
                                 <IconButton type="button"
+                                    href='/search'
                                     sx={{
                                         p: '10px',
                                         color: '#ffffff',
