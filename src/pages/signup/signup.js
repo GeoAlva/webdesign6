@@ -61,26 +61,48 @@ export default function Signin() {
 
 function UserExistsComponent() {
   const [userExists, setUserExists] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
-  const email = 'marco@jh'; // Replace with the user's email you want to check
+  const email = 'marco@jh'; // rimpiazzare con l'elemento del record da cercare
 
   useEffect(() => {
     checkUserExists(email)
-      .then((exists) => setUserExists(exists))
+      .then((result) => {
+        setUserExists(result.exists);
+        if (result.exists) {
+          setUserInfo(result.userInfo);
+        }
+      })
       .catch((error) => console.error('Error checking user existence:', error));
   }, [email]);
 
-  return <div>{userExists ? 'User exists' : 'User does not exist'}</div>;
+  return (
+    <div>
+      {userExists ? (
+        <div>
+          <p>User {email} exists</p>
+          {userInfo && (
+            <div>
+              <p>Password: {userInfo.password}</p>
+              {/* Add more fields here if needed */}
+            </div>
+          )}
+        </div>
+      ) : (
+        <p>User does not exist</p>
+      )}
+    </div>
+  );
 }
 
 function checkUserExists(email) {
-    const base = new Airtable({ apiKey: 'keyIXV1o7EbmywgbWZE' }).base('appHcO1NO4VD6sc');
-    const table = base('Table 2');
+    const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc'); //api key e link alla pagina
+    const table = base('Table 2'); // nome della tabella da cui si prendono le informazioni
 
   return new Promise((resolve, reject) => {
     table
       .select({
-        filterByFormula: `Username = '${email}'`, // Replace 'Email' with the actual field name in your Airtable
+        filterByFormula: `Email = '${email}'`, // nome del campo da cui prendere le informazioni
         maxRecords: 1,
       })
       .firstPage((err, records) => {
@@ -88,7 +110,20 @@ function checkUserExists(email) {
           reject(err);
           return;
         }
-        resolve(records.length > 0);
+
+        if (records.length > 0) {
+          // User exists
+          const user = records[0];
+          const userInfo = {
+            password: user.fields.Password, // rimpiazzare col nome del campo dal quale si vogliono ottenere i dati
+            // Add more fields here if needed
+          };
+
+          resolve({ exists: true, userInfo });
+        } else {
+          // User does not exist
+          resolve({ exists: false, userInfo: null });
+        }
       });
   });
 }
