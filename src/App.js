@@ -4,6 +4,7 @@ import Home from './pages/home/home';
 import Contacts from './pages/contacts'
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
+import Search from './pages/search/search';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route exact path='/contacts' element={<Contacts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </div>
     </BrowserRouter>
