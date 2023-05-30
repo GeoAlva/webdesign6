@@ -8,8 +8,7 @@ export default function Login() {
 
                 <h1 class="slogan">Ciao</h1>
                 <br />
-                <p class="text_fg">Inizia subito a costruire il tuo curriculum ideale e <br />
-                    preparati a conseguire il lavoro che hai sempre <br /> sognato</p>
+                <p class="text_fg">Inizia ora a creare il tuo curriculum perfetto<br /> e trova il tuo lavoro ideale.</p>
 
 
             </div>

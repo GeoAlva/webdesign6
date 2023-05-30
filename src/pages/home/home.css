@@ -68,9 +68,10 @@ h3 {
     border-color: #008080;
 }
 
-.searchBar-container {
+.buttons-container {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    display: flex;
 }
