@@ -64,7 +64,7 @@ export default function Home() {
                         <div className='buttons-container'>
                             <Stack spacing={2} direction="row">
                                 <Button variant="contained" type='a' href='https://airtable.com/shrxaIStJEl7Tgl2A'>Aggiungi il tuo curriculum</Button>
-                                <Button variant="outlined">Sfoglia i curriculum</Button>
+                                <Button variant="outlined" href='/search'>Sfoglia i curriculum</Button>
                             </Stack>
                         </div >
                     </div>
