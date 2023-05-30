@@ -1,0 +1,44 @@
+.search {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin-top: 7vh;
+    bottom: 0;
+}
+
+.search .left-search {
+    float: left;
+    width: 50%;
+    height: 10%;
+    align-items: center;
+    justify-content: left;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.right-filters {
+    position: absolute;
+    right: 0;
+    margin-right: 0;
+    width: 35%;
+    display: flex;
+    justify-content: left;
+    background-color: #cce0e1;
+    height: 100%;
+    bottom: 0;
+    padding-left: 5vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.right-filters h4 {
+    margin-top: 10vh;
+}
+
+.right-filters .filters {
+    margin-top: 13vh;
+    margin-bottom: 20vh;
+}
+.radioButtons {
+    margin-left: 2vw;
+}
