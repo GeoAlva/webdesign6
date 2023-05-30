@@ -1,4 +1,6 @@
 import "../login/login.css"
+import Airtable from 'airtable';
+import React,{ useEffect,useState } from 'react';
 
 export default function Signin() {
     return (
@@ -48,10 +50,81 @@ export default function Signin() {
 
                 </div>
 
-
+            
             </div>
+            <UserExistsComponent/>
         </div >
 
 
     )
 }
+
+function UserExistsComponent() {
+  const [userExists, setUserExists] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+
+  const email = 'marco@jh'; // rimpiazzare con l'elemento del record da cercare
+
+  useEffect(() => {
+    checkUserExists(email)
+      .then((result) => {
+        setUserExists(result.exists);
+        if (result.exists) {
+          setUserInfo(result.userInfo);
+        }
+      })
+      .catch((error) => console.error('Error checking user existence:', error));
+  }, [email]);
+
+  return (
+    <div>
+      {userExists ? (
+        <div>
+          <p>User {email} exists</p>
+          {userInfo && (
+            <div>
+              <p>Password: {userInfo.password}</p>
+              {/* Add more fields here if needed */}
+            </div>
+          )}
+        </div>
+      ) : (
+        <p>User does not exist</p>
+      )}
+    </div>
+  );
+}
+
+function checkUserExists(email) {
+    const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc'); //api key e link alla pagina
+    const table = base('Table 2'); // nome della tabella da cui si prendono le informazioni
+
+  return new Promise((resolve, reject) => {
+    table
+      .select({
+        filterByFormula: `Email = '${email}'`, // nome del campo da cui prendere le informazioni
+        maxRecords: 1,
+      })
+      .firstPage((err, records) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        if (records.length > 0) {
+          // User exists
+          const user = records[0];
+          const userInfo = {
+            password: user.fields.Password, // rimpiazzare col nome del campo dal quale si vogliono ottenere i dati
+            // Add more fields here if needed
+          };
+
+          resolve({ exists: true, userInfo });
+        } else {
+          // User does not exist
+          resolve({ exists: false, userInfo: null });
+        }
+      });
+  });
+}
+      
