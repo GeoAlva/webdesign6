@@ -1,10 +1,34 @@
 import "../login/login.css"
 import Airtable from 'airtable';
 import React,{ useEffect,useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Signin() {
-    return (
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
 
+    event.preventDefault();
+    const email = event.target.elements.email.value;
+    const password = event.target.elements.pass.value;
+    // Initialize the Airtable base
+    const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+  
+    try {
+      // Perform the Airtable form action
+      const response = await base('Utenti').create({
+        // Set the fields you want to send to Airtable
+        Email: email,
+        Password: password
+      });
+      console.log('Form action successful', response);
+      navigate("/login");
+    } catch (error) {
+      console.error('Form action error', error);
+    }
+  };
+  
+    return (
         <div class="login" >
             <div class="left-slogan">
 
@@ -12,13 +36,11 @@ export default function Signin() {
                 <br />
                 <p class="text_fg">Inizia subito a costruire il tuo curriculum ideale e <br />
                     preparati a conseguire il lavoro che hai sempre <br /> sognato</p>
-
-
             </div>
             <div class="right-form">
 
 
-                <form action="https://hooks.airtable.com/workflows/v1/genericWebhook/app7EHcO1NO4VD6sc/wfly6ZQdazFFW1esL/wtrIPVNFpFcOK3OUR" method="post" class="form">
+                <form onSubmit={handleSubmit} method="post" class="form">
                     <h2 class="benvenuto">Registrati</h2>
 
                     <div class="form-element">
@@ -54,8 +76,6 @@ export default function Signin() {
             </div>
             <UserExistsComponent/>
         </div >
-
-
     )
 }
 
@@ -97,7 +117,7 @@ function UserExistsComponent() {
 
 function checkUserExists(email) {
     const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc'); //api key e link alla pagina
-    const table = base('Table 2'); // nome della tabella da cui si prendono le informazioni
+    const table = base('Utenti'); // nome della tabella da cui si prendono le informazioni
 
   return new Promise((resolve, reject) => {
     table
