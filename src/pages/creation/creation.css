@@ -1,0 +1,43 @@
+.search {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin-top: 30vh;
+    bottom: 0;
+    justify-content: center;
+}
+
+.search .left-search {
+    float: left;
+    width: 50%;
+    height: 10%;
+    align-items: center;
+    justify-content: left;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.textIn{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.bg {
+    position: absolute;
+    background-color: #cce0e1;
+    height: 100%;
+    color: #cce0e1;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 30%;
+    text-align:justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creation{
+    color: #000000;
+}
+
