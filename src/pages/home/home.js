@@ -1,6 +1,5 @@
 import Button from '@mui/material/Button';
 import React, { useState } from "react";
-import Stack from '@mui/material/Stack';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
 import "./home.css"
@@ -31,17 +30,13 @@ export default function Home() {
                         <div className="carousel-container">
                             <div className="carousel">
                                 <div className={`slide ${currentSlide === 1 ? "active" : ""}`}>
-                                    <h2>Chi siamo</h2>
-                                    <p>Qui potrai creare il tuo curriculum in modo semplice,<br></br>veloce e professionale. <br></br><br></br>Crea un account gratuito e costruisci un curriculum su <br></br>misura per te, rendendo facile la ricerca del lavoro dei <br></br>tuoi sogni.</p>
+                                    <h2>"Nome"</h2>
+                                    <p>Un modo tutto nuovo per creare il tuo curriculum.<br /><br /><br /><br /><br /><br /><br /></p>
                                 </div>
                                 <div className={`slide ${currentSlide === 2 ? "active" : ""}`}>
                                     <h2>Come funziona</h2>
-                                    <p>Sarai guidato attraverso una serie di domande mirate <br></br>a trovare le infromazioni chiave per il tuo curriculum.<br></br><br></br>Potrai scegliere il modello di CV che più ti si addice e <br></br>personalizzarlo con le infromazioni che meglio si <br></br>adattano alle tue esigenze.
+                                    <p>Ti guideremo passo passo nella creazione del tuo curriculum.<br /><br /> Domande semplici e mirate: pochi step e il gioco è fatto.<br /><br /> Scegli il template che più ti si addice e personalizzalo con le informazioni che meglio si adattano alle tue esigenze.<br /><br />
                                     </p>
-                                </div>
-                                <div className={`slide ${currentSlide === 3 ? "active" : ""}`}>
-                                    <h2>Condividi</h2>
-                                    <p>Puoi condividere facilmente il tuo curriculum<br></br>attraverso i canali social, inviarlo direttamebte agli<br></br>annunci di lavoro e persino inoltrarlo a potenziali<br></br>datori di lavoro.<br></br><br></br><br></br></p>
                                 </div>
                                 <div className="dots">
                                     <span
@@ -52,24 +47,54 @@ export default function Home() {
                                         className={`dot ${currentSlide === 2 ? "active" : ""}`}
                                         onClick={() => changeSlide(2)}
                                     ></span>
-                                    <span
-                                        className={`dot ${currentSlide === 3 ? "active" : ""}`}
-                                        onClick={() => changeSlide(3)}
-                                    ></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className='right'>
                         <div className='buttons-container'>
-                            <Stack spacing={2} direction="row">
-                                <Button variant="contained" type='a' href='https://airtable.com/shrxaIStJEl7Tgl2A'>Aggiungi il tuo curriculum</Button>
-                                <Button variant="outlined" href='/search'>Sfoglia i curriculum</Button>
-                            </Stack>
+                            <div>
+                                <h1>Crea ora <br /> il tuo curriculum</h1>
+                                <Button variant="contained"
+                                    href="/login"
+                                    sx={{
+                                        width: "318px",
+                                        px: 3,
+                                        fontWeight: 'bold',
+                                        borderRadius: '30px',
+                                        fontFamily: 'sans-serif',
+                                        fontSize: "15px",
+                                        textTransform: 'none',
+                                        backgroundColor: '#087A87',
+                                        color: '#ffffff',
+                                    }}
+                                >Inizia</Button>
+                                <br /><br /><br /><br /><br /><br />
+                                <h3>Stai cercando personale?</h3>
+                                <Button variant="outlined"
+                                    href="https://airtable.com/shr2loovuRXne75ML"
+                                    sx={{
+                                        width: "318px",
+                                        px: 3,
+                                        fontWeight: 'bold',
+                                        borderRadius: '30px',
+                                        fontFamily: 'sans-serif',
+                                        fontSize: "15px",
+                                        textTransform: 'none',
+                                        border: "3px solid #008080",
+                                        backgroundColor: '#ffffff',
+                                        color: '#000000',
+                                        '&:hover': {
+                                            color: '#008080',
+                                            border: "3px solid #008080",
+                                        },
+                                    }}
+                                >Sfoglia i curricula</Button>
+                            </div>
                         </div >
                     </div>
                 </div >
-            </ThemeProvider>
+            </ThemeProvider >
         </>
     )
 };
