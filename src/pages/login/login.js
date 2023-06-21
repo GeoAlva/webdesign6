@@ -8,8 +8,8 @@ export default function Login() {
 
                 <h1 class="slogan">Ciao</h1>
                 <br />
-                <p class="text_fg">Inizia subito a costruire il tuo curriculum ideale e <br />
-                    preparati a conseguire il lavoro che hai sempre <br /> sognato</p>
+                <p class="text_fg">Inizia subito a costruire il tuo curriculum<br />
+                    e trova il lavoro che hai sempre sognato.</p>
 
 
             </div>
@@ -23,7 +23,7 @@ export default function Login() {
                     <div class="form-element">
                         <img src="images/Persona.png" alt="" class="icons" />
                         <input type="email" id="email" name="email" class="form-input" placeholder=" " required />
-                        <label class="floating-label" for="email">Username / e-mail</label>
+                        <label class="floating-label" for="email">E-mail</label>
                     </div>
 
                     <div class="form-element">
