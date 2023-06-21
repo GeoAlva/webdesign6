@@ -3,13 +3,9 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button"
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import "./header.css"
-import { Box } from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
-import { Link, useLocation } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -24,9 +20,6 @@ const theme = createTheme({
 
 
 function AppHeader() {
-
-    const location = useLocation();
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -47,25 +40,7 @@ function AppHeader() {
                         LOGO
                     </Typography>
 
-
-                    <Box sx={{ width: '100%' }}>
-                        <Tabs value={location.pathname} aria-label="nav tabs" textColor="primary"
-                            indicatorColor="primary">
-                            <Tab
-                                label="Home"
-                                value="/"
-                                component={Link}
-                                to="/"
-                            />
-                            <Tab
-                                label="Contatti"
-                                value="/contacts"
-                                component={Link}
-                                to="/contacts"
-                            />
-                        </Tabs>
-                    </Box>
-
+                    <div style={{ width: "100%" }}></div>
 
                     <Button variant="text"
                         href="/login"
