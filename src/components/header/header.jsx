@@ -16,19 +16,31 @@ const theme = createTheme({
     },
 });
 
-
-
-
-function AppHeader() {
-
-    return (
-        <ThemeProvider theme={theme}>
-            <AppBar color="transparent" elevation={0} >
-                <Toolbar >
-                    <a href="/" class="logo"><img src={Curricraft} alt="Curricraft logo" style={{width:"98px", height:"87px"}} /></a>
-                    <div style={{ width: "100%" }}></div>
-
-                    <Button variant="text"
+function buttonLoader(){
+    if(document.cookie.startsWith("email=")){
+        return(
+            <Button variant="outlined"
+            href="/signup"
+            sx={{
+                px: 3,
+                mr: 4,
+                fontWeight: 'bold',
+                borderRadius: '20px',
+                fontFamily: 'Open Sans',
+                fontSize: "15px",
+                textTransform: 'none',
+                border: "1px solid #008080",
+                backgroundColor: '#ffffff',
+                color: '#000000',
+                '&:hover': {
+                    color: '#008080',
+                    border: "1px solid #008080",
+                },
+            }}
+            >Esci</Button>)
+    }
+    else return(<>
+    <Button variant="text"
                         href="/login"
                         sx={{
                             px: 3,
@@ -62,7 +74,25 @@ function AppHeader() {
                                 border: "1px solid #008080",
                             },
                         }}
-                    >Registrati</Button>
+                    >Registrati</Button></>
+
+    )
+}
+
+
+
+
+function AppHeader() {
+
+    return (
+        <ThemeProvider theme={theme}>
+            <AppBar color="transparent" elevation={0} >
+                <Toolbar >
+                    <a href="/" class="logo"><img src={Curricraft} alt="Curricraft logo" style={{width:"98px", height:"87px"}} /></a>
+                    <div style={{ width: "100%" }}></div>
+
+                    {buttonLoader()}
+                    
                 </Toolbar>
             </AppBar >
         </ThemeProvider>

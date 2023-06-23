@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Airtable from 'airtable';
+import Cookies from 'universal-cookie';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,7 +16,10 @@ export default function Login() {
       const userExists = await checkUserExists(email, password);
 
       if (userExists) {
-        navigate('/home'); //ho messo una pagina a caso per testare
+        const cookie = new Cookies();
+        cookie.set('email', email, { path: '/' });
+        navigate('/profile');
+
       } else {
         setError('Account non trovato!');
       }
