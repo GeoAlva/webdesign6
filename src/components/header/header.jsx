@@ -3,6 +3,8 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Curricraft from "./Curricraft.svg"
 import Button from "@mui/material/Button"
+import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
 import "./header.css"
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
@@ -16,12 +18,19 @@ const theme = createTheme({
     },
 });
 
+function logout(){
+    
+    const cookie = new Cookies();
+    cookie.remove('email');
+    window.location.replace('/');
+
+}
+
 function buttonLoader(){
     if(document.cookie.startsWith("email=")){
-
         return(
             <Button variant="outlined"
-            href="/signup"
+            onClick={logout}
             sx={{
                 px: 3,
                 mr: 4,
@@ -84,8 +93,7 @@ function buttonLoader(){
 
 
 function AppHeader() {
-
-    return (
+        return (
         <ThemeProvider theme={theme}>
             <AppBar color="transparent" elevation={0} >
                 <Toolbar >

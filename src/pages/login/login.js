@@ -18,7 +18,8 @@ export default function Login() {
       if (userExists) {
         const cookie = new Cookies();
         cookie.set('email', email, { path: '/' });
-        navigate('/profile');
+        window.location.replace('/profile');
+        //navigate('/profile');
 
       } else {
         setError('Account non trovato!');
