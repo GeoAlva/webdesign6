@@ -17,7 +17,8 @@
 .slogan {
     color: #000000;
     margin-left: 125px;
-    font-family: "Open Sans Bold", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
     font-size: 64px;
     margin-bottom: 10px;
 }
@@ -64,7 +65,7 @@
 }
 
 .form .benvenuto {
-    font-family: sans-serif;
+    font-family: "Open Sans" sans-serif;
     font-size: 40px;
     margin-bottom: 20px;
 }
@@ -109,7 +110,7 @@
     cursor: text;
     transition: top 200ms ease-in, font-size 200ms ease-in;
 
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .login input:focus ~ .floating-label,
@@ -121,7 +122,7 @@
 }
 
 .form .forgot {
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 12px;
     align-self: flex-end;
     text-decoration: none;
@@ -137,7 +138,7 @@
     background-color: #087987;
     color: #ffffff;
     margin-top: 2vh;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 19px;
     margin-bottom: 3vh;
     border: 3px solid #ffffff;
@@ -151,14 +152,14 @@
 }
 
 .account {
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 13px;
     margin-bottom: 5px;
 }
 
 .login a {
     margin-top: 5px;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 19px;
 
     color: #ffffff;
