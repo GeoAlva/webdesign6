@@ -11,24 +11,29 @@ export default function Signin() {
     const email = event.target.elements.email.value;
     const password = event.target.elements.pass.value;
     const confirmPassword = event.target.elements.confirm_pass.value;
-
+  
     if (password !== confirmPassword) {
       setError('Errore: le due password inserite non sono uguali!');
       return;
     }
-
+  
     try {
       const userExists = await checkEmailExists(email);
-
+  
       if (userExists) {
         setError('Errore: l\'indirizzo email è già registrato!');
         return;
       }
-
+  
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashedPassword = Array.from(new Uint8Array(hashBuffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+  
       const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
       const response = await base('Utenti').create({
         Email: email,
-        Password: password,
+        Password: hashedPassword,
       });
       console.log('Form action successful', response);
       navigate('/login');
