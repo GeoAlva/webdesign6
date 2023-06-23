@@ -1,38 +1,38 @@
 .login {
     display: flex;
     height: 100%;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 7vh;
     bottom: 0;
 }
 
 .login .left-slogan {
-    float: left;
-    width: 50%;
-    height: 10%;
-    align-items: center;
-    justify-content: left;
+    width: 40%;
+    margin-top: -25vh;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .slogan {
     color: #000000;
     margin-left: 125px;
-    top: 4vh;
-    font-size: 60px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 64px;
     margin-bottom: 10px;
 }
 
 .text_fg {
     margin-top: 10px;
     color: #000000;
-    font-family: sans-serif;
-    font-size: 23px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
     margin-left: 125px;
 }
 
 .login .right-form {
-    width: 50%;
+    width: 60%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    width: 22vw;
+    width: 35vw;
 }
 
 .right-form .form {
@@ -65,7 +65,7 @@
 }
 
 .form .benvenuto {
-    font-family: sans-serif;
+    font-family: "Open Sans" sans-serif;
     font-size: 40px;
     margin-bottom: 20px;
 }
@@ -110,7 +110,7 @@
     cursor: text;
     transition: top 200ms ease-in, font-size 200ms ease-in;
 
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .login input:focus ~ .floating-label,
@@ -122,9 +122,10 @@
 }
 
 .form .forgot {
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 12px;
     align-self: flex-end;
+    text-decoration: none;
 }
 
 .btn {
@@ -137,7 +138,7 @@
     background-color: #087987;
     color: #ffffff;
     margin-top: 2vh;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 19px;
     margin-bottom: 3vh;
     border: 3px solid #ffffff;
@@ -151,16 +152,16 @@
 }
 
 .account {
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 13px;
     margin-bottom: 5px;
 }
 
 .login a {
     margin-top: 5px;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 19px;
-    text-decoration: none;
+
     color: #ffffff;
 }
 

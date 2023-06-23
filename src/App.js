@@ -5,6 +5,8 @@ import Contacts from './pages/contacts'
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import Search from './pages/search/search';
+import Profile from './pages/profile/profile';
+import Create from './pages/creation/creation';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create" element={<Create />} />
         </Routes>
       </div>
     </BrowserRouter>
