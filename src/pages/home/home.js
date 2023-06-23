@@ -30,7 +30,7 @@ export default function Home() {
                         <div className="carousel-container">
                             <div className="carousel">
                                 <div className={`slide ${currentSlide === 1 ? "active" : ""}`}>
-                                    <h2>"Nome"</h2>
+                                    <div class="name"> <h2 class="curri">Curri</h2><h2 class="craft">Craft</h2></div>
                                     <p>Un modo tutto nuovo per creare il tuo curriculum.<br /><br /><br /><br /><br /><br /><br /></p>
                                 </div>
                                 <div className={`slide ${currentSlide === 2 ? "active" : ""}`}>
@@ -62,7 +62,7 @@ export default function Home() {
                                         px: 3,
                                         fontWeight: 'bold',
                                         borderRadius: '30px',
-                                        fontFamily: 'sans-serif',
+                                        fontFamily: 'Open Sans',
                                         fontSize: "15px",
                                         textTransform: 'none',
                                         backgroundColor: '#087A87',
@@ -78,7 +78,7 @@ export default function Home() {
                                         px: 3,
                                         fontWeight: 'bold',
                                         borderRadius: '30px',
-                                        fontFamily: 'sans-serif',
+                                        fontFamily: 'Open Sans',
                                         fontSize: "15px",
                                         textTransform: 'none',
                                         border: "3px solid #008080",

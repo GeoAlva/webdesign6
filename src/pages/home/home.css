@@ -29,19 +29,36 @@
     display: block;
 }
 
+.name {
+    align-items: baseline;
+    display: flex;
+}
+.name .curri {
+    font-family: "Open Sans", sans-serif;
+    font-weight: lighter;
+    font-size: 48px;
+}
+.name .craft {
+    font-family: "Open Sans", sans-serif;
+    font-size: bold;
+    font-size: 48px;
+}
+
 .home h1,
 h2 {
-    font-family: "Open Sans Bold", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    font-size: bold;
     font-size: 48px;
 }
 
 .home h3 {
-    font-family: "Open Sans Bold", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    font-size: bold;
     font-size: 36px;
 }
 
 .home p {
-    font-family: "Open Sans Light", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 21px;
 }
 
