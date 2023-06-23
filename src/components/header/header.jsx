@@ -18,6 +18,7 @@ const theme = createTheme({
 
 function buttonLoader(){
     if(document.cookie.startsWith("email=")){
+
         return(
             <Button variant="outlined"
             href="/signup"
