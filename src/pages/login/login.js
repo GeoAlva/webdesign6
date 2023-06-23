@@ -75,16 +75,28 @@ async function checkUserExists(email, password) {
   return new Promise((resolve, reject) => {
     table
       .select({
-        filterByFormula: `AND(Email = '${email}', Password = '${password}')`,
+        filterByFormula: `Email = '${email}'`,
         maxRecords: 1,
       })
-      .firstPage((err, records) => {
+      .firstPage(async (err, records) => {
         if (err) {
           reject(err);
           return;
         }
 
-        resolve(records.length > 0);
+        if (records.length > 0) {
+          const hashedPassword = records[0].get('Password');
+
+          const encoder = new TextEncoder();
+          const data = encoder.encode(password);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+          const inputHashedPassword = Array.from(new Uint8Array(hashBuffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+          const passwordMatch = hashedPassword === inputHashedPassword;
+          resolve(passwordMatch);
+        } else {
+          resolve(false);
+        }
       });
   });
 }
