@@ -39,8 +39,7 @@ export default function Profile(){
                                 >Crea Curriculum</Button>
 
                                 <Button variant="outlined"
-                                //link di test
-                                    href="https://airtable.com/shr9QHYnx6MC0bTqL"
+                                    href="/curriculum"
                                     sx={{
                                         width: "318px",
                                         mb:"30px",
