@@ -4,7 +4,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Curricraft from "./Curricraft.svg"
 import Button from "@mui/material/Button"
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
 import "./header.css"
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";

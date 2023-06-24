@@ -4,6 +4,7 @@
     flex-direction: row;
     align-items: center;
     justify-items: center;
+    font-family: "Open Sans";
 }
 
 .profile .left {
@@ -36,9 +37,27 @@
     margin-right: 0;
     width: 35%;
     display: flex;
-    justify-content: left;
     background-color: #cce0e1;
     height: 100%;
     bottom: 0;
-    padding-left: 5vw;
+    padding-left: 2vw;
+}
+
+.inner {
+    margin-top: 12vh;
+}
+
+.settings {
+    font-family: "Open Sans";
+    font-weight: bold;
+    font-size: 500;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.mail {
+    font-size: 24;
+    font-weight: bold;
 }

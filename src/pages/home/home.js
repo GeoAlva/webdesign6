@@ -72,7 +72,7 @@ export default function Home() {
                                 <br /><br /><br /><br /><br /><br />
                                 <h3>Stai cercando personale?</h3>
                                 <Button variant="outlined"
-                                    href="https://airtable.com/shr2loovuRXne75ML"
+                                    href="https://airtable.com/shrGSUzMP6qQlRZfL"
                                     sx={{
                                         width: "318px",
                                         px: 3,
