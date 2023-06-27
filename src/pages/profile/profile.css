@@ -46,11 +46,14 @@
 .inner {
     margin-top: 12vh;
 }
+.inner .personale {
+    font-size: 36px;
+}
 
 .settings {
     font-family: "Open Sans";
     font-weight: bold;
-    font-size: 500;
+    font-size: 32px;
 }
 
 .infoGrid {

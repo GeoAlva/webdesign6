@@ -4,6 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Curricraft from "./Curricraft.svg"
 import Button from "@mui/material/Button"
 import Cookies from 'universal-cookie';
+import { useLocation } from 'react-router-dom';
 import "./header.css"
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
@@ -25,28 +26,55 @@ function logout(){
 
 }
 
-function buttonLoader(){
+function ButtonLoader(){
+    let location = useLocation();
+    if(location.pathname === '/login' || location.pathname === '/signup' ) return;
+
     if(document.cookie.startsWith("email=")){
-        return(
-            <Button variant="outlined"
+        return(<>
+        <Button variant="text"
+            href="/profile"
+            sx={{
+                width:'250px',
+
+                            mr: 3,
+                            fontWeight: 'bold',
+                            borderRadius: '20px',
+                            fontFamily: 'Open Sans',
+                            fontWeight:'Bold',
+                            fontSize: "18px",
+                            textTransform: 'none',
+                            backgroundColor: '#transparent',
+                            textDecoration:'underline',
+                            color: '#087A87',
+                            '&:hover': {
+                                color: '#087A87',
+                                textDecoration:'underline',
+                            },
+            }}
+            >Il mio profilo</Button>
+            <Button variant="text"
             onClick={logout}
             sx={{
                 px: 3,
-                mr: 4,
-                fontWeight: 'bold',
-                borderRadius: '20px',
-                fontFamily: 'Open Sans',
-                fontSize: "15px",
-                textTransform: 'none',
-                border: "1px solid #008080",
-                backgroundColor: '#ffffff',
-                color: '#000000',
-                '&:hover': {
-                    color: '#008080',
-                    border: "1px solid #008080",
-                },
+                            mr: 4,
+                            fontWeight: 'bold',
+                            borderRadius: '20px',
+                            fontFamily: 'Open Sans',
+                            fontWeight:'Bold',
+                            fontSize: "18px",
+                            textTransform: 'none',
+                            backgroundColor: '#transparent',
+                            textDecoration:'underline',
+                            color: '#087A87',
+                            '&:hover': {
+                                color: '#087A87',
+                                textDecoration:'underline',
+                            },
             }}
-            >Esci</Button>)
+            >Esci</Button>
+            
+            </>)
     }
     else return(<>
     <Button variant="text"
@@ -54,18 +82,17 @@ function buttonLoader(){
                         sx={{
                             px: 3,
                             mx: 2,
-                            fontWeight: 'bold',
                             borderRadius: '20px',
                             fontFamily: 'Open Sans',
-                            fontSize: "15px",
+                            fontSize: "20px",
                             textTransform: 'none',
-                            backgroundColor: '#ffffff',
-                            color: '#008080',
+                            backgroundColor: '#transparent',
+                            color: '#087A87',
 
                         }}
                     >Accedi</Button>
 
-                    <Button variant="outlined"
+                    <Button variant="text"
                         href="/signup"
                         sx={{
                             px: 3,
@@ -73,14 +100,15 @@ function buttonLoader(){
                             fontWeight: 'bold',
                             borderRadius: '20px',
                             fontFamily: 'Open Sans',
-                            fontSize: "15px",
+                            fontWeight:'Bold',
+                            fontSize: "20px",
                             textTransform: 'none',
-                            border: "1px solid #008080",
-                            backgroundColor: '#ffffff',
-                            color: '#000000',
+                            backgroundColor: '#transparent',
+                            textDecoration:'underline',
+                            color: '#087A87',
                             '&:hover': {
-                                color: '#008080',
-                                border: "1px solid #008080",
+                                color: '#087A87',
+                                textDecoration:'underline',
                             },
                         }}
                     >Registrati</Button></>
@@ -92,6 +120,7 @@ function buttonLoader(){
 
 
 function AppHeader() {
+
         return (
         <ThemeProvider theme={theme}>
             <AppBar color="transparent" elevation={0} >
@@ -99,7 +128,7 @@ function AppHeader() {
                     <a href="/" class="logo"><img src={Curricraft} alt="Curricraft logo" style={{width:"98px", height:"87px"}} /></a>
                     <div style={{ width: "100%" }}></div>
 
-                    {buttonLoader()}
+            {ButtonLoader()}
                     
                 </Toolbar>
             </AppBar >

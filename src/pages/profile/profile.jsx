@@ -92,21 +92,25 @@ export default function Profile(){
                 <div class='user'>
                     <img src={profilePhoto} alt="Profile" width={'195px'} />
                     <p>{email}</p>
-                    <Button variant="contained"
+                    <Button variant="outlined"
                                     //link di test
                                     href="https://airtable.com/shrMHq5TbbUJMNQFw"
                                     sx={{
-                                        width: "318px",
-                                        mt:"20px",
-                                        mb:"30px",
-                                        px: 3,
-                                        fontWeight: 'bold',
-                                        borderRadius: '30px',
-                                        fontFamily: 'Open Sans',
-                                        fontSize: "15px",
-                                        textTransform: 'none',
-                                        backgroundColor: '#087A87',
-                                        color: '#ffffff',
+                                      width: "318px",
+                                      mb:"30px",
+                                      px: 3,
+                                      fontWeight: 'bold',
+                                      borderRadius: '30px',
+                                      fontFamily: 'Open Sans',
+                                      fontSize: "15px",
+                                      textTransform: 'none',
+                                      border: "3px solid #008080",
+                                      backgroundColor: 'transparent',
+                                      color: '#000000',
+                                      '&:hover': {
+                                          color: '#008080',
+                                          border: "3px solid #008080",
+                                      },
                                     }}
                                 >Crea Curriculum</Button>
 
@@ -122,7 +126,7 @@ export default function Profile(){
                                         fontSize: "15px",
                                         textTransform: 'none',
                                         border: "3px solid #008080",
-                                        backgroundColor: '#ffffff',
+                                        backgroundColor: 'transparent',
                                         color: '#000000',
                                         '&:hover': {
                                             color: '#008080',
@@ -143,7 +147,7 @@ export default function Profile(){
                                         fontSize: "15px",
                                         textTransform: 'none',
                                         border: "3px solid #008080",
-                                        backgroundColor: '#ffffff',
+                                        backgroundColor: 'transparent',
                                         color: '#000000',
                                         '&:hover': {
                                             color: '#008080',
@@ -159,7 +163,7 @@ export default function Profile(){
                 {/* TODO */}
 
                 <div class='inner'> 
-                <h3>Stai cercando personale?</h3>
+                <h3 className='personale'>Stai cercando personale?</h3>
                 <Button variant="outlined"
                     //link di test
                     href="https://airtable.com/shr9QHYnx6MC0bTqL"
@@ -183,7 +187,7 @@ export default function Profile(){
                     >Sfoglia i Curriculum</Button>
 
                     <br /><br /><br /><br /><br /><br />
-                    <span><p className='settings'> Impostazioni 
+                    <span><p className='settings'> Dati di Accesso 
                     <Button onClick={showForm}
                     variant='text' sx={{
                         fontFamily:'Open Sans',

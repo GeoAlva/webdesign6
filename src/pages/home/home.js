@@ -66,18 +66,22 @@ export default function Home() {
                         <div className='buttons-container'>
                             <div>
                                 <h1>Crea ora <br /> il tuo curriculum</h1>
-                                <Button variant="contained"
+                                <Button variant="outlined"
                                     href={href}
                                     sx={{
-                                        width: "318px",
                                         px: 3,
                                         fontWeight: 'bold',
                                         borderRadius: '30px',
                                         fontFamily: 'Open Sans',
                                         fontSize: "15px",
                                         textTransform: 'none',
-                                        backgroundColor: '#087A87',
-                                        color: '#ffffff',
+                                        border: "2px solid #008080",
+                                        backgroundColor: '#ffffff',
+                                        color: '#000000',
+                                        '&:hover': {
+                                            color: '#008080',
+                                            border: "2px solid #008080",
+                                        },
                                     }}
                                 >Inizia</Button>
                                 <br /><br /><br /><br /><br /><br />
@@ -85,19 +89,18 @@ export default function Home() {
                                 <Button variant="outlined"
                                     href="https://airtable.com/shrGSUzMP6qQlRZfL"
                                     sx={{
-                                        width: "318px",
                                         px: 3,
                                         fontWeight: 'bold',
                                         borderRadius: '30px',
                                         fontFamily: 'Open Sans',
                                         fontSize: "15px",
                                         textTransform: 'none',
-                                        border: "3px solid #008080",
+                                        border: "2px solid #008080",
                                         backgroundColor: '#ffffff',
                                         color: '#000000',
                                         '&:hover': {
                                             color: '#008080',
-                                            border: "3px solid #008080",
+                                            border: "2px solid #008080",
                                         },
                                     }}
                                 >Sfoglia i curricula</Button>

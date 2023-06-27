@@ -135,10 +135,11 @@
     border-radius: 50px;
 
     outline: none;
-    background-color: #087987;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #087a87;
     margin-top: 2vh;
     font-family: "Open Sans", sans-serif;
+    font-weight: bold;
     font-size: 19px;
     margin-bottom: 3vh;
     border: 3px solid #ffffff;
