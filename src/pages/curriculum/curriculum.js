@@ -10,12 +10,35 @@ export default function Curriculum(){
         <div className='curriculum'>
             <div className="lowLayer">
                 <div className="upLayer">
-                    <div class="rightInfo">
-                        <img className="profileImg" src={profilePhoto} alt="Profile"></img>
-                        <div className="utilities"></div>
+                    <div class="leftInfo">
+                        <div className="profile">
+                            <img className="profileImg" src={profilePhoto} alt="Profile"></img>
+                            <div class="utilities">
+                                <p className="nome_cognome">Nome Cognome</p>
+                                <p classname="profesione">Professione</p>
+                                <p className="data">gg/mm/aaaa</p>
+                            </div>
+                        </div>
+                        <div className="container">
+                            <div>
+                                <p className="contatti">Contatti</p>
+                            </div>
+                            <div>
+                                <p className="lingue">Lingue</p>
+                            </div>
+                            <div>
+                                <p className="lingue">Social</p>
+                            </div>
+                            <div>
+                                <p className="lingue">Hobby</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="curriculumInfo">
-                        
+                    <div class="rightInfo">
+                        <p className="sesso">Sesso:Sesso/Nazionalità:Nazionalità</p>
+                        <div>
+                            <h1>Istruzione e formazione</h1>
+                        </div>
                     </div>
                 </div>
             </div>
