@@ -4,6 +4,10 @@ import Airtable, { Record } from 'airtable';
 import Cookies from 'universal-cookie';
 
 export default function Login() {
+
+  if (document.cookie.startsWith("email=")) {
+    window.location.replace('/profile');
+  }
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
