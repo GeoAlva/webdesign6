@@ -1,9 +1,11 @@
 import './profile.css'
+import '../login/login.css'
 import profilePhoto from "./profilePhoto.svg"
 import pencil from "./pencil.svg"
 import Cookies from 'universal-cookie';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid'
+import React from 'react';
+import Airtable from 'airtable';
 
 
 export default function Profile(){
@@ -112,7 +114,8 @@ export default function Profile(){
 
                     <br /><br /><br /><br /><br /><br />
                     <span><p className='settings'> Impostazioni 
-                    <Button variant='text' sx={{
+                    <Button onClick={showForm}
+                    variant='text' sx={{
                         fontFamily:'Open Sans',
                         textTransform:"none"}}> 
                     <img src={pencil} alt="pencil icon" width={"10px"} />
@@ -129,7 +132,52 @@ export default function Profile(){
                         <div className='mail'>Password</div>
                         <div className='field'>*******</div>
                     </div>
-                    
+                    <div className='update' id='update'>
+                        <form action="" className='updateForm'>
+                        <div className="update-element">
+            <img src="images/update-persona.png" alt="" className="update-icons" />
+            <input type="email" id="email" name="email" className="update-form-input" placeholder=" " required />
+            <label className="update-floating-label" htmlFor="email">
+              E-mail
+            </label>
+          </div>
+
+          <div className="update-element">
+            <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+            <input type="password" id="pass" name="pass" className="update-form-input" placeholder=" " required />
+            <label className="update-floating-label" htmlFor="pass">
+              Password
+            </label>
+          </div>
+          <div className="update-element">
+            <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+            <input
+              type="password"
+              id="confirm_pass"
+              name="confirm_pass"
+              className="update-form-input"
+              placeholder=" "
+              required
+            />
+            <label className="update-floating-label" htmlFor="confirm_pass">
+              Conferma password
+            </label>
+          </div>
+
+          <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn" />
+                    <Button variant='text' 
+                    onClick={showForm}
+                    sx={{
+                        textDecoration:'underline',
+                        fontFamily:'Open Sans',
+                        fontWeight:'bold',
+                        fontSize:'24',
+                        textTransform:"none",
+                        }}> 
+                     Annulla </Button>                    
+                     </form>
+
+                    </div>
                     
 
                     </div>
@@ -139,4 +187,14 @@ export default function Profile(){
          </div>
         </>
     )
+}
+
+
+function showForm(){
+    var show = document.getElementById('update');
+    if (show.style.display === "none") {
+        show.style.display = "block";
+      } else {
+        show.style.display = "none";
+      }
 }
