@@ -33,11 +33,11 @@
 
 .profile .right {
     position: absolute;
-    right: 0;
+    right: 8vw;
     margin-right: 0;
-    width: 35%;
+    width: 33%;
     display: flex;
-    background-color: #cce0e1;
+    background-color: rgba(8, 122, 135, 0.08);
     height: 100%;
     bottom: 0;
     padding-left: 2vw;
@@ -46,11 +46,14 @@
 .inner {
     margin-top: 12vh;
 }
+.inner .personale {
+    font-size: 36px;
+}
 
 .settings {
     font-family: "Open Sans";
     font-weight: bold;
-    font-size: 500;
+    font-size: 32px;
 }
 
 .infoGrid {
@@ -60,4 +63,89 @@
 .mail {
     font-size: 24;
     font-weight: bold;
+}
+
+.update {
+    margin-top: 60px;
+    display: none;
+}
+
+.update-form-input {
+    width: 100%;
+    background-color: transparent;
+    height: 3.2em;
+    font-size: 16px;
+    border-radius: 0px 10px 10px 0px;
+    box-sizing: border-box;
+    padding-left: 1em;
+    padding-top: 0.85em;
+    border: solid;
+    border-width: 2px 2px 2px 0px;
+    border-color: #087a87;
+}
+
+.update-form-input:focus {
+    outline: none;
+}
+
+.update-element {
+    display: flex;
+    position: relative;
+    padding-bottom: 1em;
+    margin-top: 2vh;
+    width: 100%;
+    align-items: center;
+}
+
+.update-floating-label {
+    position: absolute;
+    width: 100%;
+    padding-left: 2.2em;
+    top: 24%;
+    left: 1em;
+    color: #000000;
+    font-size: 18px;
+    cursor: text;
+    transition: top 200ms ease-in, font-size 200ms ease-in;
+
+    font-family: "Open Sans", sans-serif;
+}
+
+.updateForm input:focus ~ .update-floating-label,
+.update-form-input:not(:placeholder-shown).update-form-input:not(:focus)
+    ~ .update-floating-label {
+    top: 0.5em;
+    font-size: 0.75rem;
+    padding: 0 0.125em;
+    padding-left: 3.5em;
+}
+
+.update-icons {
+    height: 3.2em;
+    z-index: 1;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+.update-btn {
+    min-width: 120px;
+    width: 140px;
+    height: 40px;
+    border-radius: 50px;
+
+    outline: none;
+    background-color: transparent;
+    color: #087a87;
+    margin-top: 2vh;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    margin-bottom: 3vh;
+    border: 3px solid #087a87;
+    margin-right: 50px;
+}
+.update-btn:hover {
+    background-color: #ffffff;
+    transition-duration: 200ms;
+    color: #239bab;
+    cursor: pointer;
 }

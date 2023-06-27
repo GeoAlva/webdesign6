@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Airtable from 'airtable';
 
 export default function Signin() {
+
+  if (document.cookie.startsWith("email=")) {
+    window.location.replace('/profile');
+  }
+
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
@@ -11,25 +16,25 @@ export default function Signin() {
     const email = event.target.elements.email.value;
     const password = event.target.elements.pass.value;
     const confirmPassword = event.target.elements.confirm_pass.value;
-  
+
     if (password !== confirmPassword) {
       setError('Errore: le due password inserite non sono uguali!');
       return;
     }
-  
+
     try {
       const userExists = await checkEmailExists(email);
-  
+
       if (userExists) {
         setError('Errore: l\'indirizzo email è già registrato!');
         return;
       }
-  
+
       const encoder = new TextEncoder();
       const data = encoder.encode(password);
       const hashBuffer = await crypto.subtle.digest('SHA-256', data);
       const hashedPassword = Array.from(new Uint8Array(hashBuffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
-  
+
       const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
       const response = await base('Utenti').create({
         Email: email,
