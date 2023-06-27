@@ -87,7 +87,7 @@ export default function Profile(){
 
     return(
         <>
-         <div class='profile'>
+         <div class='profile-page'>
             <div class='left'>
                 <div class='user'>
                     <img src={profilePhoto} alt="Profile" width={'195px'} />
