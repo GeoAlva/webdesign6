@@ -1,6 +1,7 @@
 .carousel-container {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     background-image: url("../../../public/images/Sfondo.png");
     background-size: 80%;
@@ -9,8 +10,7 @@
 }
 
 .carousel {
-    position: sticky;
-    box-sizing: content-box;
+    height: 28vh;
     display: flex;
     margin-top: 16vh;
     flex-direction: column;
@@ -67,7 +67,7 @@ h2 {
     justify-content: flex-start;
     align-items: center;
     margin-top: 45px;
-    margin-left: 15px;
+    margin-left: 195px;
 }
 
 .dot {

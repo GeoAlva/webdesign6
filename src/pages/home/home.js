@@ -24,8 +24,8 @@ export default function Home() {
     var href;
     if (email) {
         href = "/profile";
-    }else { 
-        href = "/login"; 
+    } else {
+        href = "/login";
     }
 
     const changeSlide = (slideNumber) => {
@@ -41,23 +41,24 @@ export default function Home() {
                             <div className="carousel">
                                 <div className={`slide ${currentSlide === 1 ? "active" : ""}`}>
                                     <div class="name"> <h2 class="curri">Curri</h2><h2 class="craft">Craft</h2></div>
-                                    <p>Un modo tutto nuovo per creare il tuo curriculum.<br /><br /><br /><br /><br /><br /><br /></p>
+                                    <p>Un modo tutto nuovo per creare il tuo curriculum.<br /><br /><br /></p>
                                 </div>
                                 <div className={`slide ${currentSlide === 2 ? "active" : ""}`}>
                                     <h2>Come funziona</h2>
-                                    <p>Ti guideremo passo passo nella creazione del tuo curriculum.<br /><br /> Domande semplici e mirate: pochi step e il gioco è fatto.<br /><br /> Scegli il template che più ti si addice e personalizzalo con le informazioni che meglio si adattano alle tue esigenze.<br /><br />
+                                    <p>Ti guideremo passo passo nella creazione del tuo curriculum.<br /><br /> Domande semplici e mirate: pochi step e il gioco è fatto.<br /><br />
                                     </p>
                                 </div>
-                                <div className="dots">
-                                    <span
-                                        className={`dot ${currentSlide === 1 ? "active" : ""}`}
-                                        onClick={() => changeSlide(1)}
-                                    ></span>
-                                    <span
-                                        className={`dot ${currentSlide === 2 ? "active" : ""}`}
-                                        onClick={() => changeSlide(2)}
-                                    ></span>
-                                </div>
+
+                            </div>
+                            <div className="dots">
+                                <span
+                                    className={`dot ${currentSlide === 1 ? "active" : ""}`}
+                                    onClick={() => changeSlide(1)}
+                                ></span>
+                                <span
+                                    className={`dot ${currentSlide === 2 ? "active" : ""}`}
+                                    onClick={() => changeSlide(2)}
+                                ></span>
                             </div>
                         </div>
                     </div>
