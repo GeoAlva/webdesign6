@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
 import "./home.css"
+import Cookies from 'universal-cookie';
 
 const theme = createTheme({
     palette: {
@@ -17,6 +18,15 @@ const theme = createTheme({
 export default function Home() {
 
     const [currentSlide, setCurrentSlide] = useState(1);
+
+    const cookie = new Cookies();
+    const email = cookie.get('email');
+    var href;
+    if (email) {
+        href = "/profile";
+    }else { 
+        href = "/login"; 
+    }
 
     const changeSlide = (slideNumber) => {
         setCurrentSlide(slideNumber);
@@ -56,7 +66,7 @@ export default function Home() {
                             <div>
                                 <h1>Crea ora <br /> il tuo curriculum</h1>
                                 <Button variant="contained"
-                                    href="/login"
+                                    href={href}
                                     sx={{
                                         width: "318px",
                                         px: 3,
