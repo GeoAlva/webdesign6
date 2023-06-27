@@ -4,8 +4,9 @@ import profilePhoto from "./profilePhoto.svg"
 import pencil from "./pencil.svg"
 import Cookies from 'universal-cookie';
 import Button from '@mui/material/Button';
-import React from 'react';
-import Airtable from 'airtable';
+import React,{ useState }  from 'react';
+import { useNavigate } from 'react-router-dom';
+import Airtable, { Record } from 'airtable';
 
 
 export default function Profile(){
@@ -13,6 +14,75 @@ export default function Profile(){
     const cookie = new Cookies();
     
     const email= cookie.get('email');
+
+    const navigate = useNavigate();
+  const [error, setError] = useState('');
+
+
+
+  const handleUpdate = async (event) => {
+    event.preventDefault();
+    const newEmail = event.target.elements.email.value;
+    const password = event.target.elements.pass.value;
+    const confirmPassword = event.target.elements.confirm_pass.value;
+  
+    if (password !== confirmPassword) {
+      setError('Errore: le due password inserite non sono uguali!');
+      return;
+    }
+  
+    try {
+  
+  
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashedPassword = Array.from(new Uint8Array(hashBuffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+      
+  
+      const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+
+      base('Utenti').select({
+        filterByFormula: `Email = '${email}'`,
+        maxRecords: 1,
+      }).firstPage(async (err, records) => {
+        if (err) {
+            console.error(err);
+          return;
+        }
+        if (records.length > 0) {
+            const record = records[0];
+  
+            base('Utenti').update(
+              [
+                {
+                  id: record.id,
+                  fields: {
+                    Email:newEmail,
+                    Password:hashedPassword,
+                  },
+                },
+              ],
+              (err, updatedRecords) => {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+                console.log('Record updated successfully', updatedRecords);
+    
+                    const cookie = new Cookies();
+                    cookie.remove('email');
+                    window.location.replace('/login');
+                
+                
+              }
+            )
+    }})
+    }catch (error) {
+        console.error('Form action error', error);
+      }
+    };
 
 
     return(
@@ -133,48 +203,48 @@ export default function Profile(){
                         <div className='field'>*******</div>
                     </div>
                     <div className='update' id='update'>
-                        <form action="" className='updateForm'>
+                    <form onSubmit={handleUpdate} className='updateForm'>
                         <div className="update-element">
-            <img src="images/update-persona.png" alt="" className="update-icons" />
-            <input type="email" id="email" name="email" className="update-form-input" placeholder=" " required />
-            <label className="update-floating-label" htmlFor="email">
-              E-mail
-            </label>
-          </div>
+                            <img src="images/update-persona.png" alt="" className="update-icons" />
+                            <input type="email" id="email" name="email" className="update-form-input" placeholder=" " required />
+                            <label className="update-floating-label" htmlFor="email">
+                            E-mail
+                            </label>
+                        </div>
 
-          <div className="update-element">
-            <img src="images/update-lucchetto.png" alt="" className="update-icons" />
-            <input type="password" id="pass" name="pass" className="update-form-input" placeholder=" " required />
-            <label className="update-floating-label" htmlFor="pass">
-              Password
-            </label>
-          </div>
-          <div className="update-element">
-            <img src="images/update-lucchetto.png" alt="" className="update-icons" />
-            <input
-              type="password"
-              id="confirm_pass"
-              name="confirm_pass"
-              className="update-form-input"
-              placeholder=" "
-              required
-            />
-            <label className="update-floating-label" htmlFor="confirm_pass">
-              Conferma password
-            </label>
-          </div>
+                        <div className="update-element">
+                            <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+                            <input type="password" id="pass" name="pass" className="update-form-input" placeholder=" " required />
+                            <label className="update-floating-label" htmlFor="pass">
+                            Password
+                            </label>
+                        </div>
+                        <div className="update-element">
+                            <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+                            <input
+                            type="password"
+                            id="confirm_pass"
+                            name="confirm_pass"
+                            className="update-form-input"
+                            placeholder=" "
+                            required
+                            />
+                            <label className="update-floating-label" htmlFor="confirm_pass">
+                            Conferma password
+                            </label>
+                        </div>
 
-          <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn" />
-                    <Button variant='text' 
-                    onClick={showForm}
-                    sx={{
-                        textDecoration:'underline',
-                        fontFamily:'Open Sans',
-                        fontWeight:'bold',
-                        fontSize:'24',
-                        textTransform:"none",
-                        }}> 
-                     Annulla </Button>                    
+                            <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn" />
+                                <Button variant='text' 
+                                onClick={showForm}
+                                sx={{
+                                    textDecoration:'underline',
+                                    fontFamily:'Open Sans',
+                                    fontWeight:'bold',
+                                    fontSize:'24',
+                                    textTransform:"none",
+                                    }}> 
+                                Annulla </Button>                    
                      </form>
 
                     </div>

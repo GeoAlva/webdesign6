@@ -140,3 +140,9 @@
     border: 3px solid #087a87;
     margin-right: 50px;
 }
+.update-btn:hover {
+    background-color: #ffffff;
+    transition-duration: 200ms;
+    color: #239bab;
+    cursor: pointer;
+}

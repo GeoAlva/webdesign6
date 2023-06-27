@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Airtable from 'airtable';
+import Airtable, { Record } from 'airtable';
 import Cookies from 'universal-cookie';
 
 export default function Login() {
