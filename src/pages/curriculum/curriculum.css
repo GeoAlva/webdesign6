@@ -3,7 +3,6 @@
     height: 100%;
     justify-content: flex-start;
     align-items: center;
-    bottom: 0;
 }
 
 .curriculum .lowLayer{
@@ -23,6 +22,7 @@
     position: relative;
     background-color: #ffffff;
     width: 80%;
+    margin-top: 350px;
     justify-content: flex-start;
     align-items:flex-start;
     z-index: 1;
@@ -45,12 +45,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .profileImg{
    margin-bottom: 10px;
    height: 45%;
    width: 45%;
+   align-self: center;
 }
 
 .utilities{
@@ -80,6 +83,12 @@
     position: relative;
 }
 
+.dataContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
 .contatti{
     position: absolute;
     top: -27px;
@@ -104,15 +113,38 @@
 
 .sesso{
     font-family: Open Sans;
+    align-self: flex-end;
 }
 
 .rightInfo{
     width: 100%;
     padding-right: 30px;
+    padding-left: 25px;
     position: relative;
     display: flex;
     justify-content: right;
     flex-direction: column;
+}
+
+.section{
+    display: flex;
+    flex-direction: row;
+}
+
+.icon{
+    margin-top: 30px;
+    margin-right: 15px;
+    height: 35px;
+    width: 35px;
+    color: #FFF;
+    background-color: #087A87;
+    border-radius: 25px;
+}
+
+.titleSez{
+    font-family: Open Sans;
+    font-size: 32;
+    text-decoration: underline #087A87;
 }
 
 
