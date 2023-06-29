@@ -15,6 +15,9 @@ import { createTheme } from '@mui/material/styles';
 import { Margin } from "@mui/icons-material";
 import Grid from '@mui/material/Grid';
 import Checkbox from '@mui/material/Checkbox';
+import filtriBtn from "./filtriBtn.svg";
+import folderImg from "./folderImg.svg";
+import Button from '@mui/material/Button';
 
 
 const theme = createTheme({
@@ -84,9 +87,20 @@ export default function Search() {
         <ThemeProvider theme={theme}>
             <div class="search">
                 <div class="left-search">
-
+                    <div className="curriculum-view">
+                        <img src={folderImg} className="folder-img" />
+                        <div className="field">
+                            <p className="nome-cognome-professione">
+                                Nome Cognome - Professione (GE)
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="right-filters">
+                    <div class="filters-btn">
+                        <Typography variant="h6" component="span" class="filtri-scritta">Filtri</Typography>
+                        <img src={filtriBtn} alt="Filtri" class="filters-icon" />
+                    </div>
                     <div class="filters">
 
                         <h5>Data di pubblicazione</h5>
