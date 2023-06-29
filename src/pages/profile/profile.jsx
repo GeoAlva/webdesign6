@@ -30,6 +30,15 @@ export default function Profile(){
       setError('Errore: le due password inserite non sono uguali!');
       return;
     }
+
+    if(email!==newEmail){
+      const userExists = await checkEmailExists(newEmail);
+
+      if (userExists) {
+        setError('Errore: l\'indirizzo email è già registrato!');
+        return;
+      }
+    }
   
     try {
   
@@ -160,8 +169,6 @@ export default function Profile(){
             </div>
             <div class='right'>
 
-                {/* TODO */}
-
                 <div class='inner'> 
                 <h3 className='personale'>Stai cercando personale?</h3>
                 <Button variant="outlined"
@@ -186,7 +193,7 @@ export default function Profile(){
                     }}
                     >Sfoglia i Curriculum</Button>
 
-                    <br /><br /><br /><br />
+                    <br /><br />
                     <span><p className='settings'> Dati di Accesso 
                     <Button onClick={showForm}
                     variant='text' sx={{
@@ -238,6 +245,8 @@ export default function Profile(){
                             </label>
                         </div>
 
+                        {error && <p className="error">{error}</p>}
+
                             <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn" />
                                 <Button variant='text' 
                                 onClick={showForm}
@@ -271,4 +280,26 @@ function showForm(){
       } else {
         show.style.display = "none";
       }
+}
+
+
+async function checkEmailExists(email) {
+  const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+  const table = base('Utenti');
+
+  return new Promise((resolve, reject) => {
+    table
+      .select({
+        filterByFormula: `Email = '${email}'`,
+        maxRecords: 1,
+      })
+      .firstPage((err, records) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        resolve(records.length > 0);
+      });
+  });
 }
