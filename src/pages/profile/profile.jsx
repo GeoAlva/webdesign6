@@ -266,7 +266,7 @@ export default function Profile(){
 
 function showForm(){
     var show = document.getElementById('update');
-    if (show.style.display === "none") {
+    if ( show.style.display === "" || show.style.display === "none" ) {
         show.style.display = "block";
       } else {
         show.style.display = "none";
