@@ -52,10 +52,7 @@ export default function Signin() {
       <div className="left-slogan">
         <h1 className="slogan">Ciao</h1>
         <br />
-        <p className="text_fg">
-          Inizia subito a costruire il tuo curriculum ideale e <br />
-          preparati a conseguire il lavoro che hai sempre <br /> sognato
-        </p>
+        <p className="text_fg">Inizia subito a costruire il tuo curriculum<br />e trova il lavoro che hai sempre sognato.</p>
       </div>
       <div className="right-form">
         <form onSubmit={handleSubmit} method="post" className="form">
