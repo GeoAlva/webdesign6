@@ -39,9 +39,9 @@
     align-items: center;
 }
 
-.bg {
+.bg-login {
     position: absolute;
-    background-color: #cce0e1;
+    background-color: #000000;
     height: 100%;
     color: #cce0e1;
     right: 0;
@@ -175,4 +175,39 @@
     height: 3.2em;
     position: absolute;
     z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .login {
+        padding-top: 87px;
+        flex-direction: column;
+    }
+
+    .login .left-slogan {
+        margin-top: 0px;
+        width: 100%;
+    }
+
+    .slogan {
+        margin-left: 20px;
+        font-size: 38px;
+    }
+
+    .text_fg {
+        margin-left: 20px;
+        font-size: 18px;
+    }
+
+    .login .right-form {
+        width: 100%;
+    }
+
+    .bg-login {
+        display: none;
+    }
+
+    .right-form .form {
+        width: 80%;
+        margin-bottom: 50px;
+    }
 }

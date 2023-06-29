@@ -52,7 +52,7 @@ export default function Signin() {
       <div className="left-slogan">
         <h1 className="slogan">Ciao</h1>
         < br className='web' />
-        <p className="text_fg">Inizia subito a costruire il tuo curriculum< br className='web' />e trova il lavoro che hai sempre sognato.</p>
+        <p className="text_fg">Inizia subito a costruire<br className='mobile' /> il tuo curriculum< br className='web' /> e trova <br className='mobile' /> il lavoro che hai sempre sognato.</p>
       </div>
       <div className="right-form">
         <form onSubmit={handleSubmit} method="post" className="form">
@@ -97,7 +97,7 @@ export default function Signin() {
           < br className='web' />
         </form>
 
-        <div className="bg"></div>
+        <div className="bg-login"></div>
       </div>
     </div>
   );
