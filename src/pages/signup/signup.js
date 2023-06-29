@@ -51,8 +51,8 @@ export default function Signin() {
     <div className="login">
       <div className="left-slogan">
         <h1 className="slogan">Ciao</h1>
-        <br />
-        <p className="text_fg">Inizia subito a costruire il tuo curriculum<br />e trova il lavoro che hai sempre sognato.</p>
+        < br className='web' />
+        <p className="text_fg">Inizia subito a costruire il tuo curriculum< br className='web' />e trova il lavoro che hai sempre sognato.</p>
       </div>
       <div className="right-form">
         <form onSubmit={handleSubmit} method="post" className="form">
@@ -94,7 +94,7 @@ export default function Signin() {
           <input type="submit" id="submit" name="submit" value="Registrati" className="btn" />
           <p className="account">Hai già un account?</p>
           <a href="/login">Accedi</a>
-          <br />
+          < br className='web' />
         </form>
 
         <div className="bg"></div>

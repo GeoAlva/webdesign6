@@ -10,7 +10,7 @@
 }
 
 .carousel {
-    height: 28vh;
+    height: 300px;
     display: flex;
     margin-top: 16vh;
     flex-direction: column;
@@ -66,7 +66,7 @@ h2 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 70px;
+
     margin-left: 195px;
 }
 
@@ -94,4 +94,40 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .carousel-container {
+        background-image: none;
+        width: 100%;
+        height: max-content;
+    }
+    .carousel {
+        width: fit-content;
+        height: max-content;
+        margin-left: 20px;
+        margin-top: 12vh;
+    }
+
+    h2 {
+        font-size: 38px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .home h3 {
+        font-size: 25px;
+    }
+
+    .dots {
+        z-index: 1;
+        margin-top: 80px;
+        margin-left: 40px;
+    }
+
+    .buttons-container {
+        height: 70vh;
+    }
 }

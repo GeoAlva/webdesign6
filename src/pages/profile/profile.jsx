@@ -193,7 +193,7 @@ export default function Profile(){
                     }}
                     >Sfoglia i Curriculum</Button>
 
-                    <br /><br />
+                    < br className='web'/>< br className='web'/>
                     <span><p className='settings'> Dati di Accesso 
                     <Button onClick={showForm}
                     variant='text' sx={{
@@ -205,7 +205,7 @@ export default function Profile(){
                      </span>
                     
 
-                    <br />
+                    < br className='web'/>
 
                     <div className='infoGrid'>
                         <div className='mail'>Email</div>

@@ -41,11 +41,11 @@ export default function Home() {
                             <div className="carousel">
                                 <div className={`slide ${currentSlide === 1 ? "active" : ""}`}>
                                     <div class="name"> <h2 class="curri">Curri</h2><h2 class="craft">Craft</h2></div>
-                                    <p>Un modo tutto nuovo per creare il tuo curriculum.<br /><br /><br /></p>
+                                    <p>Un modo tutto nuovo per <br className='mobile' /> creare il tuo curriculum.< br className='web' />< br className='web' />< br className='web' /></p>
                                 </div>
                                 <div className={`slide ${currentSlide === 2 ? "active" : ""}`}>
                                     <h2>Come funziona</h2>
-                                    <p>Ti guideremo passo passo nella creazione del tuo curriculum.<br /><br /> Domande semplici e mirate: pochi step e il gioco è fatto.<br /><br />
+                                    <p>Ti guideremo passo passo<br className='mobile' /> nella creazione del tuo curriculum.< br />< br /> Domande semplici e mirate:<br className='mobile' /> pochi step e il gioco è fatto.< br className='web' />< br className='web' />
                                     </p>
                                 </div>
 
@@ -65,7 +65,7 @@ export default function Home() {
                     <div className='right'>
                         <div className='buttons-container'>
                             <div>
-                                <h1>Crea ora <br /> il tuo curriculum</h1>
+                                <h2>Crea ora < br /> il tuo curriculum</h2>
                                 <Button variant="outlined"
                                     href={href}
                                     sx={{
@@ -84,7 +84,7 @@ export default function Home() {
                                         },
                                     }}
                                 >Inizia</Button>
-                                <br /><br /><br /><br /><br /><br />
+                                < br className='web' />< br className='web' />< br className='web' />< br className='web' />< br className='web' />< br className='web' />
                                 <h3>Stai cercando personale?</h3>
                                 <Button variant="outlined"
                                     href="/search"
