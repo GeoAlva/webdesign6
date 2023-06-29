@@ -87,7 +87,7 @@ export default function Home() {
                                 <br /><br /><br /><br /><br /><br />
                                 <h3>Stai cercando personale?</h3>
                                 <Button variant="outlined"
-                                    href="https://airtable.com/shrGSUzMP6qQlRZfL"
+                                    href="/search"
                                     sx={{
                                         px: 3,
                                         fontWeight: 'bold',
@@ -103,7 +103,7 @@ export default function Home() {
                                             border: "2px solid #008080",
                                         },
                                     }}
-                                >Sfoglia i curricula</Button>
+                                >Sfoglia i curriculum</Button>
                             </div>
                         </div >
                     </div>
