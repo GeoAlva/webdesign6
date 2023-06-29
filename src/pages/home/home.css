@@ -104,30 +104,38 @@ h2 {
     }
     .carousel {
         width: fit-content;
-        height: max-content;
+        height: 220px;
         margin-left: 20px;
         margin-top: 12vh;
     }
 
-    h2 {
+    .name .curri {
+        font-size: 38px;
+    }
+    .name .craft {
         font-size: 38px;
     }
 
-    h1 {
+    .home h1,
+    h2 {
         font-size: 38px;
     }
 
     .home h3 {
         font-size: 25px;
     }
+    .home p {
+        font-size: 18px;
+    }
 
     .dots {
-        z-index: 1;
         margin-top: 80px;
         margin-left: 40px;
     }
 
     .buttons-container {
-        height: 70vh;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        height: max-content;
     }
 }
