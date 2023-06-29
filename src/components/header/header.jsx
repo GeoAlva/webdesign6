@@ -30,7 +30,34 @@ function ButtonLoader(){
     let location = useLocation();
     if(location.pathname === '/login' || location.pathname === '/signup' ) return;
 
-    if(document.cookie.startsWith("email=")){
+    if(document.cookie.startsWith("email=") && location.pathname==="/profile"){
+        return(<>
+            <Button variant="text"
+            onClick={logout}
+            sx={{
+                px: 3,
+                            mr: 4,
+                            fontWeight: 'bold',
+                            borderRadius: '20px',
+                            fontFamily: 'Open Sans',
+                            fontWeight:'Bold',
+                            fontSize: "18px",
+                            textTransform: 'none',
+                            backgroundColor: '#transparent',
+                            textDecoration:'underline',
+                            color: '#087A87',
+                            '&:hover': {
+                                color: '#087A87',
+                                textDecoration:'underline',
+                            },
+            }}
+            >Esci</Button>
+            
+            </>)
+        
+    }
+
+    else if(document.cookie.startsWith("email=")){
         return(<>
         <Button variant="text"
             href="/profile"
