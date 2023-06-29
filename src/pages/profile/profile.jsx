@@ -208,10 +208,10 @@ export default function Profile(){
                     < br className='web'/>
 
                     <div className='infoGrid'>
-                        <div className='mail'>Email</div>
-                        <div className='field'>{email}</div>
-                        <div className='mail'>Password</div>
-                        <div className='field'>*******</div>
+                        <div className='mailGrid'>Email</div>
+                        <div className='fieldGrid'>{email}</div>
+                        <div className='mailGrid'>Password</div>
+                        <div className='fieldGrid'>*******</div>
                     </div>
                     <div className='update' id='update'>
                     <form onSubmit={handleUpdate} className='updateForm'>
