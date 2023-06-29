@@ -23,7 +23,7 @@
     width: 60%;
     display: flex;
     justify-content: left;
-    background-color: #cce0e1;
+    background-color: #ECF5F6;
     height: 100%;
     bottom: 0;
     padding-left: 5vw;
@@ -31,14 +31,23 @@
     overflow-y: scroll;
 }
 
-.right-filters h4 {
-    margin-top: 10vh;
-}
-
 .right-filters .filters {
-    margin-top: 13vh;
+    margin-top: 6vh;
     margin-bottom: 20vh;
 }
 .radioButtons {
-    margin-left: 2vw;
+    margin-left: 23.5vh;
 }
+
+h5{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-left: 23vh;
+}
+
+span {
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+  }

@@ -1,4 +1,3 @@
-import "../login/login.css";
 import "./search.css"
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -31,59 +30,14 @@ export default function Search() {
             <div class="search">
                 <div class="left-search">
 
-                    <Typography
-                        variant='h4'>
-                        <Box sx={{ fontWeight: 'bold', m: 1 }}>Stai Cercando<br></br> un Curriculum?</Box>
-                    </Typography>
-                    <Paper
-                        sx={{
-                            p: '2px 4px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            width: 400,
-                            backgroundColor: '#007987',
-                            borderRadius: '40px',
-                            '&:hover': {
-                                backgroundColor: '#51DFE1',
-                                transition: 'background-color 0.3s ease',
-                            },
-                        }}
-                    >
-
-                        <InputBase
-                            sx={{
-                                ml: 1,
-                                fontWeight: 'bold',
-                                flex: 1,
-                                '&:hover': {
-                                    color: '#003F47',
-                                    fontWeight: 'bold',
-                                },
-                            }}
-
-                            placeholder="Cerca nel server"
-                            inputProps={{ 'aria-label': 'Cerca nel server' }}
-                        />
-                        <IconButton type="button"
-                            href='/search'
-                            sx={{
-                                p: '10px',
-                                color: '#ffffff',
-                            }} aria-label="search">
-                            <SearchIcon />
-                        </IconButton>
-                    </Paper>
-
-
                 </div>
                 <div class="right-filters">
-                    <h4>Filtri</h4>
                     <div class="filters">
 
                         <h5>Data di pubblicazione</h5>
                         <div class="radioButtons">
                             <FormControl>
-                                <Grid container spacing={20}>
+                                <Grid container spacing={50}>
                                     <Grid item xs={6} sm={3}>
                                         <RadioGroup name="radio-buttons-group" color="secondary">
                                             <FormControlLabel value="qualsiasiMomento" control={<Radio color="primary" />} label={<span style={{ whiteSpace: 'nowrap' }}>In qualsiasi momento</span>} labelPlacement="end" />
@@ -100,10 +54,12 @@ export default function Search() {
                             </FormControl>
                         </div>
 
+                        <h5>Località</h5>
+
                         <h5>Tipo di lavoro</h5>
                         <div class="radioButtons">
                             <FormControl>
-                                <Grid container spacing={20}>
+                                <Grid container spacing={50}>
                                     <Grid item xs={6} sm={3}>
                                         <RadioGroup name="radio-buttons-group" color="secondary">
                                             <FormControlLabel value="fullTime" control={<Radio color="primary" />} label={<span style={{ whiteSpace: 'nowrap' }}>Full-time</span>} labelPlacement="end" />
@@ -122,7 +78,7 @@ export default function Search() {
                         <h5>In sede/da remoto</h5>
                         <div class="radioButtons">
                             <FormControl>
-                                <Grid container spacing={20}>
+                                <Grid container spacing={50}>
                                     <Grid item xs={6} sm={3}>
                                         <RadioGroup name="radio-buttons-group" color="secondary">
                                             <FormControlLabel value="inSede" control={<Radio color="primary" />} label={<span style={{ whiteSpace: 'nowrap' }}>In sede</span>} labelPlacement="end" />
@@ -142,7 +98,7 @@ export default function Search() {
                         <h5>Tipo di diploma</h5>
                         <div class="radioButtons">
                             <FormControl>
-                                <Grid container spacing={20}>
+                                <Grid container spacing={50}>
                                     <Grid item xs={6} sm={3}>
                                         <RadioGroup name="radio-buttons-group" color="secondary">
                                             <FormControlLabel value="triennale" control={<Radio color="primary" />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea triennale</span>} labelPlacement="end" />
@@ -166,7 +122,7 @@ export default function Search() {
                         <h5>Corso di laurea</h5>
                         <div class="radioButtons">
                             <FormControl>
-                                <Grid container spacing={20}>
+                                <Grid container spacing={50}>
                                     <Grid item xs={6} sm={3}>
                                         <RadioGroup name="radio-buttons-group" color="secondary">
                                             <FormControlLabel value="architetturaEDesign" control={<Radio color="primary" />} label={<span style={{ whiteSpace: 'nowrap' }}>Architettura e design</span>} labelPlacement="end" />
@@ -191,7 +147,7 @@ export default function Search() {
                         <h5>Professione</h5>
                         <div class="radioButtons">
                             <FormControl>
-                                <Grid container spacing={20}>
+                                <Grid container spacing={50}>
                                     <Grid item xs={6} sm={3}>
                                         <RadioGroup name="radio-buttons-group" color="secondary">
                                             <FormControlLabel value="architetto" control={<Radio color="primary" />} label={<span style={{ whiteSpace: 'nowrap' }}>Architetto</span>} labelPlacement="end" />
@@ -216,52 +172,9 @@ export default function Search() {
                             </FormControl>
                         </div>
 
-                        <h5>Provincia</h5>
-                        <Paper
-                            sx={{
-                                p: '2px 4px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: 300,
-                                height: 40,
-                                ml: '30px',
-
-                                backgroundColor: '#007987',
-                                borderRadius: '40px',
-                                '&:hover': {
-                                    backgroundColor: '#51DFE1',
-                                    transition: 'background-color 0.3s ease',
-                                },
-                            }}
-                        >
-
-                            <InputBase
-                                sx={{
-                                    ml: 1,
-                                    fontWeight: 'bold',
-                                    flex: 1,
-                                    '&:hover': {
-                                        color: '#003F47',
-                                        fontWeight: 'bold',
-                                    },
-                                }}
-
-                                placeholder="Cerca"
-                                inputProps={{ 'aria-label': 'Cerca' }}
-                            />
-                            <IconButton type="button"
-                                href='/search'
-                                sx={{
-                                    p: '10px',
-                                    color: '#ffffff',
-                                }} aria-label="search">
-                                <SearchIcon />
-                            </IconButton>
-                        </Paper>
-
                         <br />
                         <br />
-                        <br />v
+                        <br />
 
                     </div>
                 </div>
