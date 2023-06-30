@@ -11,10 +11,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from '@mui/material/styles';
-import { Margin } from "@mui/icons-material";
+import { Filter, Margin } from "@mui/icons-material";
 import Grid from '@mui/material/Grid';
 import Checkbox from '@mui/material/Checkbox';
-import filtriBtn from "./filtriBtn.svg";
+import filtriBtnOpen from "./filtriBtnOpen.svg";
+import filtriBtnClose from "./filtriBtnClose.svg";
 import folderImg from "./folderImg.svg";
 import Button from '@mui/material/Button';
 import Airtable from 'airtable';
@@ -94,40 +95,40 @@ export default function Search() {
 
     const filterCurriculum = () => {
         const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
-      
-        const filterOptions = {
-          // Non viene applicato alcun filtro
-        };
-      
-        base('Curriculum').select(filterOptions).firstPage((err, records) => {
-          if (err) {
-            console.error('Errore durante il recupero dei curriculum filtrati:', err);
-            return;
-          }
-      
-          const filteredData = records.map((record) => {
-            return {
-              id: record.id,
-              nome: record.fields.Name,
-              cognome: record.fields.Cognome,
-              professione: record.fields.professione,
-              siglaProvinciale: record.fields.provinciaResidenza,
-            };
-          });
-      
-          setCurriculumData(filteredData);
-      
-          if (filteredData.length === 0) {
-            setMessage("NOT FOUND");
-          } else {
-            setMessage("");
-          }
-        });
-      };
 
-      useEffect(() => {
+        const filterOptions = {
+            // Non viene applicato alcun filtro
+        };
+
+        base('Curriculum').select(filterOptions).firstPage((err, records) => {
+            if (err) {
+                console.error('Errore durante il recupero dei curriculum filtrati:', err);
+                return;
+            }
+
+            const filteredData = records.map((record) => {
+                return {
+                    id: record.id,
+                    nome: record.fields.Name,
+                    cognome: record.fields.Cognome,
+                    professione: record.fields.professione,
+                    siglaProvinciale: record.fields.provinciaResidenza,
+                };
+            });
+
+            setCurriculumData(filteredData);
+
+            if (filteredData.length === 0) {
+                setMessage("NOT FOUND");
+            } else {
+                setMessage("");
+            }
+        });
+    };
+
+    useEffect(() => {
         filterCurriculum();
-      }, []);
+    }, []);
 
 
     return (
@@ -150,7 +151,7 @@ export default function Search() {
                                     <img src={folderImg} className="folder-img" />
                                     <div className="field">
                                         <p className="nome-cognome-professione">
-                                        {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
+                                            {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
                                         </p>
                                     </div>
                                 </div>
@@ -163,12 +164,13 @@ export default function Search() {
                         </div>
                     )}
                 </div>
-                <div class="right-filters">
-                    <div class="filters-btn">
-                        <Typography variant="h6" component="span" class="filtri-scritta">Filtri</Typography>
-                        <img src={filtriBtn} alt="Filtri" class="filters-icon" />
+                <div class="right-filters" id="right-filters">
+                    <div class="filters-btn" id="filters-btn">
+                        <h6 className="filtri-scritta">Filtri</h6>
+                        <Button onClick={showFilters}><img src={filtriBtnOpen} alt="Filtri" class="filters-icon" id="open" /><img src={filtriBtnClose} alt="Filtri" class="filters-icon" id="close" /></Button>
+
                     </div>
-                    <div class="filters">
+                    <div class="filters" id="filters">
 
                         <h5>Data di pubblicazione</h5>
                         <div class="radioButtons">
@@ -294,4 +296,29 @@ export default function Search() {
 
         </ThemeProvider>
     )
+}
+
+function showFilters() {
+    var show = document.getElementById("filters");
+    var filtersBtn = document.getElementById("filters-btn");
+    var rightFilters = document.getElementById("right-filters")
+
+    var iconClose = document.getElementById("close");
+    var iconOpen = document.getElementById("open");
+
+
+
+    if (show.style.display === "" || show.style.display === "none") {
+        show.style.display = "block";
+        rightFilters.style.width = "60%";
+        filtersBtn.style.marginLeft = "0";
+        iconClose.style.display = "none";
+        iconOpen.style.display = "block";
+    } else {
+        show.style.display = "none";
+        rightFilters.style.width = "5%";
+        filtersBtn.style.marginLeft = "-150px";
+        iconClose.style.display = "block";
+        iconOpen.style.display = "none";
+    }
 }
