@@ -36,6 +36,8 @@ export default function Search() {
     const [filteredCurriculum, setFilteredCurriculum] = useState([]);
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+const curriculaPerPage = 6;
     const [radioButtons, setRadioButtons] = useState([
         { id: 'qualsiasiMomento', checked: false },
         { id: 'ultime24Ore', checked: false },
@@ -130,30 +132,33 @@ export default function Search() {
         filterCurriculum();
     }, []);
 
+    const indexOfLastCurriculum = currentPage * curriculaPerPage;
+const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
+const currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
+
+const handlePrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+};
+
+const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+};
+
 
     return (
         <ThemeProvider theme={theme}>
             <div class="search">
-                <div class="left-search">
-
-                </div>
                 <div className="left-search">
-                    {curriculumData.length > 0 ? (
-                        curriculumData.map((curriculum) => (
+                    {currentCurricula.length > 0 ? (
+                        currentCurricula.map((curriculum) => (
                             <div className="curriculum-view" key={curriculum.id}>
-                                <div className="indietro-1">
-                                    <p className="indietro">Indietro</p>
-                                </div>
-                                <div className="avanti-1">
-                                    <p className="avanti">Avanti</p>
-                                </div>
                                 <img src={folderImg} className="folder-img" />
                                 <div className="field">
                                     <p className="nome-cognome-professione">
                                         {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
                                     </p>
+                                    <br></br>
                                 </div>
-                                {/* Mostra i dettagli del curriculum */}
                             </div>
                         ))
                     ) : (
@@ -161,6 +166,12 @@ export default function Search() {
                             <p>{message}</p>
                         </div>
                     )}
+                    <div className="indietro-1">
+                        <p className="indietro" onClick={handlePrevPage}>Indietro</p>
+                    </div>
+                    <div className="avanti-1">
+                        <p className="avanti" onClick={handleNextPage}>Avanti</p>
+                    </div>
                 </div>
                 <div class="right-filters" id="right-filters">
                     <div class="filters-btn" id="filters-btn">
