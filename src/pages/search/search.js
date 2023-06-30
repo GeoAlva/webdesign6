@@ -87,6 +87,12 @@ export default function Search() {
         <ThemeProvider theme={theme}>
             <div class="search">
                 <div class="left-search">
+                    <div className="indietro-1">
+                        <p className="indietro">Indietro</p>
+                    </div>
+                    <div className="avanti-1">
+                        <p className="indietro">Avanti</p>
+                    </div>
                     <div className="curriculum-view">
                         <img src={folderImg} className="folder-img" />
                         <div className="field">
