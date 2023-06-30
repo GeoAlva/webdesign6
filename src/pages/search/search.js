@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./search.css"
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -18,6 +17,8 @@ import Checkbox from '@mui/material/Checkbox';
 import filtriBtn from "./filtriBtn.svg";
 import folderImg from "./folderImg.svg";
 import Button from '@mui/material/Button';
+import Airtable from 'airtable';
+import React, { useState, useEffect } from "react";
 
 
 const theme = createTheme({
@@ -30,6 +31,10 @@ const theme = createTheme({
 });
 
 export default function Search() {
+    const [selectedFilters, setSelectedFilters] = useState([]);
+    const [filteredCurriculum, setFilteredCurriculum] = useState([]);
+    const [message, setMessage] = useState("");
+    const [curriculumData, setCurriculumData] = useState([]);
     const [radioButtons, setRadioButtons] = useState([
         { id: 'qualsiasiMomento', checked: false },
         { id: 'ultime24Ore', checked: false },
@@ -72,7 +77,6 @@ export default function Search() {
         { id: 'medicoChirurgo', checked: false },
         { id: 'altro(Professione)', checked: false }
     ]);
-
     const handleButtonClick = (id) => {
         const updatedRadioButtons = radioButtons.map((button) => {
             if (button.id === id) {
@@ -82,25 +86,82 @@ export default function Search() {
             }
         });
         setRadioButtons(updatedRadioButtons);
+        const selectedFilterIds = updatedRadioButtons
+            .filter((button) => button.checked)
+            .map((button) => button.id);
+        setSelectedFilters(selectedFilterIds);
     };
+
+    const filterCurriculum = () => {
+        const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+      
+        const filterOptions = {
+          // Non viene applicato alcun filtro
+        };
+      
+        base('Curriculum').select(filterOptions).firstPage((err, records) => {
+          if (err) {
+            console.error('Errore durante il recupero dei curriculum filtrati:', err);
+            return;
+          }
+      
+          const filteredData = records.map((record) => {
+            return {
+              id: record.id,
+              nome: record.fields.Name,
+              cognome: record.fields.Cognome,
+              professione: record.fields.professione,
+              siglaProvinciale: record.fields.provinciaResidenza,
+            };
+          });
+      
+          setCurriculumData(filteredData);
+      
+          if (filteredData.length === 0) {
+            setMessage("NOT FOUND");
+          } else {
+            setMessage("");
+          }
+        });
+      };
+
+      useEffect(() => {
+        filterCurriculum();
+      }, []);
+
+
     return (
         <ThemeProvider theme={theme}>
             <div class="search">
                 <div class="left-search">
-                    <div className="indietro-1">
-                        <p className="indietro">Indietro</p>
-                    </div>
-                    <div className="avanti-1">
-                        <p className="indietro">Avanti</p>
-                    </div>
-                    <div className="curriculum-view">
-                        <img src={folderImg} className="folder-img" />
-                        <div className="field">
-                            <p className="nome-cognome-professione">
-                                Nome Cognome - Professione (GE)
-                            </p>
+
+                </div>
+                <div className="left-search">
+                    {curriculumData.length > 0 ? (
+                        curriculumData.map((curriculum) => (
+                            <div className="curriculum-view" key={curriculum.id}>
+                                <div className="indietro-1">
+                                    <p className="indietro">Indietro</p>
+                                </div>
+                                <div className="avanti-1">
+                                    <p className="avanti">Avanti</p>
+                                </div>
+                                <div className="curriculum-view">
+                                    <img src={folderImg} className="folder-img" />
+                                    <div className="field">
+                                        <p className="nome-cognome-professione">
+                                        {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
+                                        </p>
+                                    </div>
+                                </div>
+                                {/* Mostra i dettagli del curriculum */}
+                            </div>
+                        ))
+                    ) : (
+                        <div className="not-found">
+                            <p>{message}</p>
                         </div>
-                    </div>
+                    )}
                 </div>
                 <div class="right-filters">
                     <div class="filters-btn">
