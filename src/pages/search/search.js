@@ -33,6 +33,7 @@ const theme = createTheme({
 
 export default function Search() {
     const [selectedFilters, setSelectedFilters] = useState([]);
+    const [showPagination, setShowPagination] = useState(true);
     const [filteredCurriculum, setFilteredCurriculum] = useState([]);
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
@@ -220,7 +221,11 @@ export default function Search() {
                     siglaProvinciale: record.fields.provinciaResidenza,
                 };
             });
-
+            if (filteredData.length <= 6) {
+                setShowPagination(false);
+            } else {
+                setShowPagination(true);
+            }
             setCurriculumData(filteredData);
 
             if (filteredData.length === 0) {
@@ -270,12 +275,16 @@ export default function Search() {
                             <p>{message}</p>
                         </div>
                     )}
-                    <div className="indietro-1">
-                        <p className="indietro" onClick={handlePrevPage}>Indietro</p>
-                    </div>
-                    <div className="avanti-1">
-                        <p className="avanti" onClick={handleNextPage}>Avanti</p>
-                    </div>
+                    {showPagination && (
+                        <div className="indietro-1">
+                            <p className="indietro" onClick={handlePrevPage}>Indietro</p>
+                        </div>
+                    )}
+                    {showPagination && (
+                        <div className="avanti-1">
+                            <p className="avanti" onClick={handleNextPage}>Avanti</p>
+                        </div>
+                    )}
                 </div>
                 <div class="right-filters" id="right-filters">
                     <div class="filters-btn" id="filters-btn">
