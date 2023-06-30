@@ -101,9 +101,10 @@ export default function Profile(){
                 <div class='user'>
                     <img src={profilePhoto} alt="Profile" width={'195px'} />
                     <p>{email}</p>
+                    <br/>
                     <Button variant="outlined"
                                     //link di test
-                                    href="https://airtable.com/shrMHq5TbbUJMNQFw"
+                                    href="/search"
                                     sx={{
                                       width: "318px",
                                       mb:"30px",

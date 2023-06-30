@@ -4,6 +4,7 @@
     align-items: center;
     margin-top: 7vh;
     bottom: 0;
+    z-index: 0;
 }
 
 .search .left-search {
@@ -14,32 +15,34 @@
     justify-content: left;
     margin-left: 50px;
     margin-top: 20px;
+    z-index: 0;
 }
 
 .right-filters {
     position: absolute;
     right: 0;
     margin-right: 0;
-    width: 60%;
     display: flex;
     justify-content: left;
-    background-color: #ECF5F6;
+    background-color: #ecf5f6;
     height: 100%;
+    width: 5%;
     bottom: 0;
     padding-left: 5vw;
-    overflow-x: hidden;
     overflow-y: scroll;
+    z-index: 1;
 }
 
 .right-filters .filters {
     margin-top: 6vh;
     margin-bottom: 20vh;
+    display: none;
 }
 .radioButtons {
     margin-left: 10.5vh;
 }
 
-h5{
+h5 {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-size: 24px;
@@ -50,34 +53,53 @@ span {
     font-family: sans-serif;
     font-weight: normal;
     font-size: 24px;
-  }
+}
 
 .filters-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
+    z-index: 1;
+    margin-left: -150px;
 }
 
-.filtri-scritta{
-font-family: "Open Sans", sans-serif;
-font-weight: bold;
-font-size: 36px;
-margin-right:15px;
-margin-left: -20px;
+.filtri-scritta {
+    position: fixed;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    margin-right: 150px;
+    margin-left: 15px;
+    z-index: 1;
 }
 
 .filters-icon {
+    margin-right: -45px;
+    position: fixed;
     width: 80px;
     height: 80px;
     cursor: pointer;
+    z-index: 1;
+}
+.filters-icon {
+    margin-right: -45px;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#open {
+    display: none;
 }
 
 p {
     margin: 0;
-  }
-  
-  .curriculum-view {
+}
+
+.curriculum-view {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -86,15 +108,15 @@ p {
     width: 516px;
     height: 68px;
     box-sizing: border-box;
-    left:100px;
-    margin-bottom: 10px; 
-  }
-  .folder-img {
+    left: 100px;
+    margin-bottom: 10px;
+}
+.folder-img {
     width: 41px;
     height: 43px;
-  }
-  
-  .field {
+}
+
+.field {
     position: absolute;
     top: 17px;
     left: 13px;
@@ -110,8 +132,8 @@ p {
     border-radius: 30px;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
-  }
-  .nome-cognome-professione {
+}
+.nome-cognome-professione {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,13 +143,13 @@ p {
     font-family: Open Sans, sans-serif;
     font-weight: 700;
     text-align: center;
-  }
+}
 
-  p {
+p {
     margin: 0;
-  }
-  
-  .indietro-1 {
+}
+
+.indietro-1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -139,8 +161,8 @@ p {
     border-radius: 30px;
     box-sizing: border-box;
     margin-top: 400px;
-  }
-  .indietro {
+}
+.indietro {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,9 +172,9 @@ p {
     font-family: Open Sans, sans-serif;
     font-weight: 700;
     text-align: center;
-  }
+}
 
-  .avanti-1 {
+.avanti-1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -164,8 +186,8 @@ p {
     border-radius: 30px;
     box-sizing: border-box;
     margin-left: 20px;
-  }
-  .avanti {
+}
+.avanti {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,6 +197,4 @@ p {
     font-family: Open Sans, sans-serif;
     font-weight: 700;
     text-align: center;
-  }
-
-  
+}
