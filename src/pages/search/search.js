@@ -83,50 +83,41 @@ export default function Search() {
     };
 
     const filterCurriculum = () => {
-        const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+        const currentDate = new Date();
 
-        //const filterOptions = {
-        //  filterByFormula: selectedFilters.includes('partTime') ? 'FIND("Part time", {tipoLavoro})' : '',
-        //  filterByFormula: selectedFilters.includes('fullTime') ? 'FIND("Full time", {tipoLavoro})' : '',
-        //  filterByFormula: selectedFilters.includes('stage') ? 'FIND("Stage", {tipoLavoro})' : '',
-        /* filterByFormula: selectedFilters.includes('inSede') ? 'FIND("In sede", {posizioneLavoro})' : '',
-         filterByFormula: selectedFilters.includes('sedeERmoto') ? 'FIND("In sede e da remoto", {posizioneLavoro})' : '',
-         filterByFormula: selectedFilters.includes('daRemoto') ? 'FIND("Da remoto", {posizioneLavoro})' : '',
-         filterByFormula: selectedFilters.includes('triennale') ? 'FIND("Laurea triennale", {tipoLaurea})' : '',
-         filterByFormula: selectedFilters.includes('magistrale') ? 'FIND("Laurea magistrale", {tipoLaurea})' : '',
-         filterByFormula: selectedFilters.includes('cicloUnico') ? 'FIND("Laurea a ciclo unico", {tipoLaurea})' : '',
-         filterByFormula: selectedFilters.includes('vecchioOrdinamento') ? 'FIND("Laurea vecchio ordinamento", {tipoLaurea})' : '',
-         filterByFormula: selectedFilters.includes('liceo') ? 'FIND("liceo", {indirizzoDiploma})' : '',
-         filterByFormula: selectedFilters.includes('tecnico') ? 'FIND("istituto tecnico", {indirizzoDiploma})' : '',
-         filterByFormula: selectedFilters.includes('professionale') ? 'FIND("istituto professionale", {indirizzoDiploma})' : '',
-         filterByFormula: selectedFilters.includes('architetturaEDesign') ? 'FIND("Architettura / Design", {tipoLavoro})' : '',
-         filterByFormula: selectedFilters.includes('giurisprudenza') ? 'FIND("Giurisprudenza", {tipoLavoro})' : '',
-         filterByFormula: selectedFilters.includes('medicinaEChirurgia') ? 'FIND("Medicina e chirurgia", {tipoLavoro})' : '',
-         filterByFormula: selectedFilters.includes('scienzeMatematiche') ? 'FIND("Scienze matematiche e fisiche", {posizioneLavoro})' : '',
-         filterByFormula: selectedFilters.includes('altro(corsoLaurea)') ? 'FIND("Altro", {posizioneLavoro})' : '',
-         filterByFormula: selectedFilters.includes('economia') ? 'FIND("Economia", {posizioneLavoro})' : '',
-         filterByFormula: selectedFilters.includes('lingueEcultureModerne') ? 'FIND("Lingue e culture moderne", {tipoLaurea})' : '',
-         filterByFormula: selectedFilters.includes('scienzeDellaFormazione') ? 'FIND("Scienze della formazione", {tipoLaurea})' : '',
-         filterByFormula: selectedFilters.includes('scienzePolitiche') ? 'FIND("Scienze politiche", {tipoLaurea})' : '',*/
-        // };
+        const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
 
         const filterConditions = [];
 
-        if (selectedFilters.includes('partTime')) {
-            filterConditions.push('FIND("Part time", {tipoLavoro})');
+        if (selectedFilters.includes('ultime24Ore')) {
+            const last24Hours = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
+            filterConditions.push(
+                `DATETIME_DIFF({dataPubblicazione}, '${last24Hours.toISOString()}', 'hours') >= 0`
+            );
         }
 
-        if (selectedFilters.includes('fullTime')) {
-            filterConditions.push('FIND("Full time", {tipoLavoro})');
+        if (selectedFilters.includes('ultimaSettimana')) {
+            const lastWeek = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+            filterConditions.push(
+                `DATETIME_DIFF({dataPubblicazione}, '${lastWeek.toISOString()}', 'days') >= 0`
+            );
         }
 
-        if (selectedFilters.includes('stage')) {
-            filterConditions.push('FIND("Stage", {tipoLavoro})');
+        if (selectedFilters.includes('ultimoMese')) {
+            const lastMonth = new Date(currentDate.getTime() - 30 * 24 * 60 * 60 * 1000);
+            filterConditions.push(
+                `DATETIME_DIFF({dataPubblicazione}, '${lastMonth.toISOString()}', 'days') >= 0`
+            );
         }
 
-        if (selectedFilters.includes('inSede')) {
-            filterConditions.push('FIND("In sede", {posizioneLavoro})');
-        }
+
+        if (selectedFilters.includes('partTime')) filterConditions.push('"Part time" = {tipoLavoro}');
+
+        if (selectedFilters.includes('fullTime')) filterConditions.push('FIND("Full time", {tipoLavoro})');
+
+        if (selectedFilters.includes('stage')) filterConditions.push('FIND("Stage", {tipoLavoro})');
+
+        if (selectedFilters.includes('inSede')) filterConditions.push('FIND("In sede", {posizioneLavoro})');
 
         if (selectedFilters.includes('sedeERmoto')) {
             filterConditions.push('FIND("In sede e da remoto", {posizioneLavoro})');
@@ -153,15 +144,15 @@ export default function Search() {
         }
 
         if (selectedFilters.includes('liceo')) {
-            filterConditions.push('FIND("liceo", {indirizzoDiploma})');
+            filterConditions.push('FIND("Liceo", {categoriaDiploma})');
         }
 
         if (selectedFilters.includes('tecnico')) {
-            filterConditions.push('FIND("istituto tecnico", {indirizzoDiploma})');
+            filterConditions.push('FIND("Istituto tecnico", {categoriaDiploma})');
         }
 
         if (selectedFilters.includes('professionale')) {
-            filterConditions.push('FIND("istituto professionale", {indirizzoDiploma})');
+            filterConditions.push('FIND("istituto professionale", {categoriaDiploma})');
         }
 
         if (selectedFilters.includes('architetturaEDesign')) {
