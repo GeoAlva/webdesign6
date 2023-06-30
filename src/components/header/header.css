@@ -1,3 +1,9 @@
 .logo {
     padding-top: 20px;
 }
+
+@media (max-width: 600px) {
+    .header {
+        background-color: #ffffff;
+    }
+}

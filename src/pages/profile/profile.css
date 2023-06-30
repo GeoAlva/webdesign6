@@ -80,7 +80,7 @@
     display: grid;
     grid-template-columns: auto auto;
 }
-.mail {
+.mailGrid {
     font-size: 24;
     font-weight: bold;
 }

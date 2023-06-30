@@ -150,8 +150,8 @@ function AppHeader() {
 
         return (
         <ThemeProvider theme={theme}>
-            <AppBar color="transparent" elevation={0} >
-                <Toolbar >
+            <AppBar color="transparent" elevation={0}  >
+                <Toolbar className='header'>
                     <a href="/" class="logo"><img src={Curricraft} alt="Curricraft logo" style={{width:"98px", height:"87px"}} /></a>
                     <div style={{ width: "100%" }}></div>
 

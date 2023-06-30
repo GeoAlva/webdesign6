@@ -223,9 +223,9 @@ export default function Search() {
                             </FormControl>
                         </div>
 
-                        <br />
-                        <br />
-                        <br />
+                        < br className='web' />
+                        < br className='web' />
+                        < br className='web' />
 
                     </div>
                 </div>
