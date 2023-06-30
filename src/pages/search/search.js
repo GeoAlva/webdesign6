@@ -99,8 +99,8 @@ const curriculaPerPage = 6;
         const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
 
         const filterOptions = {
-            // Non viene applicato alcun filtro
-        };
+            filterByFormula: selectedFilters.includes('partTime') ? 'FIND("Part time", {tipoLavoro})' : ''
+          };
 
         base('Curriculum').select(filterOptions).firstPage((err, records) => {
             if (err) {
@@ -130,7 +130,7 @@ const curriculaPerPage = 6;
 
     useEffect(() => {
         filterCurriculum();
-    }, []);
+    }, [selectedFilters]);
 
     const indexOfLastCurriculum = currentPage * curriculaPerPage;
 const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;

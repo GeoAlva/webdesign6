@@ -110,7 +110,9 @@ p {
     box-sizing: border-box;
     left: 100px;
     margin-top: 20px;
+    cursor: pointer;
 }
+
 .folder-img {
     width: 41px;
     height: 43px;
@@ -133,6 +135,7 @@ p {
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
 }
+
 .nome-cognome-professione {
     display: flex;
     flex-direction: column;
@@ -164,6 +167,11 @@ p {
     margin-top: 400px;
     cursor: pointer;
 }
+
+.indietro-1:hover {
+    background-color: #ecf5f6;
+  }
+
 .indietro {
     display: flex;
     flex-direction: column;
@@ -190,6 +198,10 @@ p {
     margin-left: 20px;
     cursor: pointer;
 }
+.avanti-1:hover {
+    background-color: #ecf5f6;
+  }
+
 .avanti {
     display: flex;
     flex-direction: column;
