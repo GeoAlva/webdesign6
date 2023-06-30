@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
 import Airtable from 'airtable';
+import Cookies from 'universal-cookie';
 import "./curriculum.css";
 import profilePhoto from "../profile/profilePhoto.svg"
-import { Icon } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
@@ -19,29 +19,85 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function Curriculum(){
+
+    const cookie = new Cookies();
+    const email= cookie.get('email');
+
+    const [message, setMessage] = useState("");
+    const [curriculumData, setCurriculumData] = useState([]);
+
+    const filterCurriculum = () => {
+        const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+      
+        
+
+        const filterOptions = {
+          filterByFormula: `Email = '${email}'`,
+        };
+      
+        base('Curriculum').select(filterOptions).firstPage((err, records) => {
+          if (err) {
+            console.error('Errore durante il recupero dei curriculum filtrati:', err);
+            return;
+          }
+      
+          const filteredData = records.map((record) => {
+            return {
+              id: record.id,
+              nome: record.fields.Name,
+              cognome: record.fields.Cognome,
+              professione: record.fields.professione,
+              siglaProvinciale: record.fields.provinciaResidenza,
+              dataNascita : record.fields.dataNascita,
+              indirizzo: record.fields['Indirizzo residenza'],
+              tel: record.fields.Telefono,
+            };
+          });
+
+          
+      
+          setCurriculumData(filteredData);
+      
+          if (filteredData.length === 0) {
+            setMessage("NOT FOUND");
+          } else {
+            setMessage("");
+          }
+        });
+      };
+
+      useEffect(() => {
+        filterCurriculum();
+      }, []);
+
     return(
         <div className='curriculum'>
             <div className="lowLayer">
                 <div className="upLayer">
+                
                     <div class="leftInfo">
                         <div className="profile">
                             <img className="profileImg" src={profilePhoto} alt="Profile"></img>
-                            <div class="utilities">
-                                <p className="nome_cognome">Nome Cognome</p>
+                            {curriculumData.map((curriculum) => (
+                            <div key={curriculum.id} class="utilities">
+                                <p className="nome_cognome">{curriculum.nome} {curriculum.cognome}</p>
                                 <p classname="profesione">Professione</p>
-                                <p className="data">gg/mm/aaaa</p>
+                                <p className="data">{curriculum.dataNascita}</p>
                             </div>
+                            ))}
                         </div>
                         <div className="container">
+                            {curriculumData.map((curriculum) => (
                             <div className="dataContainer"> 
                                 <p className="contatti">Contatti</p>
-                                    <LocationOnIcon sx={{color:"#087A87"}}></LocationOnIcon>
-                                    <PhoneIcon sx={{color:"#087A87"}}></PhoneIcon>
-                                    <EmailIcon sx={{color:"#087A87"}}></EmailIcon>
-                                    <LanguageIcon sx={{color:"#087A87"}}></LanguageIcon>
+                                    <div class="utilsData"><LocationOnIcon sx={{color:"#087A87"}}></LocationOnIcon><p class="utilsDescription">{curriculum.indirizzo}</p></div>
+                                    <div class="utilsData"><PhoneIcon sx={{color:"#087A87"}}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>
+                                    <div class="utilsData"><EmailIcon sx={{color:"#087A87"}}></EmailIcon> <p class="utilsDescription">{email}</p></div>
+                                    <div class="utilsData"><LanguageIcon sx={{color:"#087A87"}}></LanguageIcon></div>
                             </div>
+                            ))}
                             <div>
-                                <p className="lingue">Lingue</p>
+                                <p className="lingue" style={{marginLeft:"10px"}}>Lingue</p>
                                 <div></div>
                             </div>
                             <div className="dataContainer">
@@ -52,7 +108,7 @@ export default function Curriculum(){
                                 <YouTubeIcon sx={{color:"#087A87"}}></YouTubeIcon>
                             </div>
                             <div>
-                                <p className="lingue">Hobby</p>
+                                <p className="lingue" style={{marginLeft:"10px"}}>Hobby</p>
                             </div>
                         </div>
                     </div>
@@ -114,8 +170,10 @@ export default function Curriculum(){
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
-    );
+        )
+    ;
 }

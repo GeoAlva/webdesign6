@@ -22,7 +22,7 @@
     position: relative;
     background-color: #ffffff;
     width: 80%;
-    margin-top: 350px;
+    margin-top: 200px;
     justify-content: flex-start;
     align-items:flex-start;
     z-index: 1;
@@ -91,7 +91,7 @@
 
 .contatti{
     position: absolute;
-    top: -27px;
+    top: -12px;
     width: 120px;
     background-color: #087A87;
     border-radius: 12px;
@@ -111,9 +111,25 @@
     font-size: medium;
 }
 
+.utilsData{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.utilsDescription{
+    color: #000;
+    font-size:12px;
+    font-family: Open Sans;
+    font-style: normal;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
 .sesso{
     font-family: Open Sans;
     align-self: flex-end;
+    margin-top: 15px;
 }
 
 .rightInfo{
