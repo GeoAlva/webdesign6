@@ -37,48 +37,34 @@ export default function Search() {
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-const curriculaPerPage = 6;
+    const curriculaPerPage = 6;
     const [radioButtons, setRadioButtons] = useState([
         { id: 'qualsiasiMomento', checked: false },
         { id: 'ultime24Ore', checked: false },
         { id: 'ultimaSettimana', checked: false },
         { id: 'UltimoMese', checked: false },
-        { id: 'fullTime', checked: false },
-        { id: 'stage', checked: false },
-        { id: 'partTime', checked: false },
-        { id: 'inSede', checked: false },
-        { id: 'sedeERemoto', checked: false },
-        { id: 'daRemoto', checked: false },
-        { id: 'sedeORemoto', checked: false },
-        { id: 'triennale', checked: false },
-        { id: 'magistrale', checked: false },
-        { id: 'cicloUnico', checked: false },
-        { id: 'vecchioOrdinamento', checked: false },
-        { id: 'liceo', checked: false },
-        { id: 'professionale', checked: false },
-        { id: 'tecnico', checked: false },
-        { id: 'altro(diploma)', checked: false },
-        { id: 'architetturaEDesign', checked: false },
-        { id: 'giurisprudenza', checked: false },
-        { id: 'medicinaEChirurgia', checked: false },
-        { id: 'scienzeMatematiche', checked: false },
-        { id: 'altro(corsoLaurea)', checked: false },
-        { id: 'economia', checked: false },
-        { id: 'lingueECultureModerne', checked: false },
-        { id: 'scienzeDellaFormazione', checked: false },
-        { id: 'scienzePolitiche', checked: false },
-        { id: 'architetto', checked: false },
-        { id: 'chimico', checked: false },
-        { id: 'designer', checked: false },
-        { id: 'informatico', checked: false },
-        { id: 'insegnante', checked: false },
-        { id: 'psicologo', checked: false },
-        { id: 'avvocato', checked: false },
-        { id: 'commercialista', checked: false },
-        { id: 'farmacista', checked: false },
-        { id: 'ingegnere', checked: false },
-        { id: 'medicoChirurgo', checked: false },
-        { id: 'altro(Professione)', checked: false }
+        { id: 'fullTime', checked: false }, //ok
+        { id: 'stage', checked: false }, //ok
+        { id: 'partTime', checked: false }, //ok
+        { id: 'inSede', checked: false }, //ok
+        { id: 'sedeERemoto', checked: false }, //ok
+        { id: 'daRemoto', checked: false }, //ok
+        { id: 'triennale', checked: false }, //ok
+        { id: 'magistrale', checked: false }, //ok
+        { id: 'cicloUnico', checked: false }, //ok
+        { id: 'vecchioOrdinamento', checked: false }, //ok
+        { id: 'liceo', checked: false }, //ok
+        { id: 'professionale', checked: false }, //ok
+        { id: 'tecnico', checked: false }, //ok
+        { id: 'architetturaEDesign', checked: false }, //ok
+        { id: 'giurisprudenza', checked: false },//ok
+        { id: 'medicinaEChirurgia', checked: false },//ok
+        { id: 'scienzeMatematiche', checked: false },//ok
+        { id: 'altro(corsoLaurea)', checked: false },//ok
+        { id: 'economia', checked: false },//ok
+        { id: 'lingueECultureModerne', checked: false },//ok
+        { id: 'scienzeDellaFormazione', checked: false },//ok
+        { id: 'scienzePolitiche', checked: false },//ok
     ]);
     const handleButtonClick = (id) => {
         const updatedRadioButtons = radioButtons.map((button) => {
@@ -98,9 +84,127 @@ const curriculaPerPage = 6;
     const filterCurriculum = () => {
         const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
 
+        //const filterOptions = {
+        //  filterByFormula: selectedFilters.includes('partTime') ? 'FIND("Part time", {tipoLavoro})' : '',
+        //  filterByFormula: selectedFilters.includes('fullTime') ? 'FIND("Full time", {tipoLavoro})' : '',
+        //  filterByFormula: selectedFilters.includes('stage') ? 'FIND("Stage", {tipoLavoro})' : '',
+        /* filterByFormula: selectedFilters.includes('inSede') ? 'FIND("In sede", {posizioneLavoro})' : '',
+         filterByFormula: selectedFilters.includes('sedeERmoto') ? 'FIND("In sede e da remoto", {posizioneLavoro})' : '',
+         filterByFormula: selectedFilters.includes('daRemoto') ? 'FIND("Da remoto", {posizioneLavoro})' : '',
+         filterByFormula: selectedFilters.includes('triennale') ? 'FIND("Laurea triennale", {tipoLaurea})' : '',
+         filterByFormula: selectedFilters.includes('magistrale') ? 'FIND("Laurea magistrale", {tipoLaurea})' : '',
+         filterByFormula: selectedFilters.includes('cicloUnico') ? 'FIND("Laurea a ciclo unico", {tipoLaurea})' : '',
+         filterByFormula: selectedFilters.includes('vecchioOrdinamento') ? 'FIND("Laurea vecchio ordinamento", {tipoLaurea})' : '',
+         filterByFormula: selectedFilters.includes('liceo') ? 'FIND("liceo", {indirizzoDiploma})' : '',
+         filterByFormula: selectedFilters.includes('tecnico') ? 'FIND("istituto tecnico", {indirizzoDiploma})' : '',
+         filterByFormula: selectedFilters.includes('professionale') ? 'FIND("istituto professionale", {indirizzoDiploma})' : '',
+         filterByFormula: selectedFilters.includes('architetturaEDesign') ? 'FIND("Architettura / Design", {tipoLavoro})' : '',
+         filterByFormula: selectedFilters.includes('giurisprudenza') ? 'FIND("Giurisprudenza", {tipoLavoro})' : '',
+         filterByFormula: selectedFilters.includes('medicinaEChirurgia') ? 'FIND("Medicina e chirurgia", {tipoLavoro})' : '',
+         filterByFormula: selectedFilters.includes('scienzeMatematiche') ? 'FIND("Scienze matematiche e fisiche", {posizioneLavoro})' : '',
+         filterByFormula: selectedFilters.includes('altro(corsoLaurea)') ? 'FIND("Altro", {posizioneLavoro})' : '',
+         filterByFormula: selectedFilters.includes('economia') ? 'FIND("Economia", {posizioneLavoro})' : '',
+         filterByFormula: selectedFilters.includes('lingueEcultureModerne') ? 'FIND("Lingue e culture moderne", {tipoLaurea})' : '',
+         filterByFormula: selectedFilters.includes('scienzeDellaFormazione') ? 'FIND("Scienze della formazione", {tipoLaurea})' : '',
+         filterByFormula: selectedFilters.includes('scienzePolitiche') ? 'FIND("Scienze politiche", {tipoLaurea})' : '',*/
+        // };
+
+        const filterConditions = [];
+
+        if (selectedFilters.includes('partTime')) {
+            filterConditions.push('FIND("Part time", {tipoLavoro})');
+        }
+
+        if (selectedFilters.includes('fullTime')) {
+            filterConditions.push('FIND("Full time", {tipoLavoro})');
+        }
+
+        if (selectedFilters.includes('stage')) {
+            filterConditions.push('FIND("Stage", {tipoLavoro})');
+        }
+
+        if (selectedFilters.includes('inSede')) {
+            filterConditions.push('FIND("In sede", {posizioneLavoro})');
+        }
+
+        if (selectedFilters.includes('sedeERmoto')) {
+            filterConditions.push('FIND("In sede e da remoto", {posizioneLavoro})');
+        }
+
+        if (selectedFilters.includes('daRemoto')) {
+            filterConditions.push('FIND("Da remoto", {posizioneLavoro})');
+        }
+
+        if (selectedFilters.includes('triennale')) {
+            filterConditions.push('FIND("Laurea triennale", {tipoLaurea})');
+        }
+
+        if (selectedFilters.includes('magistrale')) {
+            filterConditions.push('FIND("Laurea magistrale", {tipoLaurea})');
+        }
+
+        if (selectedFilters.includes('cicloUnico')) {
+            filterConditions.push('FIND("Laurea a ciclo unico", {tipoLaurea})');
+        }
+
+        if (selectedFilters.includes('vecchioOrdinamento')) {
+            filterConditions.push('FIND("Laurea vecchio ordinamento", {tipoLaurea})');
+        }
+
+        if (selectedFilters.includes('liceo')) {
+            filterConditions.push('FIND("liceo", {indirizzoDiploma})');
+        }
+
+        if (selectedFilters.includes('tecnico')) {
+            filterConditions.push('FIND("istituto tecnico", {indirizzoDiploma})');
+        }
+
+        if (selectedFilters.includes('professionale')) {
+            filterConditions.push('FIND("istituto professionale", {indirizzoDiploma})');
+        }
+
+        if (selectedFilters.includes('architetturaEDesign')) {
+            filterConditions.push('FIND("Architettura / Design", {tipoLavoro})');
+        }
+
+        if (selectedFilters.includes('giurisprudenza')) {
+            filterConditions.push('FIND("Giurisprudenza", {tipoLavoro})');
+        }
+
+        if (selectedFilters.includes('medicinaEChirurgia')) {
+            filterConditions.push('FIND("Medicina e chirurgia", {tipoLavoro})');
+        }
+
+        if (selectedFilters.includes('scienzeMatematiche')) {
+            filterConditions.push('FIND("Scienze matematiche e fisiche", {posizioneLavoro})');
+        }
+
+        if (selectedFilters.includes('altro(corsoLaurea)')) {
+            filterConditions.push('FIND("Altro", {posizioneLavoro})');
+        }
+
+        if (selectedFilters.includes('economia')) {
+            filterConditions.push('FIND("Economia", {posizioneLavoro})');
+        }
+
+        if (selectedFilters.includes('lingueEcultureModerne')) {
+            filterConditions.push('FIND("Lingue e culture moderne", {tipoLaurea})');
+        }
+
+        if (selectedFilters.includes('scienzeDellaFormazione')) {
+            filterConditions.push('FIND("Scienze della formazione", {tipoLaurea})');
+        }
+
+        if (selectedFilters.includes('scienzePolitiche')) {
+            filterConditions.push('FIND("Scienze politiche", {tipoLaurea})');
+        }
+
+        const filterFormula = filterConditions.join(' AND ');
+
         const filterOptions = {
-            filterByFormula: selectedFilters.includes('partTime') ? 'FIND("Part time", {tipoLavoro})' : ''
-          };
+            filterByFormula: filterFormula,
+        };
+
 
         base('Curriculum').select(filterOptions).firstPage((err, records) => {
             if (err) {
@@ -133,16 +237,16 @@ const curriculaPerPage = 6;
     }, [selectedFilters]);
 
     const indexOfLastCurriculum = currentPage * curriculaPerPage;
-const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
-const currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
+    const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
+    const currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
 
-const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-};
+    const handlePrevPage = () => {
+        setCurrentPage((prevPage) => prevPage - 1);
+    };
 
-const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-};
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
 
 
     return (
@@ -224,7 +328,6 @@ const handleNextPage = () => {
                                     </Grid>
                                     <Grid item xs={6} sm={3}>
                                         <FormControlLabel value="daRemoto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'daRemoto')?.checked} onClick={() => handleButtonClick('daRemoto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Da remoto</span>} labelPlacement="end" />
-                                        <FormControlLabel value="sedeORemoto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'sedeORemoto')?.checked} onClick={() => handleButtonClick('sedeORemoto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In sede e/o da remoto</span>} labelPlacement="end" />
                                     </Grid>
                                 </Grid>
                             </FormControl>
@@ -244,7 +347,6 @@ const handleNextPage = () => {
                                         <FormControlLabel value="liceo" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'liceo')?.checked} onClick={() => handleButtonClick('liceo')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Liceo</span>} labelPlacement="end" />
                                         <FormControlLabel value="professionale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'professionale')?.checked} onClick={() => handleButtonClick('professionale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Istituto professionale</span>} labelPlacement="end" />
                                         <FormControlLabel value="tecnico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'tecnico')?.checked} onClick={() => handleButtonClick('tecnico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Istituto tecnico</span>} labelPlacement="end" />
-                                        <FormControlLabel value="altro(diploma)" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'altro(diploma)')?.checked} onClick={() => handleButtonClick('altro(diploma)')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Altro</span>} labelPlacement="end" />
                                     </Grid>
                                 </Grid>
                             </FormControl>
@@ -266,30 +368,6 @@ const handleNextPage = () => {
                                         <FormControlLabel value="lingueECultureModerne" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'lingueECultureModerne')?.checked} onClick={() => handleButtonClick('lingueECultureModerne')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Lingue e culture moderne</span>} labelPlacement="end" />
                                         <FormControlLabel value="scienzeDellaFormazione" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzeDellaFormazione')?.checked} onClick={() => handleButtonClick('scienzeDellaFormazione')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze della formazione</span>} labelPlacement="end" />
                                         <FormControlLabel value="scienzePolitiche" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzePolitiche')?.checked} onClick={() => handleButtonClick('scienzePolitiche')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze politiche</span>} labelPlacement="end" />
-                                    </Grid>
-                                </Grid>
-                            </FormControl>
-                        </div>
-
-                        <h5>Professione</h5>
-                        <div class="radioButtons">
-                            <FormControl>
-                                <Grid container spacing={50}>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="architetto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'architetto')?.checked} onClick={() => handleButtonClick('architetto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Architetto</span>} labelPlacement="end" />
-                                        <FormControlLabel value="chimico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'chimico')?.checked} onClick={() => handleButtonClick('chimico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Chimico</span>} labelPlacement="end" />
-                                        <FormControlLabel value="designer" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'designer')?.checked} onClick={() => handleButtonClick('designer')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Designer</span>} labelPlacement="end" />
-                                        <FormControlLabel value="informatico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'informatico')?.checked} onClick={() => handleButtonClick('informatico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Informatico</span>} labelPlacement="end" />
-                                        <FormControlLabel value="insegnante" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'insegnante')?.checked} onClick={() => handleButtonClick('insegnante')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Insegnante</span>} labelPlacement="end" />
-                                        <FormControlLabel value="psicologo" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'psicologo')?.checked} onClick={() => handleButtonClick('psicologo')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Psicologo</span>} labelPlacement="end" />
-                                    </Grid>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="avvocato" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'avvocato')?.checked} onClick={() => handleButtonClick('avvocato')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Avvocato</span>} labelPlacement="end" />
-                                        <FormControlLabel value="commercialista" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'commercialista')?.checked} onClick={() => handleButtonClick('commercialista')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Commercialista</span>} labelPlacement="end" />
-                                        <FormControlLabel value="farmacista" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'farmacista')?.checked} onClick={() => handleButtonClick('farmacista')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Farmacista</span>} labelPlacement="end" />
-                                        <FormControlLabel value="ingegnere" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ingegnere')?.checked} onClick={() => handleButtonClick('ingegnere')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ingegnere</span>} labelPlacement="end" />
-                                        <FormControlLabel value="medicoChirurgo" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'medicoChirurgo')?.checked} onClick={() => handleButtonClick('medicoChirurgo')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Medico chirurgo</span>} labelPlacement="end" />
-                                        <FormControlLabel value="altro(Professione)" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'altro(Professione)')?.checked} onClick={() => handleButtonClick('altro(Professione)')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Altro (specificare)</span>} labelPlacement="end" />
                                     </Grid>
                                 </Grid>
                             </FormControl>
