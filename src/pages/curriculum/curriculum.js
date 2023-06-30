@@ -51,6 +51,9 @@ export default function Curriculum(){
               dataNascita : record.fields.dataNascita,
               indirizzo: record.fields['Indirizzo residenza'],
               tel: record.fields.Telefono,
+              fb: record.fields.Facebook,
+              ig: record.fields.Instagram,
+              yt: record.fields.Youtube,
             };
           });
 
@@ -100,13 +103,15 @@ export default function Curriculum(){
                                 <p className="lingue" style={{marginLeft:"10px"}}>Lingue</p>
                                 <div></div>
                             </div>
+                            {curriculumData.map((curriculum) => (
                             <div className="dataContainer">
                                 <p className="lingue">Social</p>
-                                <LinkedInIcon sx={{color:"#087A87"}}></LinkedInIcon>
-                                <FacebookRoundedIcon sx={{color:"#087A87"}}></FacebookRoundedIcon>
-                                <InstagramIcon sx={{color:"#087A87"}}></InstagramIcon>
-                                <YouTubeIcon sx={{color:"#087A87"}}></YouTubeIcon>
+                                <div class="utilsData"><LinkedInIcon sx={{color:"#087A87"}}></LinkedInIcon><p class="utilsDescription">{curriculum.fb}</p></div>
+                                <div class="utilsData"><FacebookRoundedIcon sx={{color:"#087A87"}}></FacebookRoundedIcon><p class="utilsDescription">{curriculum.fb}</p></div>
+                                <div class="utilsData"><InstagramIcon sx={{color:"#087A87"}}></InstagramIcon><p class="utilsDescription">{curriculum.ig}</p></div>
+                                <div class="utilsData"><YouTubeIcon sx={{color:"#087A87"}}></YouTubeIcon><p class="utilsDescription">{curriculum.yt}</p></div>
                             </div>
+                            ))}
                             <div>
                                 <p className="lingue" style={{marginLeft:"10px"}}>Hobby</p>
                             </div>
