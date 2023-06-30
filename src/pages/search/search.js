@@ -105,7 +105,6 @@ export default function Search() {
                 console.error('Errore durante il recupero dei curriculum filtrati:', err);
                 return;
             }
-
             const filteredData = records.map((record) => {
                 return {
                     id: record.id,
@@ -123,6 +122,7 @@ export default function Search() {
             } else {
                 setMessage("");
             }
+            console.log(filteredData);
         });
     };
 
@@ -147,13 +147,11 @@ export default function Search() {
                                 <div className="avanti-1">
                                     <p className="avanti">Avanti</p>
                                 </div>
-                                <div className="curriculum-view">
-                                    <img src={folderImg} className="folder-img" />
-                                    <div className="field">
-                                        <p className="nome-cognome-professione">
-                                            {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
-                                        </p>
-                                    </div>
+                                <img src={folderImg} className="folder-img" />
+                                <div className="field">
+                                    <p className="nome-cognome-professione">
+                                        {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
+                                    </p>
                                 </div>
                                 {/* Mostra i dettagli del curriculum */}
                             </div>
