@@ -69,7 +69,7 @@ export default function Search() {
         { id: 'scienzeMatematiche', checked: false },//ok
         { id: 'altro(corsoLaurea)', checked: false },//ok
         { id: 'economia', checked: false },//ok
-        { id: 'lingueECultureModerne', checked: false },//ok
+        { id: 'lingueECultureModerne', checked: false },//ok 
         { id: 'scienzeDellaFormazione', checked: false },//ok
         { id: 'scienzePolitiche', checked: false },//ok
     ]);
@@ -116,15 +116,25 @@ export default function Search() {
             );
         }
 
-        if (selectedFilters.includes('partTime')) filterConditions.push('"Part time" = {tipoLavoro}');
+        if (selectedFilters.includes('partTime')) {
+            filterConditions.push('"Part time" = {tipoLavoro}');
+        }
 
-        if (selectedFilters.includes('fullTime')) filterConditions.push('"Full time" = {tipoLavoro}');
+        if (selectedFilters.includes('fullTime')) {
+            filterConditions.push('"Full time" = {tipoLavoro}');
+        }
 
-        if (selectedFilters.includes('stage')) filterConditions.push('"Stage" = {tipoLavoro}');
+        if (selectedFilters.includes('stage')) {
+            filterConditions.push('"Stage" = {tipoLavoro}');
+        }
 
-        if (selectedFilters.includes('inSede')) filterConditions.push('"In sede" = {posizioneLavoro}');
+        if (selectedFilters.includes('inSede')) {
+            filterConditions.push('"In sede" = {posizioneLavoro}');
+        }
 
-        if (selectedFilters.includes('sedeERemoto')) filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
+        if (selectedFilters.includes('sedeERemoto')) {
+            filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
+        }
 
         if (selectedFilters.includes('daRemoto')) {
             filterConditions.push('"Da remoto" = {posizioneLavoro}');
@@ -159,39 +169,39 @@ export default function Search() {
         }
 
         if (selectedFilters.includes('architetturaEDesign')) {
-            filterConditions.push('"Architettura / Design" = {tipoLavoro}');
+            filterConditions.push('"Architettura / Design" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('giurisprudenza')) {
-            filterConditions.push('"Giurisprudenza" = {tipoLavoro}');
+            filterConditions.push('"Giurisprudenza" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('medicinaEChirurgia')) {
-            filterConditions.push('"Medicina e chirurgia" = {tipoLavoro}');
+            filterConditions.push('"Medicina e chirurgia" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('scienzeMatematiche')) {
-            filterConditions.push('"Scienze matematiche e fisiche" = {posizioneLavoro}');
+            filterConditions.push('"Scienze matematiche e fisiche" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('altro(corsoLaurea)')) {
-            filterConditions.push('"Altro" = {posizioneLavoro}');
+            filterConditions.push('"Altro" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('economia')) {
-            filterConditions.push('"Economia" = {posizioneLavoro}');
+            filterConditions.push('"Economia" = {ambitoLaurea}');
         }
 
-        if (selectedFilters.includes('lingueEcultureModerne')) {
-            filterConditions.push('"Lingue e culture moderne" = {tipoLaurea}');
+        if (selectedFilters.includes('lingueECultureModerne')) {
+            filterConditions.push('"Lingue e culture moderne" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('scienzeDellaFormazione')) {
-            filterConditions.push('"Scienze della formazione" = {tipoLaurea}');
+            filterConditions.push('"Scienze della formazione" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('scienzePolitiche')) {
-            filterConditions.push('"Scienze politiche" = {tipoLaurea}');
+            filterConditions.push('"Scienze politiche" = {ambitoLaurea}');
         }
 
         const filteredOptions = {
