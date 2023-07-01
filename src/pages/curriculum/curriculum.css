@@ -6,9 +6,9 @@
 }
 
 .curriculum .lowLayer{
-    position: absolute;
     background-color: rgba(8, 122, 135, 0.08);
     height:100%;
+    width: 100%;
     right: 0;
     left: 0;
     bottom: 0;
@@ -22,7 +22,8 @@
     position: relative;
     background-color: #ffffff;
     width: 80%;
-    margin-top: 200px;
+    margin-top: 120px;
+    margin-bottom: 100px;
     justify-content: flex-start;
     align-items:flex-start;
     z-index: 1;
@@ -89,6 +90,11 @@
     padding: 10px;
 }
 
+.image{
+    width: 22px;
+    height: 22px;
+}
+
 .contatti{
     position: absolute;
     top: -12px;
@@ -144,7 +150,13 @@
 
 .section{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.icon{
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
 }
 
 .titleSez{
@@ -152,5 +164,16 @@
     font-size: 32;
     text-decoration: underline #087A87;
 }
+
+.maturità{
+    font-family: Open Sans;
+    margin-left: 53px;
+}
+
+.altreInfo{
+    margin-right: 10px;
+    font-family: Open Sans;
+}
+
 
 
