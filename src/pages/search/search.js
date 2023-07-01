@@ -261,13 +261,13 @@ export default function Search() {
                         </div>
                     )}
                     {showPagination && (
-                        <div className="indietro-1">
-                            <p className="indietro" onClick={handlePrevPage}>Indietro</p>
+                        <div className="indietro-1" onClick={handlePrevPage}>
+                            <p className="indietro" >Indietro</p>
                         </div>
                     )}
                     {showPagination && (
-                        <div className="avanti-1">
-                            <p className="avanti" onClick={handleNextPage}>Avanti</p>
+                        <div className="avanti-1" onClick={handleNextPage}>
+                            <p className="avanti" >Avanti</p>
                         </div>
                     )}
                 </div>
