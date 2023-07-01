@@ -1,19 +1,10 @@
 import "./search.css"
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import Typography from "@mui/material/Typography";
-import Box from '@mui/material/Box';
 import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from '@mui/material/styles';
-import { Filter, Margin } from "@mui/icons-material";
 import Grid from '@mui/material/Grid';
-import Checkbox from '@mui/material/Checkbox';
 import filtriBtnOpen from "./filtriBtnOpen.svg";
 import filtriBtnClose from "./filtriBtnClose.svg";
 import folderImg from "./folderImg.svg";
@@ -34,17 +25,15 @@ const theme = createTheme({
 export default function Search() {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showPagination, setShowPagination] = useState(true);
-    const [filteredCurriculum, setFilteredCurriculum] = useState([]);
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const curriculaPerPage = 6;
-    const [isFirstPage, setIsFirstPage] = useState(true);
     const [radioButtons, setRadioButtons] = useState([
-        { id: 'qualsiasiMomento', checked: false },
-        { id: 'ultime24Ore', checked: false },
-        { id: 'ultimaSettimana', checked: false },
-        { id: 'UltimoMese', checked: false },
+        { id: 'qualsiasiMomento', checked: false }, //ok
+        { id: 'ultime24Ore', checked: false }, //ok
+        { id: 'ultimaSettimana', checked: false }, //ok
+        { id: 'ultimoMese', checked: false },
         { id: 'fullTime', checked: false }, //ok
         { id: 'stage', checked: false }, //ok
         { id: 'partTime', checked: false }, //ok
@@ -114,99 +103,97 @@ export default function Search() {
 
         if (selectedFilters.includes('partTime')) filterConditions.push('"Part time" = {tipoLavoro}');
 
-        if (selectedFilters.includes('fullTime')) filterConditions.push('FIND("Full time", {tipoLavoro})');
+        if (selectedFilters.includes('fullTime')) filterConditions.push('"Full time" = {tipoLavoro}');
 
-        if (selectedFilters.includes('stage')) filterConditions.push('FIND("Stage", {tipoLavoro})');
+        if (selectedFilters.includes('stage')) filterConditions.push('"Stage" = {tipoLavoro}');
 
-        if (selectedFilters.includes('inSede')) filterConditions.push('FIND("In sede", {posizioneLavoro})');
+        if (selectedFilters.includes('inSede')) filterConditions.push('"In sede" = {posizioneLavoro}');
 
         if (selectedFilters.includes('sedeERmoto')) {
-            filterConditions.push('FIND("In sede e da remoto", {posizioneLavoro})');
+            filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
         }
 
         if (selectedFilters.includes('daRemoto')) {
-            filterConditions.push('FIND("Da remoto", {posizioneLavoro})');
+            filterConditions.push('"Da remoto" = {posizioneLavoro}');
         }
 
         if (selectedFilters.includes('triennale')) {
-            filterConditions.push('FIND("Laurea triennale", {tipoLaurea})');
+            filterConditions.push('"Laurea triennale" = {tipoLaurea}');
         }
 
         if (selectedFilters.includes('magistrale')) {
-            filterConditions.push('FIND("Laurea magistrale", {tipoLaurea})');
+            filterConditions.push('"Laurea magistrale" = {tipoLaurea}');
         }
 
         if (selectedFilters.includes('cicloUnico')) {
-            filterConditions.push('FIND("Laurea a ciclo unico", {tipoLaurea})');
+            filterConditions.push('"Laurea a ciclo unico" = {tipoLaurea}');
         }
 
         if (selectedFilters.includes('vecchioOrdinamento')) {
-            filterConditions.push('FIND("Laurea vecchio ordinamento", {tipoLaurea})');
+            filterConditions.push('"Laurea vecchio ordinamento" = {tipoLaurea}');
         }
 
         if (selectedFilters.includes('liceo')) {
-            filterConditions.push('FIND("Liceo", {categoriaDiploma})');
+            filterConditions.push('"Liceo" = {categoriaDiploma}');
         }
 
         if (selectedFilters.includes('tecnico')) {
-            filterConditions.push('FIND("Istituto tecnico", {categoriaDiploma})');
+            filterConditions.push('"Istituto tecnico" = {categoriaDiploma}');
         }
 
         if (selectedFilters.includes('professionale')) {
-            filterConditions.push('FIND("istituto professionale", {categoriaDiploma})');
+            filterConditions.push('"Istituto professionale" = {categoriaDiploma}');
         }
 
         if (selectedFilters.includes('architetturaEDesign')) {
-            filterConditions.push('FIND("Architettura / Design", {tipoLavoro})');
+            filterConditions.push('"Architettura / Design" = {tipoLavoro}');
         }
 
         if (selectedFilters.includes('giurisprudenza')) {
-            filterConditions.push('FIND("Giurisprudenza", {tipoLavoro})');
+            filterConditions.push('"Giurisprudenza" = {tipoLavoro}');
         }
 
         if (selectedFilters.includes('medicinaEChirurgia')) {
-            filterConditions.push('FIND("Medicina e chirurgia", {tipoLavoro})');
+            filterConditions.push('"Medicina e chirurgia" = {tipoLavoro}');
         }
 
         if (selectedFilters.includes('scienzeMatematiche')) {
-            filterConditions.push('FIND("Scienze matematiche e fisiche", {posizioneLavoro})');
+            filterConditions.push('"Scienze matematiche e fisiche" = {posizioneLavoro}');
         }
 
         if (selectedFilters.includes('altro(corsoLaurea)')) {
-            filterConditions.push('FIND("Altro", {posizioneLavoro})');
+            filterConditions.push('"Altro" = {posizioneLavoro}');
         }
 
         if (selectedFilters.includes('economia')) {
-            filterConditions.push('FIND("Economia", {posizioneLavoro})');
+            filterConditions.push('"Economia" = {posizioneLavoro}');
         }
 
         if (selectedFilters.includes('lingueEcultureModerne')) {
-            filterConditions.push('FIND("Lingue e culture moderne", {tipoLaurea})');
+            filterConditions.push('"Lingue e culture moderne" = {tipoLaurea}');
         }
 
         if (selectedFilters.includes('scienzeDellaFormazione')) {
-            filterConditions.push('FIND("Scienze della formazione", {tipoLaurea})');
+            filterConditions.push('"Scienze della formazione" = {tipoLaurea}');
         }
 
         if (selectedFilters.includes('scienzePolitiche')) {
-            filterConditions.push('FIND("Scienze politiche", {tipoLaurea})');
+            filterConditions.push('"Scienze politiche" = {tipoLaurea}');
         }
 
-        const filterFormula = filterConditions.join(' AND ');
-
-        const filterOptions = {
-            filterByFormula: filterFormula,
+        const filteredOptions = {
+            filterByFormula: filterConditions.join(' + '),
         };
 
 
-        base('Curriculum').select(filterOptions).firstPage((err, records) => {
+        base('Curriculum').select(filteredOptions).firstPage((err, records) => {
             if (err) {
                 console.error('Errore durante il recupero dei curriculum filtrati:', err);
                 return;
             }
             const filteredData = records.map((record) => {
                 return {
-                    id: record.id,
+                    mail: record.fields.Email, //con questo poi lo colleghiamo al cv da far visualizzare
                     nome: record.fields.Name,
                     cognome: record.fields.Cognome,
                     professione: record.fields.professione,
