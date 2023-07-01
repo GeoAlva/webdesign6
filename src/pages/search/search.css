@@ -123,18 +123,18 @@ p {
     left: 13px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     width: 465px;
-    height: 53px;
+    height: auto;
+    min-height: 62px;
     padding: 4px 24px;
     border: 3px solid rgba(8, 122, 135, 1);
     border-radius: 30px;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
-}
-
+  }
 .nome-cognome-professione {
     display: flex;
     flex-direction: column;
