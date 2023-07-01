@@ -182,8 +182,8 @@ export default function Search() {
         }
 
         const filteredOptions = {
-            filterByFormula: filterConditions.join(' + '),
-        };
+            filterByFormula: `AND(${filterConditions.join(',')})`, //in questo modo si concatenano più filtri: equivale a una sorta di &&
+          };
 
 
         base('Curriculum').select(filteredOptions).firstPage((err, records) => {
