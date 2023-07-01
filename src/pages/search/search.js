@@ -100,7 +100,6 @@ export default function Search() {
             );
         }
 
-
         if (selectedFilters.includes('partTime')) filterConditions.push('"Part time" = {tipoLavoro}');
 
         if (selectedFilters.includes('fullTime')) filterConditions.push('"Full time" = {tipoLavoro}');
@@ -109,9 +108,7 @@ export default function Search() {
 
         if (selectedFilters.includes('inSede')) filterConditions.push('"In sede" = {posizioneLavoro}');
 
-        if (selectedFilters.includes('sedeERmoto')) {
-            filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
-        }
+        if (selectedFilters.includes('sedeERemoto')) filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
 
         if (selectedFilters.includes('daRemoto')) {
             filterConditions.push('"Da remoto" = {posizioneLavoro}');
