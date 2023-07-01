@@ -25,10 +25,26 @@ const theme = createTheme({
 export default function Search() {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showPagination, setShowPagination] = useState(true);
+
+    var show = document.getElementById("filters");
+    let curriculaPerPage = 12;
+    if (show === null || show.style.display === "" || show.style.display === "none") {
+        curriculaPerPage = 12;
+    }
+    else {
+        curriculaPerPage = 6;
+    }
+
+
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const curriculaPerPage = 6;
+
+
+
+
+
+
     const [radioButtons, setRadioButtons] = useState([
         { id: 'qualsiasiMomento', checked: false }, //ok
         { id: 'ultime24Ore', checked: false }, //ok
@@ -180,7 +196,7 @@ export default function Search() {
 
         const filteredOptions = {
             filterByFormula: `AND(${filterConditions.join(',')})`, //in questo modo si concatenano più filtri: equivale a una sorta di &&
-          };
+        };
 
 
         base('Curriculum').select(filteredOptions).firstPage((err, records) => {
@@ -217,9 +233,9 @@ export default function Search() {
         filterCurriculum();
     }, [selectedFilters]);
 
-    const indexOfLastCurriculum = currentPage * curriculaPerPage;
-    const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
-    const currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
+    let indexOfLastCurriculum = currentPage * curriculaPerPage;
+    let indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
+    let currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
 
     const handlePrevPage = () => { //se sono nella prima pagina, allora non faccio niente
         if (currentPage > 1) {
@@ -229,177 +245,198 @@ export default function Search() {
 
     const handleNextPage = () => { //se sono nell'ultima pagina, allora non faccio nada
         if (currentPage < Math.ceil(curriculumData.length / curriculaPerPage)) {
-          setCurrentPage((prevPage) => prevPage + 1);
+            setCurrentPage((prevPage) => prevPage + 1);
         }
-      };
+    };
+
+    const showFilters = () => {
+        let show = document.getElementById("filters");
+        let filtersBtn = document.getElementById("filters-btn");
+        let rightFilters = document.getElementById("right-filters")
+        let iconClose = document.getElementById("close");
+        let iconOpen = document.getElementById("open");
+
+        let leftSearch = document.getElementById("left-search");
+        let curriculumGrid = document.getElementById("curriculum-grid");
+
+
+
+        if (show.style.display === "" || show.style.display === "none") {
+            show.style.display = "block";
+            rightFilters.style.width = "55%";
+            filtersBtn.style.marginLeft = "0";
+            iconClose.style.display = "none";
+            iconOpen.style.display = "block";
+            curriculaPerPage = 12;
+            leftSearch.style.width = "40%";
+            curriculumGrid.style.gridTemplateColumns = "auto";
+            setCurrentPage(1);
+            handleButtonClick();
+        } else {
+            show.style.display = "none";
+            rightFilters.style.width = "5%";
+            filtersBtn.style.marginLeft = "-150px";
+            iconClose.style.display = "block";
+            iconOpen.style.display = "none";
+            curriculaPerPage = 6;
+            leftSearch.style.width = "80%";
+            curriculumGrid.style.gridTemplateColumns = "auto auto";
+            setCurrentPage(1);
+            handleButtonClick();
+        }
+
+
+    };
+
 
 
     return (
         <ThemeProvider theme={theme}>
             <div class="search">
-                <div className="left-search">
-                    {currentCurricula.length > 0 ? (
-                        currentCurricula.map((curriculum) => (
-                            <div className="curriculum-view" key={curriculum.id}>
-                                <img src={folderImg} className="folder-img" />
-                                <div className="field">
-                                    <p className="nome-cognome-professione">
-                                        {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
-                                    </p>
-                                    <br></br>
+                <div className="left-search" id="left-search">
+                    <div class="curriculum-grid" id="curriculum-grid">
+                        {currentCurricula.length > 0 ? (
+                            currentCurricula.map((curriculum) => (
+                                <div className="curriculum-view" key={curriculum.id}>
+                                    <img src={folderImg} className="folder-img" />
+                                    <div className="field">
+                                        <p className="nome-cognome-professione">
+                                            {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
+                                        </p>
+                                        <br></br>
+                                    </div>
                                 </div>
+                            ))
+                        ) : (
+                            <div className="not-found">
+                                <p>{message.split('\n').map((line, index) => (
+                                    <React.Fragment key={index}>
+                                        {line}
+                                        <br />
+                                    </React.Fragment>
+                                ))}</p>
                             </div>
-                        ))
-                    ) : (
-                        <div className="not-found">
-                             <p>{message.split('\n').map((line, index) => (
-    <React.Fragment key={index}>
-      {line}
-      <br />
-    </React.Fragment>
-  ))}</p>
-                        </div>
-                    )}
-                    {showPagination && (
-                        <div className="indietro-1" onClick={handlePrevPage}>
-                            <p className="indietro" >Indietro</p>
-                        </div>
-                    )}
-                    {showPagination && (
-                        <div className="avanti-1" onClick={handleNextPage}>
-                            <p className="avanti" >Avanti</p>
-                        </div>
-                    )}
-                </div>
-                <div class="right-filters" id="right-filters">
-                    <div class="filters-btn" id="filters-btn">
-                        <h6 className="filtri-scritta">Filtri</h6>
-                        <Button onClick={showFilters}><img src={filtriBtnOpen} alt="Filtri" class="filters-icon" id="open" /><img src={filtriBtnClose} alt="Filtri" class="filters-icon" id="close" /></Button>
+                        )}
+
 
                     </div>
-                    <div class="filters" id="filters">
-
-                        <h5>Data di pubblicazione</h5>
-                        <div class="radioButtons">
-                            <FormControl>
-                                <Grid container spacing={50}>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="qualsiasiMomento" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'qualsiasiMomento')?.checked} onClick={() => handleButtonClick('qualsiasiMomento')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In qualsiasi momento</span>} labelPlacement="end" />
-                                        <FormControlLabel value="ultime24Ore" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ultime24Ore')?.checked} onClick={() => handleButtonClick('ultime24Ore')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ultime 24 ore</span>} labelPlacement="end" />
-                                    </Grid>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="ultimaSettimana" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ultimaSettimana')?.checked} onClick={() => handleButtonClick('ultimaSettimana')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ultima settimana</span>} labelPlacement="end" />
-                                        <FormControlLabel value="ultimoMese" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ultimoMese')?.checked} onClick={() => handleButtonClick('ultimoMese')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ultimo mese</span>} labelPlacement="end" />
-                                    </Grid>
-                                </Grid>
-                            </FormControl>
-                        </div>
-
-                        <h5>Località</h5>
-
-                        <h5>Tipo di lavoro</h5>
-                        <div class="radioButtons">
-                            <FormControl>
-                                <Grid container spacing={50}>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="fullTime" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'fullTime')?.checked} onClick={() => handleButtonClick('fullTime')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Full-time</span>} labelPlacement="end" />
-                                        <FormControlLabel value="stage" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'stage')?.checked} onClick={() => handleButtonClick('stage')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Stage</span>} labelPlacement="end" />
-                                    </Grid>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="partTime" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'partTime')?.checked} onClick={() => handleButtonClick('partTime')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Part-time</span>} labelPlacement="end" />
-                                    </Grid>
-                                </Grid>
-                            </FormControl>
-                        </div>
-
-                        <h5>In sede/da remoto</h5>
-                        <div class="radioButtons">
-                            <FormControl>
-                                <Grid container spacing={50}>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="inSede" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'inSede')?.checked} onClick={() => handleButtonClick('inSede')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In sede</span>} labelPlacement="end" />
-                                        <FormControlLabel value="sedeERemoto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'sedeERemoto')?.checked} onClick={() => handleButtonClick('sedeERemoto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In sede e da remoto</span>} labelPlacement="end" />
-                                    </Grid>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="daRemoto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'daRemoto')?.checked} onClick={() => handleButtonClick('daRemoto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Da remoto</span>} labelPlacement="end" />
-                                    </Grid>
-                                </Grid>
-                            </FormControl>
-                        </div>
-
-                        <h5>Tipo di diploma</h5>
-                        <div class="radioButtons">
-                            <FormControl>
-                                <Grid container spacing={50}>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="triennale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'triennale')?.checked} onClick={() => handleButtonClick('triennale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea triennale</span>} labelPlacement="end" />
-                                        <FormControlLabel value="magistrale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'magistrale')?.checked} onClick={() => handleButtonClick('magistrale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea magistrale</span>} labelPlacement="end" />
-                                        <FormControlLabel value="cicloUnico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'cicloUnico')?.checked} onClick={() => handleButtonClick('cicloUnico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea a ciclo unico</span>} labelPlacement="end" />
-                                        <FormControlLabel value="vecchioOrdinamento" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'vecchioOrdinamento')?.checked} onClick={() => handleButtonClick('vecchioOrdinamento')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea vecchio ordinamento</span>} labelPlacement="end" />
-                                    </Grid>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="liceo" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'liceo')?.checked} onClick={() => handleButtonClick('liceo')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Liceo</span>} labelPlacement="end" />
-                                        <FormControlLabel value="professionale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'professionale')?.checked} onClick={() => handleButtonClick('professionale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Istituto professionale</span>} labelPlacement="end" />
-                                        <FormControlLabel value="tecnico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'tecnico')?.checked} onClick={() => handleButtonClick('tecnico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Istituto tecnico</span>} labelPlacement="end" />
-                                    </Grid>
-                                </Grid>
-                            </FormControl>
-                        </div>
-
-                        <h5>Corso di laurea</h5>
-                        <div class="radioButtons">
-                            <FormControl>
-                                <Grid container spacing={50}>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="architetturaEDesign" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'architetturaEDesign')?.checked} onClick={() => handleButtonClick('architetturaEDesign')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Architettura e design</span>} labelPlacement="end" />
-                                        <FormControlLabel value="giurisprudenza" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'giurisprudenza')?.checked} onClick={() => handleButtonClick('giurisprudenza')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Giurisprudenza</span>} labelPlacement="end" />
-                                        <FormControlLabel value="medicinaEChirurgia" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'medicinaEChirurgia')?.checked} onClick={() => handleButtonClick('medicinaEChirurgia')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Medicina e chirurgia</span>} labelPlacement="end" />
-                                        <FormControlLabel value="scienzeMatematiche" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzeMatematiche')?.checked} onClick={() => handleButtonClick('scienzeMatematiche')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze matematiche e fisiche</span>} labelPlacement="end" />
-                                        <FormControlLabel value="altro(corsoLaurea)" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'altro(corsoLaurea)')?.checked} onClick={() => handleButtonClick('altro(corsoLaurea)')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Altro</span>} labelPlacement="end" />
-                                    </Grid>
-                                    <Grid item xs={6} sm={3}>
-                                        <FormControlLabel value="economia" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'economia')?.checked} onClick={() => handleButtonClick('economia')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Economia</span>} labelPlacement="end" />
-                                        <FormControlLabel value="lingueECultureModerne" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'lingueECultureModerne')?.checked} onClick={() => handleButtonClick('lingueECultureModerne')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Lingue e culture moderne</span>} labelPlacement="end" />
-                                        <FormControlLabel value="scienzeDellaFormazione" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzeDellaFormazione')?.checked} onClick={() => handleButtonClick('scienzeDellaFormazione')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze della formazione</span>} labelPlacement="end" />
-                                        <FormControlLabel value="scienzePolitiche" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzePolitiche')?.checked} onClick={() => handleButtonClick('scienzePolitiche')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze politiche</span>} labelPlacement="end" />
-                                    </Grid>
-                                </Grid>
-                            </FormControl>
-                        </div>
-
-                        < br className='web' />
-                        < br className='web' />
-                        < br className='web' />
-
+                    <div className="page-buttons">
+                        {showPagination && (
+                            <div className="indietro-1" onClick={handlePrevPage}>
+                                <p className="indietro" >Indietro</p>
+                            </div>
+                        )}
+                        {showPagination && (
+                            <div className="avanti-1" onClick={handleNextPage}>
+                                <p className="avanti" >Avanti</p>
+                            </div>
+                        )}
                     </div>
-                </div>
-            </div >
+                    <div class="right-filters" id="right-filters">
+                        <div class="filters-btn" id="filters-btn">
+                            <h6 className="filtri-scritta">Filtri</h6>
+                            <Button onClick={showFilters}><img src={filtriBtnOpen} alt="Filtri" class="filters-icon" id="open" /><img src={filtriBtnClose} alt="Filtri" class="filters-icon" id="close" /></Button>
+
+                        </div>
+                        <div class="filters" id="filters">
+
+                            <h5>Data di pubblicazione</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={50}>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="qualsiasiMomento" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'qualsiasiMomento')?.checked} onClick={() => handleButtonClick('qualsiasiMomento')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In qualsiasi momento</span>} labelPlacement="end" />
+                                            <FormControlLabel value="ultime24Ore" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ultime24Ore')?.checked} onClick={() => handleButtonClick('ultime24Ore')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ultime 24 ore</span>} labelPlacement="end" />
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="ultimaSettimana" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ultimaSettimana')?.checked} onClick={() => handleButtonClick('ultimaSettimana')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ultima settimana</span>} labelPlacement="end" />
+                                            <FormControlLabel value="ultimoMese" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'ultimoMese')?.checked} onClick={() => handleButtonClick('ultimoMese')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Ultimo mese</span>} labelPlacement="end" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
+
+                            <h5>Località</h5>
+
+                            <h5>Tipo di lavoro</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={50}>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="fullTime" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'fullTime')?.checked} onClick={() => handleButtonClick('fullTime')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Full-time</span>} labelPlacement="end" />
+                                            <FormControlLabel value="stage" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'stage')?.checked} onClick={() => handleButtonClick('stage')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Stage</span>} labelPlacement="end" />
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="partTime" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'partTime')?.checked} onClick={() => handleButtonClick('partTime')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Part-time</span>} labelPlacement="end" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
+
+                            <h5>In sede/da remoto</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={50}>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="inSede" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'inSede')?.checked} onClick={() => handleButtonClick('inSede')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In sede</span>} labelPlacement="end" />
+                                            <FormControlLabel value="sedeERemoto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'sedeERemoto')?.checked} onClick={() => handleButtonClick('sedeERemoto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>In sede e da remoto</span>} labelPlacement="end" />
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="daRemoto" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'daRemoto')?.checked} onClick={() => handleButtonClick('daRemoto')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Da remoto</span>} labelPlacement="end" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
+
+                            <h5>Tipo di diploma</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={50}>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="triennale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'triennale')?.checked} onClick={() => handleButtonClick('triennale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea triennale</span>} labelPlacement="end" />
+                                            <FormControlLabel value="magistrale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'magistrale')?.checked} onClick={() => handleButtonClick('magistrale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea magistrale</span>} labelPlacement="end" />
+                                            <FormControlLabel value="cicloUnico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'cicloUnico')?.checked} onClick={() => handleButtonClick('cicloUnico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea a ciclo unico</span>} labelPlacement="end" />
+                                            <FormControlLabel value="vecchioOrdinamento" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'vecchioOrdinamento')?.checked} onClick={() => handleButtonClick('vecchioOrdinamento')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Laurea vecchio ordinamento</span>} labelPlacement="end" />
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="liceo" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'liceo')?.checked} onClick={() => handleButtonClick('liceo')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Liceo</span>} labelPlacement="end" />
+                                            <FormControlLabel value="professionale" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'professionale')?.checked} onClick={() => handleButtonClick('professionale')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Istituto professionale</span>} labelPlacement="end" />
+                                            <FormControlLabel value="tecnico" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'tecnico')?.checked} onClick={() => handleButtonClick('tecnico')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Istituto tecnico</span>} labelPlacement="end" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
+
+                            <h5>Corso di laurea</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={50}>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="architetturaEDesign" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'architetturaEDesign')?.checked} onClick={() => handleButtonClick('architetturaEDesign')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Architettura e design</span>} labelPlacement="end" />
+                                            <FormControlLabel value="giurisprudenza" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'giurisprudenza')?.checked} onClick={() => handleButtonClick('giurisprudenza')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Giurisprudenza</span>} labelPlacement="end" />
+                                            <FormControlLabel value="medicinaEChirurgia" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'medicinaEChirurgia')?.checked} onClick={() => handleButtonClick('medicinaEChirurgia')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Medicina e chirurgia</span>} labelPlacement="end" />
+                                            <FormControlLabel value="scienzeMatematiche" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzeMatematiche')?.checked} onClick={() => handleButtonClick('scienzeMatematiche')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze matematiche e fisiche</span>} labelPlacement="end" />
+                                            <FormControlLabel value="altro(corsoLaurea)" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'altro(corsoLaurea)')?.checked} onClick={() => handleButtonClick('altro(corsoLaurea)')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Altro</span>} labelPlacement="end" />
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <FormControlLabel value="economia" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'economia')?.checked} onClick={() => handleButtonClick('economia')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Economia</span>} labelPlacement="end" />
+                                            <FormControlLabel value="lingueECultureModerne" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'lingueECultureModerne')?.checked} onClick={() => handleButtonClick('lingueECultureModerne')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Lingue e culture moderne</span>} labelPlacement="end" />
+                                            <FormControlLabel value="scienzeDellaFormazione" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzeDellaFormazione')?.checked} onClick={() => handleButtonClick('scienzeDellaFormazione')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze della formazione</span>} labelPlacement="end" />
+                                            <FormControlLabel value="scienzePolitiche" control={<Radio color="primary" checked={radioButtons.find((button) => button.id === 'scienzePolitiche')?.checked} onClick={() => handleButtonClick('scienzePolitiche')} />} label={<span style={{ whiteSpace: 'nowrap' }}>Scienze politiche</span>} labelPlacement="end" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
+
+                            < br className='web' />
+                            < br className='web' />
+                            < br className='web' />
+
+                        </div>
+                    </div>
+                </div >
+            </div>
 
         </ThemeProvider>
     )
-}
-
-function showFilters() {
-    var show = document.getElementById("filters");
-    var filtersBtn = document.getElementById("filters-btn");
-    var rightFilters = document.getElementById("right-filters")
-
-    var iconClose = document.getElementById("close");
-    var iconOpen = document.getElementById("open");
-
-
-
-    if (show.style.display === "" || show.style.display === "none") {
-        show.style.display = "block";
-        rightFilters.style.width = "60%";
-        filtersBtn.style.marginLeft = "0";
-        iconClose.style.display = "none";
-        iconOpen.style.display = "block";
-    } else {
-        show.style.display = "none";
-        rightFilters.style.width = "5%";
-        filtersBtn.style.marginLeft = "-150px";
-        iconClose.style.display = "block";
-        iconOpen.style.display = "none";
-    }
 }

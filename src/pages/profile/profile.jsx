@@ -100,11 +100,12 @@ export default function Profile(){
             <div class='left'>
                 <div class='user'>
                     <img src={profilePhoto} alt="Profile" width={'195px'} />
+                    <br/>
                     <p>{email}</p>
                     <br/>
                     <Button variant="outlined"
                                     //link di test
-                                    href="/search"
+                                    href="https://airtable.com/shrMHq5TbbUJMNQFw"
                                     sx={{
                                       width: "318px",
                                       mb:"30px",
@@ -174,7 +175,7 @@ export default function Profile(){
                 <h3 className='personale'>Stai cercando personale?</h3>
                 <Button variant="outlined"
                     //link di test
-                    href="https://airtable.com/shr9QHYnx6MC0bTqL"
+                    href="/search"
                     sx={{
                         width: "312px",
                         height:"51px",

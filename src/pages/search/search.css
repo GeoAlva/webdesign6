@@ -9,13 +9,23 @@
 
 .search .left-search {
     float: left;
-    width: 50%;
+    width: 80%;
     height: 10%;
     align-items: center;
     justify-content: left;
     margin-left: 50px;
     margin-top: 20px;
     z-index: 0;
+}
+
+.curriculum-grid {
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+    column-gap: 100px;
+    grid-template-columns: auto auto;
 }
 
 .right-filters {
@@ -30,6 +40,7 @@
     bottom: 0;
     padding-left: 5vw;
     overflow-y: scroll;
+    overflow-x: hidden;
     z-index: 1;
 }
 
@@ -83,7 +94,6 @@ span {
     z-index: 1;
 }
 
-
 #open {
     display: none;
 }
@@ -91,7 +101,7 @@ span {
 p {
     margin: 0;
 }
-.not-found{
+.not-found {
     margin-top: 350px;
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
@@ -101,14 +111,9 @@ p {
 .curriculum-view {
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 516px;
+    width: 480px;
     height: 68px;
-    box-sizing: border-box;
-    left: 100px;
-    margin-top: 40px;
+
     cursor: pointer;
 }
 
@@ -134,7 +139,7 @@ p {
     border-radius: 30px;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
-  }
+}
 .nome-cognome-professione {
     display: flex;
     flex-direction: column;
@@ -151,12 +156,18 @@ p {
     margin: 0;
 }
 
+.page-buttons {
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+    column-gap: 100px;
+}
+
 .indietro-1 {
-    position:absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     width: 182px;
     height: 51px;
     padding: 8px 37px 7px;
@@ -170,12 +181,9 @@ p {
 
 .indietro-1:hover {
     background-color: #ecf5f6;
-  }
+}
 
 .indietro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     color: rgba(8, 122, 135, 1);
     font-size: 24px;
     line-height: 24px;
@@ -185,11 +193,6 @@ p {
 }
 
 .avanti-1 {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     width: 182px;
     height: 51px;
     padding: 8px 37px 7px;
@@ -202,12 +205,9 @@ p {
 }
 .avanti-1:hover {
     background-color: #ecf5f6;
-  }
+}
 
 .avanti {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     color: rgba(8, 122, 135, 1);
     font-size: 24px;
     line-height: 24px;
