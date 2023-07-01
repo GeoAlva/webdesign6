@@ -25,10 +25,26 @@ const theme = createTheme({
 export default function Search() {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showPagination, setShowPagination] = useState(true);
+
+    var show = document.getElementById("filters");
+    let curriculaPerPage = 12;
+    if (show === null || show.style.display === "" || show.style.display === "none") {
+        curriculaPerPage = 12;
+    }
+    else {
+        curriculaPerPage = 6;
+    }
+
+
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const curriculaPerPage = 6;
+
+
+
+
+
+
     const [radioButtons, setRadioButtons] = useState([
         { id: 'qualsiasiMomento', checked: false }, //ok
         { id: 'ultime24Ore', checked: false }, //ok
@@ -180,7 +196,7 @@ export default function Search() {
 
         const filteredOptions = {
             filterByFormula: `AND(${filterConditions.join(',')})`, //in questo modo si concatenano più filtri: equivale a una sorta di &&
-          };
+        };
 
 
         base('Curriculum').select(filteredOptions).firstPage((err, records) => {
@@ -217,9 +233,9 @@ export default function Search() {
         filterCurriculum();
     }, [selectedFilters]);
 
-    const indexOfLastCurriculum = currentPage * curriculaPerPage;
-    const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
-    const currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
+    let indexOfLastCurriculum = currentPage * curriculaPerPage;
+    let indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
+    let currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
 
     const handlePrevPage = () => { //se sono nella prima pagina, allora non faccio niente
         if (currentPage > 1) {
@@ -229,42 +245,86 @@ export default function Search() {
 
     const handleNextPage = () => { //se sono nell'ultima pagina, allora non faccio nada
         if (currentPage < Math.ceil(curriculumData.length / curriculaPerPage)) {
-          setCurrentPage((prevPage) => prevPage + 1);
+            setCurrentPage((prevPage) => prevPage + 1);
         }
-      };
+    };
+
+    const showFilters = () => {
+        let show = document.getElementById("filters");
+        let filtersBtn = document.getElementById("filters-btn");
+        let rightFilters = document.getElementById("right-filters")
+        let iconClose = document.getElementById("close");
+        let iconOpen = document.getElementById("open");
+
+        let leftSearch = document.getElementById("left-search");
+        let curriculumGrid = document.getElementById("curriculum-grid");
+
+
+
+        if (show.style.display === "" || show.style.display === "none") {
+            show.style.display = "block";
+            rightFilters.style.width = "60%";
+            filtersBtn.style.marginLeft = "0";
+            iconClose.style.display = "none";
+            iconOpen.style.display = "block";
+            curriculaPerPage = 12;
+            leftSearch.style.width = "40%";
+            curriculumGrid.style.gridTemplateColumns = "auto";
+            setCurrentPage(1);
+            handleButtonClick();
+        } else {
+            show.style.display = "none";
+            rightFilters.style.width = "5%";
+            filtersBtn.style.marginLeft = "-150px";
+            iconClose.style.display = "block";
+            iconOpen.style.display = "none";
+            curriculaPerPage = 6;
+            leftSearch.style.width = "80%";
+            curriculumGrid.style.gridTemplateColumns = "auto auto";
+            setCurrentPage(1);
+            handleButtonClick();
+        }
+
+
+    };
+
 
 
     return (
         <ThemeProvider theme={theme}>
             <div class="search">
-                <div className="left-search">
-                    {currentCurricula.length > 0 ? (
-                        currentCurricula.map((curriculum) => (
-                            <div className="curriculum-view" key={curriculum.id}>
-                                <img src={folderImg} className="folder-img" />
-                                <div className="field">
-                                    <p className="nome-cognome-professione">
-                                        {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
-                                    </p>
-                                    <br></br>
+                <div className="left-search" id="left-search">
+                    <div class="curriculum-grid" id="curriculum-grid">
+                        {currentCurricula.length > 0 ? (
+                            currentCurricula.map((curriculum) => (
+                                <div className="curriculum-view" key={curriculum.id}>
+                                    <img src={folderImg} className="folder-img" />
+                                    <div className="field">
+                                        <p className="nome-cognome-professione">
+                                            {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
+                                        </p>
+                                        <br></br>
+                                    </div>
                                 </div>
+                            ))
+                        ) : (
+                            <div className="not-found">
+                                <p>{message}</p>
                             </div>
-                        ))
-                    ) : (
-                        <div className="not-found">
-                            <p>{message}</p>
-                        </div>
-                    )}
-                    {showPagination && (
-                        <div className="indietro-1">
-                            <p className="indietro" onClick={handlePrevPage}>Indietro</p>
-                        </div>
-                    )}
-                    {showPagination && (
-                        <div className="avanti-1">
-                            <p className="avanti" onClick={handleNextPage}>Avanti</p>
-                        </div>
-                    )}
+                        )}
+                    </div>
+                    <div class="page-buttons">
+                        {showPagination && (
+                            <div className="indietro-1">
+                                <p className="indietro" onClick={handlePrevPage}>Indietro</p>
+                            </div>
+                        )}
+                        {showPagination && (
+                            <div className="avanti-1">
+                                <p className="avanti" onClick={handleNextPage}>Avanti</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div class="right-filters" id="right-filters">
                     <div class="filters-btn" id="filters-btn">
@@ -372,29 +432,4 @@ export default function Search() {
 
         </ThemeProvider>
     )
-}
-
-function showFilters() {
-    var show = document.getElementById("filters");
-    var filtersBtn = document.getElementById("filters-btn");
-    var rightFilters = document.getElementById("right-filters")
-
-    var iconClose = document.getElementById("close");
-    var iconOpen = document.getElementById("open");
-
-
-
-    if (show.style.display === "" || show.style.display === "none") {
-        show.style.display = "block";
-        rightFilters.style.width = "60%";
-        filtersBtn.style.marginLeft = "0";
-        iconClose.style.display = "none";
-        iconOpen.style.display = "block";
-    } else {
-        show.style.display = "none";
-        rightFilters.style.width = "5%";
-        filtersBtn.style.marginLeft = "-150px";
-        iconClose.style.display = "block";
-        iconOpen.style.display = "none";
-    }
 }

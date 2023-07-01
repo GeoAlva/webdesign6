@@ -9,13 +9,18 @@
 
 .search .left-search {
     float: left;
-    width: 50%;
+    width: 80%;
     height: 10%;
     align-items: center;
     justify-content: left;
     margin-left: 50px;
     margin-top: 20px;
     z-index: 0;
+}
+
+.curriculum-grid {
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
 .right-filters {
@@ -30,6 +35,7 @@
     bottom: 0;
     padding-left: 5vw;
     overflow-y: scroll;
+    overflow-x: hidden;
     z-index: 1;
 }
 
@@ -152,31 +158,30 @@ p {
     margin: 0;
 }
 
-.indietro-1 {
-    position:absolute;
+.page-buttons {
+    width: inherit;
+    margin-top: 50px;
+
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.indietro-1 {
     width: 182px;
     height: 51px;
     padding: 8px 37px 7px;
     border: 3px solid rgba(8, 122, 135, 1);
     border-radius: 30px;
     box-sizing: border-box;
-    top: 899px;
-    left: 190px;
     cursor: pointer;
 }
 
 .indietro-1:hover {
     background-color: #ecf5f6;
-  }
+}
 
 .indietro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     color: rgba(8, 122, 135, 1);
     font-size: 24px;
     line-height: 24px;
@@ -186,29 +191,19 @@ p {
 }
 
 .avanti-1 {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     width: 182px;
     height: 51px;
     padding: 8px 37px 7px;
     border: 3px solid rgba(8, 122, 135, 1);
     border-radius: 30px;
     box-sizing: border-box;
-    top: 899px;
-    left: 400px;
     cursor: pointer;
 }
 .avanti-1:hover {
     background-color: #ecf5f6;
-  }
+}
 
 .avanti {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     color: rgba(8, 122, 135, 1);
     font-size: 24px;
     line-height: 24px;
