@@ -1,13 +1,14 @@
-.curriculum{
+.curriculum {
     display: flex;
     height: 100%;
     justify-content: flex-start;
     align-items: center;
+    font-family: "Open Sans";
 }
 
-.curriculum .lowLayer{
+.curriculum .lowLayer {
     background-color: rgba(8, 122, 135, 0.08);
-    height:100%;
+    height: 100%;
     width: 100%;
     right: 0;
     left: 0;
@@ -18,20 +19,21 @@
     display: flex;
 }
 
-.lowLayer .upLayer{
+.lowLayer .upLayer {
     position: relative;
     background-color: #ffffff;
     width: 80%;
     margin-top: 120px;
     margin-bottom: 100px;
     justify-content: flex-start;
-    align-items:flex-start;
+    align-items: flex-start;
     z-index: 1;
     display: flex;
     box-shadow: 10px 10px 10px black, -10px 10px 10px black, 0 10px 10px black;
+    overflow-y: scroll;
 }
 
-.leftInfo{
+.leftInfo {
     background-color: rgba(8, 122, 135, 0.08);
     width: 27%;
     height: 100%;
@@ -41,7 +43,7 @@
     align-items: center;
 }
 
-.profile{
+.profile {
     background-color: white;
     width: 100%;
     display: flex;
@@ -50,95 +52,95 @@
     padding-bottom: 50px;
 }
 
-.profileImg{
-   margin-bottom: 10px;
-   height: 45%;
-   width: 45%;
-   align-self: center;
+.profileImg {
+    margin-bottom: 10px;
+    height: 45%;
+    width: 45%;
+    align-self: center;
 }
 
-.utilities{
+.utilities {
     text-align: center;
 }
 
-.nome_cognome{
+.nome_cognome {
     color: #000000;
     font-weight: bolder;
     font-family: Open Sans;
     font-size: larger;
 }
 
-.professione{
+.professione {
     color: #000000;
     font-family: Open Sans;
     font-size: medium;
 }
 
-.data{
+.data {
     color: #000000;
     font-family: Open Sans;
-    font-size:smaller;
+    font-size: smaller;
 }
 
-.container{
+.container {
     position: relative;
 }
 
-.dataContainer{
+.dataContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
 
-.image{
+.image {
     width: 22px;
     height: 22px;
 }
 
-.contatti{
+.contatti {
     position: absolute;
     top: -12px;
     width: 120px;
-    background-color: #087A87;
+    background-color: #087a87;
     border-radius: 12px;
-    color: #FFF;
+    color: #fff;
     text-align: center;
     font-family: Open Sans;
     font-size: medium;
 }
 
-.lingue{
+.lingue {
     width: 120px;
-    background-color: #087A87;
+    background-color: #087a87;
     border-radius: 12px;
-    color: #FFF;
+    color: #fff;
     text-align: center;
     font-family: Open Sans;
     font-size: medium;
 }
 
-.utilsData{
+.utilsData {
     display: flex;
     flex-direction: row;
     padding: 5px;
 }
 
-.utilsDescription{
+.utilsDescription {
     color: #000;
-    font-size:12px;
+    font-size: 12px;
     font-family: Open Sans;
     font-style: normal;
     margin-top: 3px;
     margin-left: 2px;
 }
 
-.sesso{
+.sesso {
     font-family: Open Sans;
     align-self: flex-end;
     margin-top: 15px;
 }
 
-.rightInfo{
+.rightInfo {
     width: 100%;
     padding-right: 30px;
     padding-left: 25px;
@@ -148,32 +150,29 @@
     flex-direction: column;
 }
 
-.section{
+.section {
     display: flex;
     flex-direction: column;
 }
 
-.icon{
+.icon {
     width: 45px;
     height: 45px;
     margin-right: 10px;
 }
 
-.titleSez{
+.titleSez {
     font-family: Open Sans;
     font-size: 32;
-    text-decoration: underline #087A87;
+    text-decoration: underline #087a87;
 }
 
-.maturità{
+.maturità {
     font-family: Open Sans;
     margin-left: 53px;
 }
 
-.altreInfo{
+.altreInfo {
     margin-right: 10px;
     font-family: Open Sans;
 }
-
-
-

@@ -31,6 +31,11 @@
     align-items: center;
 }
 
+.cardEmail {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
 .profile-page .right {
     position: absolute;
     right: 8vw;
@@ -76,7 +81,12 @@
     font-size: 32px;
 }
 
+.data {
+    margin-top: 3vh;
+}
+
 .infoGrid {
+    margin-top: 3vh;
     display: grid;
     grid-template-columns: auto auto;
 }

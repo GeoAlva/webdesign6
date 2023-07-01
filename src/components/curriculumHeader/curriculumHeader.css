@@ -1,0 +1,15 @@
+.logo {
+    padding-top: 20px;
+}
+
+.curriculumButtons {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .header {
+        background-color: #ffffff;
+    }
+}

@@ -5,16 +5,29 @@ import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import Search from './pages/search/search';
 import Profile from './pages/profile/profile';
+import CurriculumHeader from './components/curriculumHeader/curriculumHeader';
 import Curriculum from './pages/curriculum/curriculum';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 //
 function App() {
+  function header() {
+    if (window.location.pathname === '/curriculum') {
+      return (<header className="App-header">
+        <CurriculumHeader />
+      </header>)
+    }
+
+    return (
+      <header className="App-header">
+        <AppHeader />
+      </header>)
+  }
+
   return (
     <BrowserRouter>
+
       <div className="App">
-        <header className="App-header">
-          <AppHeader />
-        </header>
+        {header()}
         <Routes>
           <Route exact index element={<Home />} />
           <Route exact path='/' element={<Home />} />
