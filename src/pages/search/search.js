@@ -1,5 +1,6 @@
 import "./search.css"
 import Radio from '@mui/material/Radio';
+import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { ThemeProvider } from "@emotion/react";
@@ -264,6 +265,7 @@ export default function Search() {
         if (show.style.display === "" || show.style.display === "none") {
             show.style.display = "block";
             rightFilters.style.width = "55%";
+            rightFilters.style.overflowY = "scroll";
             filtersBtn.style.marginLeft = "0";
             iconClose.style.display = "none";
             iconOpen.style.display = "block";
@@ -275,6 +277,7 @@ export default function Search() {
         } else {
             show.style.display = "none";
             rightFilters.style.width = "5%";
+            rightFilters.style.overflowY = "none";
             filtersBtn.style.marginLeft = "-150px";
             iconClose.style.display = "block";
             iconOpen.style.display = "none";
@@ -357,6 +360,18 @@ export default function Search() {
                             </div>
 
                             <h5>Località</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={8} direction="row">
+                                        <Grid item xs={6} >
+                                            <TextField label="Città" variant="standard" className="loc" />
+                                        </Grid>
+                                        <Grid item xs={6} >
+                                            <TextField label="Sigla Provinciale" variant="standard" className="loc" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
 
                             <h5>Tipo di lavoro</h5>
                             <div class="radioButtons">
@@ -437,6 +452,6 @@ export default function Search() {
                 </div >
             </div>
 
-        </ThemeProvider>
+        </ThemeProvider >
     )
 }
