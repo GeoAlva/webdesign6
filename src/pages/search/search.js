@@ -263,7 +263,7 @@ export default function Search() {
 
         if (show.style.display === "" || show.style.display === "none") {
             show.style.display = "block";
-            rightFilters.style.width = "60%";
+            rightFilters.style.width = "55%";
             filtersBtn.style.marginLeft = "0";
             iconClose.style.display = "none";
             iconOpen.style.display = "block";
@@ -317,6 +317,10 @@ export default function Search() {
                                 ))}</p>
                             </div>
                         )}
+
+
+                    </div>
+                    <div className="page-buttons">
                         {showPagination && (
                             <div className="indietro-1" onClick={handlePrevPage}>
                                 <p className="indietro" >Indietro</p>

@@ -19,7 +19,12 @@
 }
 
 .curriculum-grid {
+    margin-top: 50px;
     display: grid;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+    column-gap: 100px;
     grid-template-columns: auto auto;
 }
 
@@ -106,14 +111,9 @@ p {
 .curriculum-view {
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 516px;
+    width: 480px;
     height: 68px;
-    box-sizing: border-box;
-    left: 100px;
-    margin-top: 40px;
+
     cursor: pointer;
 }
 
@@ -157,12 +157,14 @@ p {
 }
 
 .page-buttons {
-    width: inherit;
-    margin-top: 50px;
-
-    display: flex;
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: auto auto;
     justify-content: center;
     align-items: center;
+    row-gap: 40px;
+    column-gap: 100px;
 }
 
 .indietro-1 {
