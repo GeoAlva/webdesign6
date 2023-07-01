@@ -205,7 +205,7 @@ export default function Search() {
             setCurriculumData(filteredData);
 
             if (filteredData.length === 0) {
-                setMessage("NOT FOUND");
+                setMessage("Ci dispiace, la ricerca\n non ha prodotto risultati");
             } else {
                 setMessage("");
             }
@@ -252,7 +252,12 @@ export default function Search() {
                         ))
                     ) : (
                         <div className="not-found">
-                            <p>{message}</p>
+                             <p>{message.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      <br />
+    </React.Fragment>
+  ))}</p>
                         </div>
                     )}
                     {showPagination && (
