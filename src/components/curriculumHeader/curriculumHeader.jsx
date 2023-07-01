@@ -6,6 +6,8 @@ import Button from "@mui/material/Button"
 import "./curriculumHeader.css"
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const theme = createTheme({
     palette: {
@@ -17,6 +19,16 @@ const theme = createTheme({
 });
 
 function CurriculumHeader() {
+    const handleDownloadPDF = () => {
+      const upLayerDiv = document.querySelector(".upLayer");
+  
+      html2canvas(upLayerDiv).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, "PNG", 0, 0);
+        pdf.save("curriculum.pdf");
+      });
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -45,7 +57,7 @@ function CurriculumHeader() {
                             }}
                         >Condividi via e-mail</Button>
 
-                        <Button variant="outlined"
+                        <Button variant="outlined" onClick={handleDownloadPDF}
                             sx={{
                                 width: "max-content",
                                 mb: "30px",
