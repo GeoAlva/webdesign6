@@ -39,6 +39,7 @@ export default function Search() {
     const [curriculumData, setCurriculumData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const curriculaPerPage = 6;
+    const [isFirstPage, setIsFirstPage] = useState(true);
     const [radioButtons, setRadioButtons] = useState([
         { id: 'qualsiasiMomento', checked: false },
         { id: 'ultime24Ore', checked: false },
@@ -236,13 +237,17 @@ export default function Search() {
     const indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
     const currentCurricula = curriculumData.slice(indexOfFirstCurriculum, indexOfLastCurriculum);
 
-    const handlePrevPage = () => {
-        setCurrentPage((prevPage) => prevPage - 1);
+    const handlePrevPage = () => { //se sono nella prima pagina, allora non faccio niente
+        if (currentPage > 1) {
+            setCurrentPage((prevPage) => prevPage - 1);
+        }
     };
 
-    const handleNextPage = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
+    const handleNextPage = () => { //se sono nell'ultima pagina, allora non faccio nada
+        if (currentPage < Math.ceil(curriculumData.length / curriculaPerPage)) {
+          setCurrentPage((prevPage) => prevPage + 1);
+        }
+      };
 
 
     return (
