@@ -26,6 +26,8 @@ const theme = createTheme({
 export default function Search() {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showPagination, setShowPagination] = useState(true);
+    const [citta, setCitta] = useState("");
+    const [provincia, setProvincia] = useState("");
 
     var show = document.getElementById("filters");
     let curriculaPerPage = 12;
@@ -205,6 +207,14 @@ export default function Search() {
             filterConditions.push('"Scienze politiche" = {ambitoLaurea}');
         }
 
+        if(citta !== ""){
+            filterConditions.push(`{cittaResidenza} = '${citta}'`);
+        }
+
+        if(provincia !== ""){
+            filterConditions.push(`{provinciaResidenza} = '${provincia}'`);
+        }
+
         const filteredOptions = {
             filterByFormula: `AND(${filterConditions.join(',')})`, //in questo modo si concatenano più filtri: equivale a una sorta di &&
         };
@@ -242,7 +252,7 @@ export default function Search() {
 
     useEffect(() => {
         filterCurriculum();
-    }, [selectedFilters]);
+    }, [selectedFilters, citta, provincia]);
 
     let indexOfLastCurriculum = currentPage * curriculaPerPage;
     let indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
@@ -300,6 +310,14 @@ export default function Search() {
 
 
     };
+
+    const handleCittaChange = (event) => {
+        setCitta(event.target.value);
+      };
+
+      const handleProvinciaChange = (event) => {
+        setProvincia(event.target.value);
+      };
 
 
 
@@ -374,10 +392,10 @@ export default function Search() {
                                 <FormControl>
                                     <Grid container spacing={8} direction="row">
                                         <Grid item xs={6} >
-                                            <TextField label="Città" variant="standard" className="loc" />
+                                            <TextField label="Città" value={citta} onChange={handleCittaChange} variant="standard" className="loc" />
                                         </Grid>
                                         <Grid item xs={6} >
-                                            <TextField label="Sigla Provinciale" variant="standard" className="loc" />
+                                            <TextField label="Sigla Provinciale" value={provincia} onChange={handleProvinciaChange} variant="standard" className="loc" />
                                         </Grid>
                                     </Grid>
                                 </FormControl>
