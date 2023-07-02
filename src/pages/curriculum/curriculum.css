@@ -30,7 +30,14 @@
     z-index: 1;
     display: flex;
     box-shadow: 5px 5px 5px #0000000a, -5px 5px 5px #0000000a, 0 8px 8px #0003;
-    overflow-y: scroll;
+}
+
+hr {
+    color: #087a87;
+    background-color: #087a87;
+    height: 2px;
+    margin: -20px 0 30px 55px;
+    width: 85%;
 }
 
 .leftInfo {
@@ -120,14 +127,14 @@
     font-size: medium;
 }
 
-.lingue{
+.lingue {
     text-align: center;
     font-family: Open Sans;
     font-size: small;
     margin-left: 25px;
 }
 
-.lingue.comp{
+.lingue.comp {
     margin-left: 0;
 }
 
@@ -176,7 +183,7 @@
 .titleSez {
     font-family: Open Sans;
     font-size: 32;
-    text-decoration: underline #087a87;
+    text-decoration: none;
 }
 
 .maturità {
