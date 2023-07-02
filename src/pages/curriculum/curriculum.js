@@ -108,6 +108,7 @@ export default function Curriculum() {
                     provUni: record.fields.provinciaUniversita,
                     statoUni: record.fields.statoUniversita,
                     corso: record.fields.corsoLaurea,
+                    votoLaurea: record.fields.votazioneLaurea,
 
                     altriStudi2: record.fields.altriStudi2,
                     studi2: record.fields.studi2,
@@ -457,7 +458,7 @@ export default function Curriculum() {
                                                 <p>{curriculum.ambito}</p>
                                                 <p>{curriculum.nomeUni}</p>
                                                 <p>{curriculum.cittaUni}({curriculum.provUni}) , {curriculum.statoUni}</p>
-                                                <p>Valutazione: {curriculum.votoLiceo}/100</p>
+                                                <p>Valutazione: {curriculum.votoLaurea}/110</p>
                                                 <br></br>
                                             </div>
                                         ) : (<div></div>))
@@ -565,9 +566,8 @@ export default function Curriculum() {
                                     <h1 className="titleSez"><img src="images/lavoro.png" class="icon"></img>Esperienze lavorative</h1>
                                     <hr />
                                     <div>
-
-                                        {curriculumData.esp1 = "Sì" ? (
-                                            curriculumData.map((curriculum) => (
+                                        {curriculumData.map((curriculum) =>
+                                            curriculum.esp1 == "Sì" ? (
                                                 <div class="maturità">
 
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione1}</p>
@@ -575,40 +575,41 @@ export default function Curriculum() {
                                                     <p>{curriculum.cittaEsp1} , {curriculum.statoEsp1}</p>
                                                     <br></br>
                                                 </div>
-                                            ))) : (<div></div>)}
+                                            ) : (<div></div>))
+                                        }
 
-                                        {curriculumData.esp2 = "Sì" ? (
-                                            curriculumData.map((curriculum) => (
+
+                                        {curriculumData.map((curriculum) =>
+                                            curriculum.esp2 == "Sì" ? (
                                                 <div class="maturità">
-
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione2}</p>
                                                     <p>{curriculum.datore2}</p>
                                                     <p>{curriculum.cittaEsp2} , {curriculum.statoEsp2}</p>
                                                     <br></br>
                                                 </div>
-                                            ))) : (<div></div>)}
+                                            ) : (<div></div>))
+                                        }
 
-                                        {curriculumData.esp3 = "Sì" ? (
-                                            curriculumData.map((curriculum) => (
+                                        {curriculumData.map((curriculum) =>
+                                            curriculum.esp3 == "Sì" ? (
                                                 <div class="maturità">
-
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione3}</p>
                                                     <p>{curriculum.datore3}</p>
                                                     <p>{curriculum.cittaEsp3} , {curriculum.statoEsp3}</p>
                                                     <br></br>
                                                 </div>
-                                            ))) : (<div></div>)}
+                                            ) : (<div></div>))
+                                        }
 
-                                        {curriculumData.esp4 = "Sì" ? (
-                                            curriculumData.map((curriculum) => (
+                                        {curriculumData.map((curriculum) =>
+                                            curriculum.esp4 == "Sì" ? (
                                                 <div class="maturità">
-
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione4}</p>
                                                     <p>{curriculum.datore4}</p>
                                                     <p>{curriculum.cittaEsp4} , {curriculum.statoEsp4}</p>
-
                                                 </div>
-                                            ))) : (<div></div>)}
+                                            ) : (<div></div>))
+                                        }
 
                                     </div>
                                 </div>
