@@ -1,5 +1,6 @@
 import "./search.css"
 import Radio from '@mui/material/Radio';
+import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { ThemeProvider } from "@emotion/react";
@@ -25,6 +26,8 @@ const theme = createTheme({
 export default function Search() {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showPagination, setShowPagination] = useState(true);
+    const [citta, setCitta] = useState("");
+    const [provincia, setProvincia] = useState("");
 
     var show = document.getElementById("filters");
     let curriculaPerPage = 12;
@@ -69,7 +72,7 @@ export default function Search() {
         { id: 'scienzeMatematiche', checked: false },//ok
         { id: 'altro(corsoLaurea)', checked: false },//ok
         { id: 'economia', checked: false },//ok
-        { id: 'lingueECultureModerne', checked: false },//ok
+        { id: 'lingueECultureModerne', checked: false },//ok 
         { id: 'scienzeDellaFormazione', checked: false },//ok
         { id: 'scienzePolitiche', checked: false },//ok
     ]);
@@ -116,15 +119,25 @@ export default function Search() {
             );
         }
 
-        if (selectedFilters.includes('partTime')) filterConditions.push('"Part time" = {tipoLavoro}');
+        if (selectedFilters.includes('partTime')) {
+            filterConditions.push('"Part time" = {tipoLavoro}');
+        }
 
-        if (selectedFilters.includes('fullTime')) filterConditions.push('"Full time" = {tipoLavoro}');
+        if (selectedFilters.includes('fullTime')) {
+            filterConditions.push('"Full time" = {tipoLavoro}');
+        }
 
-        if (selectedFilters.includes('stage')) filterConditions.push('"Stage" = {tipoLavoro}');
+        if (selectedFilters.includes('stage')) {
+            filterConditions.push('"Stage" = {tipoLavoro}');
+        }
 
-        if (selectedFilters.includes('inSede')) filterConditions.push('"In sede" = {posizioneLavoro}');
+        if (selectedFilters.includes('inSede')) {
+            filterConditions.push('"In sede" = {posizioneLavoro}');
+        }
 
-        if (selectedFilters.includes('sedeERemoto')) filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
+        if (selectedFilters.includes('sedeERemoto')) {
+            filterConditions.push('"In sede e da remoto" = {posizioneLavoro}');
+        }
 
         if (selectedFilters.includes('daRemoto')) {
             filterConditions.push('"Da remoto" = {posizioneLavoro}');
@@ -159,39 +172,47 @@ export default function Search() {
         }
 
         if (selectedFilters.includes('architetturaEDesign')) {
-            filterConditions.push('"Architettura / Design" = {tipoLavoro}');
+            filterConditions.push('"Architettura / Design" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('giurisprudenza')) {
-            filterConditions.push('"Giurisprudenza" = {tipoLavoro}');
+            filterConditions.push('"Giurisprudenza" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('medicinaEChirurgia')) {
-            filterConditions.push('"Medicina e chirurgia" = {tipoLavoro}');
+            filterConditions.push('"Medicina e chirurgia" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('scienzeMatematiche')) {
-            filterConditions.push('"Scienze matematiche e fisiche" = {posizioneLavoro}');
+            filterConditions.push('"Scienze matematiche e fisiche" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('altro(corsoLaurea)')) {
-            filterConditions.push('"Altro" = {posizioneLavoro}');
+            filterConditions.push('"Altro" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('economia')) {
-            filterConditions.push('"Economia" = {posizioneLavoro}');
+            filterConditions.push('"Economia" = {ambitoLaurea}');
         }
 
-        if (selectedFilters.includes('lingueEcultureModerne')) {
-            filterConditions.push('"Lingue e culture moderne" = {tipoLaurea}');
+        if (selectedFilters.includes('lingueECultureModerne')) {
+            filterConditions.push('"Lingue e culture moderne" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('scienzeDellaFormazione')) {
-            filterConditions.push('"Scienze della formazione" = {tipoLaurea}');
+            filterConditions.push('"Scienze della formazione" = {ambitoLaurea}');
         }
 
         if (selectedFilters.includes('scienzePolitiche')) {
-            filterConditions.push('"Scienze politiche" = {tipoLaurea}');
+            filterConditions.push('"Scienze politiche" = {ambitoLaurea}');
+        }
+
+        if(citta !== ""){
+            filterConditions.push(`{cittaResidenza} = '${citta}'`);
+        }
+
+        if(provincia !== ""){
+            filterConditions.push(`{provinciaResidenza} = '${provincia}'`);
         }
 
         const filteredOptions = {
@@ -231,7 +252,7 @@ export default function Search() {
 
     useEffect(() => {
         filterCurriculum();
-    }, [selectedFilters]);
+    }, [selectedFilters, citta, provincia]);
 
     let indexOfLastCurriculum = currentPage * curriculaPerPage;
     let indexOfFirstCurriculum = indexOfLastCurriculum - curriculaPerPage;
@@ -264,6 +285,7 @@ export default function Search() {
         if (show.style.display === "" || show.style.display === "none") {
             show.style.display = "block";
             rightFilters.style.width = "55%";
+            rightFilters.style.overflowY = "scroll";
             filtersBtn.style.marginLeft = "0";
             iconClose.style.display = "none";
             iconOpen.style.display = "block";
@@ -275,6 +297,7 @@ export default function Search() {
         } else {
             show.style.display = "none";
             rightFilters.style.width = "5%";
+            rightFilters.style.overflowY = "none";
             filtersBtn.style.marginLeft = "-150px";
             iconClose.style.display = "block";
             iconOpen.style.display = "none";
@@ -287,6 +310,14 @@ export default function Search() {
 
 
     };
+
+    const handleCittaChange = (event) => {
+        setCitta(event.target.value);
+      };
+
+      const handleProvinciaChange = (event) => {
+        setProvincia(event.target.value);
+      };
 
 
 
@@ -357,6 +388,18 @@ export default function Search() {
                             </div>
 
                             <h5>Località</h5>
+                            <div class="radioButtons">
+                                <FormControl>
+                                    <Grid container spacing={8} direction="row">
+                                        <Grid item xs={6} >
+                                            <TextField label="Città" value={citta} onChange={handleCittaChange} variant="standard" className="loc" />
+                                        </Grid>
+                                        <Grid item xs={6} >
+                                            <TextField label="Sigla Provinciale" value={provincia} onChange={handleProvinciaChange} variant="standard" className="loc" />
+                                        </Grid>
+                                    </Grid>
+                                </FormControl>
+                            </div>
 
                             <h5>Tipo di lavoro</h5>
                             <div class="radioButtons">
@@ -437,6 +480,6 @@ export default function Search() {
                 </div >
             </div>
 
-        </ThemeProvider>
+        </ThemeProvider >
     )
 }

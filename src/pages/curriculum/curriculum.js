@@ -14,7 +14,6 @@ export default function Curriculum(){
 
     const cookie = new Cookies();
     const email= cookie.get('email');
-
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
 
@@ -32,7 +31,6 @@ export default function Curriculum(){
             console.error('Errore durante il recupero dei curriculum filtrati:', err);
             return;
           }
-      
           const filteredData = records.map((record) => {
             
             return {
@@ -62,6 +60,7 @@ export default function Curriculum(){
               altroSocial4: record.fields.altroSocial4,
               accountSocial4: record.fields.accountSocial4,
 
+              foto: record.fields.foto,
               sesso: record.fields.sesso,
               nazionalità: record.fields.nazionalita,
 
@@ -231,7 +230,6 @@ export default function Curriculum(){
           });
       
           setCurriculumData(filteredData);
-      
           if (filteredData.length === 0) {
             setMessage("NOT FOUND");
           } else {
@@ -251,7 +249,18 @@ export default function Curriculum(){
                 
                     <div class="leftInfo">
                         <div className="profile">
-                            <img className="profileImg" src={profilePhoto} alt="Profile"></img>
+                        {
+                        curriculumData.length === 0 ? (
+                        <img className="profileImg" src={profilePhoto} alt="Profile" />
+                        ) : null
+                        }
+                        {curriculumData.map((curriculum) => {
+                          return curriculum.foto != null ? (
+                            <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" />
+                            ) : (
+                            <img className="profileImg" src={profilePhoto} alt="Profile" />
+                            );
+                        })}
                             {curriculumData.map((curriculum) => (
                             <div class="utilities">
                                 <p className="nome_cognome">{curriculum.nome} {curriculum.cognome}</p>

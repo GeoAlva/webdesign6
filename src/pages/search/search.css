@@ -75,6 +75,10 @@ span {
     margin-left: -150px;
 }
 
+.loc {
+    z-index: 5;
+}
+
 .filtri-scritta {
     position: fixed;
     font-family: "Open Sans", sans-serif;
