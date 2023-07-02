@@ -40,7 +40,6 @@ function CurriculumHeader() {
                         <Button variant="outlined"
                             sx={{
                                 width: "max-content",
-                                mb: "30px",
                                 px: 3,
                                 borderRadius: '30px',
                                 fontFamily: 'Open Sans',
@@ -48,7 +47,7 @@ function CurriculumHeader() {
                                 fontSize: "15px",
                                 textTransform: 'none',
                                 border: "3px solid #008080",
-                                backgroundColor: 'transparent',
+                                backgroundColor: 'rgb(236, 245, 246)',
                                 color: '#008080',
                                 '&:hover': {
                                     color: '#008080',
@@ -60,7 +59,6 @@ function CurriculumHeader() {
                         <Button variant="outlined" onClick={handleDownloadPDF}
                             sx={{
                                 width: "max-content",
-                                mb: "30px",
                                 px: 3,
                                 borderRadius: '30px',
                                 fontFamily: 'Open Sans',
@@ -68,7 +66,7 @@ function CurriculumHeader() {
                                 fontSize: "15px",
                                 textTransform: 'none',
                                 border: "3px solid #008080",
-                                backgroundColor: 'transparent',
+                                backgroundColor: 'rgb(236, 245, 246)',
                                 color: '#008080',
                                 '&:hover': {
                                     color: '#008080',
@@ -81,7 +79,6 @@ function CurriculumHeader() {
                             href="/profile"
                             sx={{
                                 width: "max-content",
-                                mb: "30px",
                                 px: 3,
                                 borderRadius: '30px',
                                 fontFamily: 'Open Sans',
@@ -89,7 +86,7 @@ function CurriculumHeader() {
                                 fontSize: "15px",
                                 textTransform: 'none',
                                 border: "3px solid #008080",
-                                backgroundColor: 'transparent',
+                                backgroundColor: 'rgb(236, 245, 246)',
                                 color: '#008080',
                                 '&:hover': {
                                     color: '#008080',
