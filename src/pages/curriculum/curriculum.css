@@ -90,6 +90,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    align-items: center;
 }
 
 .image {
@@ -109,7 +110,7 @@
     font-size: medium;
 }
 
-.lingue {
+.lingueTitle {
     width: 120px;
     background-color: #087a87;
     border-radius: 12px;
@@ -117,6 +118,17 @@
     text-align: center;
     font-family: Open Sans;
     font-size: medium;
+}
+
+.lingue{
+    text-align: center;
+    font-family: Open Sans;
+    font-size: small;
+    margin-left: 25px;
+}
+
+.lingue.comp{
+    margin-left: 0;
 }
 
 .utilsData {

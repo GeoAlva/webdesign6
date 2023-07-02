@@ -42,23 +42,34 @@ export default function Curriculum(){
               professione: record.fields.professione,
               siglaProvinciale: record.fields.provinciaResidenza,
               dataNascita : record.fields.dataNascita,
-              statoRes: record.fields['Stato residenza'],
-              indirizzo: record.fields['Indirizzo residenza'],
+              statoRes: record.fields.statoResidenza,
+              indirizzo: record.fields.IndirizzoResidenza,
               CAP: record.fields.CAPresidenza,
-              cittàRes: record.fields['Città residenza'],
+              cittàRes: record.fields.cittaResidenza,
+              sitoWeb: record.fields.sitoWebPersonale,
               tel: record.fields.Telefono,
+
               fb: record.fields.Facebook,
+              twitter: record.fields.Twitter,
               ig: record.fields.Instagram,
               yt: record.fields.Youtube,
-              sitoWeb: record.fields.sitoWebPersonale,
+              altroSocial1: record.fields.altroSocial1,
+              accountSocial1: record.fields.accountSocial1,
+              altroSocial2: record.fields.altroSocial2,
+              accountSocial2: record.fields.accountSocial2,
+              altroSocial3: record.fields.altroSocial3,
+              accountSocial3: record.fields.accountSocial3,
+              altroSocial4: record.fields.altroSocial4,
+              accountSocial4: record.fields.accountSocial4,
+
               sesso: record.fields.sesso,
               nazionalità: record.fields.nazionalita,
 
-              madrelingua:record.fields.madrelingua,
+              linguaMadre:record.fields.madrelingua,
               lingua1:record.fields.lingua1,
               valLingua1:record.fields.valLingua1,
               lingua2:record.fields.lingua2,
-              valLingua3:record.fields.valLingua2,
+              valLingua2:record.fields.valLingua2,
               lingua3:record.fields.lingua3,
               valLingua3:record.fields.valLingua3,
               lingua4:record.fields.lingua4,
@@ -104,6 +115,9 @@ export default function Curriculum(){
               nomeCorsoStudi2: record.fields.nomeCorsoStudi2,
               votoStudi2: record.fields.votazioneStudi2,
               annoFineStudi2: record.fields.annoFineStudi2,
+              tipoAltriStudi2: record.fields.tipoAltriStudi2,
+              annoInizioStudi2: record.fields.annoInizioStudi2,
+              annoFineStudi2: record.fields.annoFineStudi2,
 
               altriStudi3: record.fields.altriStudi3,
               studi3: record.fields.studi3,
@@ -112,6 +126,9 @@ export default function Curriculum(){
               nomeCorsoStudi3: record.fields.nomeCorsoStudi3,
               votoStudi3: record.fields.votazioneStudi3,
               annoFineStudi3: record.fields.annoFineStudi3,
+              tipoAltriStudi3: record.fields.tipoAltriStudi3,
+              annoInizioStudi3: record.fields.annoInizioStudi3,
+              annoFineStudi3: record.fields.annoFineStudi3,
 
               altriStudi4: record.fields.altriStudi4,
               studi4: record.fields.studi4,
@@ -119,6 +136,9 @@ export default function Curriculum(){
               statoIstitutoStudi4: record.fields.statoIstitutoStudi4,
               nomeCorsoStudi4: record.fields.nomeCorsoStudi4,
               votoStudi4: record.fields.votazioneStudi4,
+              annoFineStudi4: record.fields.annoFineStudi4,
+              tipoAltriStudi4: record.fields.tipoAltriStudi4,
+              annoInizioStudi4: record.fields.annoInizioStudi4,
               annoFineStudi4: record.fields.annoFineStudi4,
 
               esp1: record.fields.esp1,
@@ -257,21 +277,93 @@ export default function Curriculum(){
                                     <div class="utilsData"><LanguageIcon sx={{color:"#087A87"}}></LanguageIcon><p class="utilsDescription">{curriculum.sitoWeb}</p></div>
                             </div>
                             ))}
-                            <div>
-                                <p className="lingue" style={{marginLeft:"10px"}}>Lingue</p>
-                                <div></div>
+                            <div className="dataContainer">
+                                <p className="lingueTitle" style={{marginLeft:"10px"}}>Lingue</p>
+                                
+                                <div style={{display:"flex",marginTop:"10px"}}>
+                                
+                                    <div style={{display:"flex",flexDirection:"column"}}>
+                                        {curriculumData.linguaMadre !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue">(madrelingua)</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua1 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua1}</p><p class="lingue">{curriculum.valLingua1}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua2 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua2}</p><p class="lingue">{curriculum.valLingua2}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua3 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua3}</p><p class="lingue">{curriculum.valLingua3}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua4 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua4}</p><p class="lingue">{curriculum.valLingua4}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua5 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua5}</p><p class="lingue">{curriculum.valLingua5}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua6 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua6}</p><p class="lingue">{curriculum.valLingua6}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua7 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua7}</p><p class="lingue">{curriculum.valLingua7}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua8 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua8}</p><p class="lingue">{curriculum.valLingua8}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua9 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua9}</p><p class="lingue">{curriculum.valLingua9}</p></div>
+                                        ))) : (<div></div>)}
+                                        {curriculumData.lingua10 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua10}</p><p class="lingue">{curriculum.valLingua10}</p></div>
+                                        ))) : (<div></div>)}
+                                    </div>
+
+                                    <br></br>
+                                </div>
                             </div>
                             {curriculumData.map((curriculum) => (
                             <div className="dataContainer">
-                                <p className="lingue">Social</p>
+                                <p className="lingueTitle">Social</p>
+                                <br></br>
                                 <div class="utilsData"><img src="images/facebook.png" class="image"></img><p class="utilsDescription">{curriculum.fb}</p></div>
-                                <div class="utilsData"><img src="images/twitter.png" class="image"></img><p class="utilsDescription">{curriculum.fb}</p></div>
+                                <div class="utilsData"><img src="images/twitter.png" class="image"></img><p class="utilsDescription">{curriculum.twitter}</p></div>
                                 <div class="utilsData"><img src="images/instagram.png" class="image"></img><p class="utilsDescription">{curriculum.ig}</p></div>
                                 <div class="utilsData"><img src="images/youtube.png" class="image"></img><p class="utilsDescription">{curriculum.yt}</p></div>
+                                {curriculumData.altroSocial1 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="utilsDescription" style={{marginRight:"10px"}}>{curriculum.altroSocial1}</p><p class="utilsDescription">{curriculum.accountSocial1}</p></div>
+                                ))) : (<div></div>)}
+                                {curriculumData.altroSocial2 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="utilsDescription" style={{marginRight:"10px"}}>{curriculum.altroSocial2}</p><p class="utilsDescription">{curriculum.accountSocial2}</p></div>
+                                ))) : (<div></div>)}
+                                {curriculumData.altroSocial3 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="utilsDescription" style={{marginRight:"10px"}}>{curriculum.altroSocial3}</p><p class="utilsDescription">{curriculum.accountSocial3}</p></div>
+                                ))) : (<div></div>)}
+                                {curriculumData.altroSocial4 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="utilsDescription" style={{marginRight:"10px"}}>{curriculum.altroSocial4}</p><p class="utilsDescription">{curriculum.accountSocial4}</p></div>
+                                ))) : (<div></div>)}
                             </div>
                             ))}
-                            <div>
-                                <p className="lingue" style={{marginLeft:"10px"}}>Hobby</p>
+                            <div className="dataContainer">
+                                <p className="lingueTitle">Hobby</p>
+                                {curriculumData.hobby !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.hobby}</p></div>
+                                ))) : (<div></div>)}
                             </div>
                         </div>
                     </div>
@@ -294,6 +386,7 @@ export default function Curriculum(){
                                             <p style={{fontWeight:"bold"}}>{curriculum.studi4}</p>
                                             <p>{curriculum.nomeIstitutoStudi4}</p>
                                             <p>{curriculum.nomeCorsoStudi4}</p>
+                                            <p>{curriculum.tipoAltriStudi4}</p>
                                             <p>Valutazione: {curriculum.votoStudi4}</p>
                                             <p>{curriculum.statoIstitutoStudi4}</p>
                                             <br></br>
@@ -307,6 +400,7 @@ export default function Curriculum(){
                                             <p style={{fontWeight:"bold"}}>{curriculum.studi3}</p>
                                             <p>{curriculum.nomeIstitutoStudi3}</p>
                                             <p>{curriculum.nomeCorsoStudi3}</p>
+                                            <p>{curriculum.tipoAltriStudi3}</p>
                                             <p>Valutazione: {curriculum.votoStudi3}</p>
                                             <p>{curriculum.statoIstitutoStudi3}</p>
                                             <br></br>
@@ -320,13 +414,14 @@ export default function Curriculum(){
                                             <p style={{fontWeight:"bold"}}>{curriculum.studi2}</p>
                                             <p>{curriculum.nomeIstitutoStudi2}</p>
                                             <p>{curriculum.nomeCorsoStudi2}</p>
+                                            <p>{curriculum.tipoAltriStudi2}</p>
                                             <p>Valutazione: {curriculum.votoStudi2}</p>
                                             <p>{curriculum.statoIstitutoStudi2}</p>
                                             <br></br>
                                         </div>
                                     ))) : (<div></div>)}
 
-                                    {curriculumData.laurea != "No" ? (
+                                    {curriculumData.laurea !== "No" ? (
                                     curriculumData.map((curriculum) => (
                                         <div class="maturità">
                                             
@@ -358,15 +453,79 @@ export default function Curriculum(){
                             {curriculumData.map((curriculum) => (
                              <div class="section">
                                 <h1 className="titleSez"><img src="images/competenze.png" class="icon"></img>Competenze</h1>
-                                <div>
+                                <div class="maturità">
 
-                                    <div class="maturità">
-                                        <p style={{fontWeight:"bold"}}>Diploma di maturità</p>
-                                        <p>{curriculum.liceo}</p>
-                                        <p>{curriculum.provinciaLiceo} , {curriculum.statoLiceo}</p>
-                                        <p>Valutazione: {curriculum.votoLiceo}/100</p>
+                                    <p style={{fontWeight:"bold",fontFamily:"Open Sans"}}>Informatiche</p>
+                                    <div style={{display:"flex",flexDirection:"row"}}>
+                                        
+                                        <div style={{display:"flex",flexDirection:"column"}}>
+
+                                            {curriculumData.compDigitale1 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale1}</p><p class="lingue">{curriculum.valCompDigitale1}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale2 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale2}</p><p class="lingue">{curriculum.valCompDigitale2}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale3 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale3}</p><p class="lingue">{curriculum.valCompDigitale3}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale4 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale4}</p><p class="lingue">{curriculum.valCompDigitale4}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale5 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale5}</p><p class="lingue">{curriculum.valCompDigitale5}</p></div>
+                                            ))) : (<div></div>)}
+
+                                        </div>
+                                        <div style={{display:"flex",flexDirection:"column"}}>
+
+                                            {curriculumData.compDigitale6 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale6}</p><p class="lingue">{curriculum.valCompDigitale6}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale7 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale7}</p><p class="lingue">{curriculum.valCompDigitale7}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale8 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale8}</p><p class="lingue">{curriculum.valCompDigitale8}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale9 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale9}</p><p class="lingue">{curriculum.valCompDigitale9}</p></div>
+                                            ))) : (<div></div>)}
+                                            {curriculumData.compDigitale10 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale10}</p><p class="lingue">{curriculum.valCompDigitale10}</p></div>
+                                            ))) : (<div></div>)}
+
+                                        </div>
                                     </div>
+                                    
+                                    {curriculumData.competenzeComunicative !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div>
+                                                <br></br>
+                                                <p style={{fontWeight:"bold",fontFamily:"Open Sans"}}>Comunicative</p>
+                                                <p class="comp">{curriculum.competenzeComunicative}</p>
+                                            </div>
+                                        ))) : (<div></div>)}
+                                    
 
+                                    {curriculumData.altreCompetenze !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div>
+                                                <br></br>
+                                                <p style={{fontWeight:"bold",fontFamily:"Open Sans"}}>Altre competenze</p>
+                                                <p class="comp">{curriculum.altreCompetenze}</p>
+                                            </div>
+                                        ))) : (<div></div>)}
                                 </div>
                             </div>
                             ))}
@@ -428,13 +587,42 @@ export default function Curriculum(){
                                 <h1 className="titleSez"><img src="images/esp-extra.png" class="icon"></img>Esperienze extra lavorative</h1>
                                 <div>
                                     
-                                    <div class="maturità">
-                                        <p style={{fontWeight:"bold"}}>Diploma di maturità</p>
-                                        <p>{curriculum.liceo}</p>
-                                        <p>{curriculum.provinciaLiceo} , {curriculum.statoLiceo}</p>
-                                        <p>Valutazione: {curriculum.votoLiceo}/100</p>
-                                    </div>
-                                    <br></br>
+                                    {curriculumData.espExtra1 = "Sì" ? (
+                                    curriculumData.map((curriculum) => (
+                                        <div class="maturità">
+                                            
+                                            <p style={{fontWeight:"bold"}}>{curriculum.tipoExtra1}</p>
+                                            <p>{curriculum.descrizioneExtra1}</p>
+                                            
+                                        </div>
+                                    ))) : (<div></div>)}
+                                    {curriculumData.espExtra2 = "Sì" ? (
+                                    curriculumData.map((curriculum) => (
+                                        <div class="maturità">
+                                            
+                                            <p style={{fontWeight:"bold"}}>{curriculum.tipoExtra2}</p>
+                                            <p>{curriculum.descrizioneExtra2}</p>
+                                            
+                                        </div>
+                                    ))) : (<div></div>)}
+                                    {curriculumData.espExtra3 = "Sì" ? (
+                                    curriculumData.map((curriculum) => (
+                                        <div class="maturità">
+                                            
+                                            <p style={{fontWeight:"bold"}}>{curriculum.tipoExtra3}</p>
+                                            <p>{curriculum.descrizioneExtra3}</p>
+                                            
+                                        </div>
+                                    ))) : (<div></div>)}
+                                    {curriculumData.espExtra4 = "Sì" ? (
+                                    curriculumData.map((curriculum) => (
+                                        <div class="maturità">
+                                            
+                                            <p style={{fontWeight:"bold"}}>{curriculum.tipoExtra4}</p>
+                                            <p>{curriculum.descrizioneExtra4}</p>
+                                            
+                                        </div>
+                                    ))) : (<div></div>)}
                                 </div>
                             </div>
                             ))}
