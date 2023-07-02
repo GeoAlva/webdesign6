@@ -10,25 +10,12 @@ import Curriculum from './pages/curriculum/curriculum';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 //
 function App() {
-  function header() {
-    if (window.location.pathname === '/curriculum') {
-      return (<header className="App-header">
-        <CurriculumHeader />
-      </header>)
-    }
-    else {
-      return (
-        <header className="App-header">
-          <AppHeader />
-        </header>)
-    }
-  }
 
   return (
     <BrowserRouter>
 
       <div className="App">
-        {header()}
+        <AppHeader />
         <Routes>
           <Route exact index element={<Home />} />
           <Route exact path='/' element={<Home />} />

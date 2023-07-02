@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import "./header.css"
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
+import CurriculumHeader from "../curriculumHeader/curriculumHeader";
 
 const theme = createTheme({
     palette: {
@@ -29,6 +30,7 @@ function logout(){
 function ButtonLoader(){
     let location = useLocation();
     if(location.pathname === '/login' || location.pathname === '/signup' ) return;
+    if(location.pathname==='/curriculum') return <CurriculumHeader/>
 
     if(document.cookie.startsWith("email=") && location.pathname==="/profile"){
         return(<>
