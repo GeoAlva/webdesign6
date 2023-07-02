@@ -12,8 +12,8 @@ import folderImg from "./folderImg.svg";
 import Button from '@mui/material/Button';
 import Airtable from 'airtable';
 import React, { useState, useEffect } from "react";
-import { redirect, useNavigate } from 'react-router-dom';
-import Curriculum from "../curriculum/curriculum";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const theme = createTheme({

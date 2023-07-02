@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Airtable, { Record } from 'airtable';
+import Airtable from 'airtable';
 import Cookies from 'universal-cookie';
 
 export default function Login() {
@@ -8,7 +7,6 @@ export default function Login() {
   if (document.cookie.startsWith("email=")) {
     window.location.replace('/profile');
   }
-  const navigate = useNavigate();
   const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
@@ -23,8 +21,6 @@ export default function Login() {
         const cookie = new Cookies();
         cookie.set('email', email, { path: '/' });
         window.location.replace('/profile');
-        //navigate('/profile');
-
       } else {
         setError('Account non trovato!');
       }

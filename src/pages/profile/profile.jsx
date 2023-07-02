@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Airtable, { Record } from 'airtable';
+import Airtable from 'airtable';
 
 
 export default function Profile() {
