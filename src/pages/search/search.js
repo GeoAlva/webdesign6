@@ -12,6 +12,8 @@ import folderImg from "./folderImg.svg";
 import Button from '@mui/material/Button';
 import Airtable from 'airtable';
 import React, { useState, useEffect } from "react";
+import { redirect, useNavigate } from 'react-router-dom';
+import Curriculum from "../curriculum/curriculum";
 
 
 const theme = createTheme({
@@ -207,11 +209,11 @@ export default function Search() {
             filterConditions.push('"Scienze politiche" = {ambitoLaurea}');
         }
 
-        if(citta !== ""){
+        if (citta !== "") {
             filterConditions.push(`{cittaResidenza} = '${citta}'`);
         }
 
-        if(provincia !== ""){
+        if (provincia !== "") {
             filterConditions.push(`{provinciaResidenza} = '${provincia}'`);
         }
 
@@ -313,13 +315,18 @@ export default function Search() {
 
     const handleCittaChange = (event) => {
         setCitta(event.target.value);
-      };
+    };
 
-      const handleProvinciaChange = (event) => {
+    const handleProvinciaChange = (event) => {
         setProvincia(event.target.value);
-      };
+    };
 
 
+    const navigate = useNavigate();
+
+    const redirectToCurriculum = (mail) => {
+        navigate('/curriculum', { state: { mail: mail } })
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -328,10 +335,10 @@ export default function Search() {
                     <div class="curriculum-grid" id="curriculum-grid">
                         {currentCurricula.length > 0 ? (
                             currentCurricula.map((curriculum) => (
-                                <div className="curriculum-view" key={curriculum.id}>
+                                <div className="curriculum-view" key={curriculum.id} onClick={() => redirectToCurriculum(curriculum.mail)} >
                                     <img src={folderImg} className="folder-img" />
-                                    <div className="field">
-                                        <p className="nome-cognome-professione">
+                                    <div className="field" >
+                                        <p className="nome-cognome-professione" >
                                             {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}
                                         </p>
                                         <br></br>
@@ -483,3 +490,4 @@ export default function Search() {
         </ThemeProvider >
     )
 }
+

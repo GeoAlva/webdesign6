@@ -18,6 +18,9 @@ export default function Profile() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
+  const redirectToCurriculum = () => {
+      navigate('/curriculum', { state: { mail: email } })
+  }
 
 
   const handleUpdate = async (event) => {
@@ -127,7 +130,7 @@ export default function Profile() {
             >Crea Curriculum</Button>
 
             <Button variant="outlined"
-              href="/curriculum"
+              onClick={() => redirectToCurriculum()}
               sx={{
                 width: "318px",
                 mb: "30px",
