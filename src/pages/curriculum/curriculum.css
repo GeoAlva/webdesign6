@@ -131,11 +131,14 @@ hr {
     text-align: center;
     font-family: Open Sans;
     font-size: small;
-    margin-left: 25px;
+    margin-right:auto;
+    padding-right: 10px;
 }
 
-.lingue.comp {
-    margin-left: 0;
+.comp {
+    margin-left: 20px;
+    padding-right: 10px;
+    margin-right:auto;
 }
 
 .utilsData {
