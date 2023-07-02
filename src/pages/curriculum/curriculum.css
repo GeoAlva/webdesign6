@@ -29,7 +29,7 @@
     align-items: flex-start;
     z-index: 1;
     display: flex;
-    box-shadow: 10px 10px 10px black, -10px 10px 10px black, 0 10px 10px black;
+    box-shadow: 5px 5px 5px #0000000a, -5px 5px 5px #0000000a, 0 8px 8px #0003;
     overflow-y: scroll;
 }
 

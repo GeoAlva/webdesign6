@@ -9,6 +9,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
+import pallinoPieno from "./pallinoPieno.svg";
+import pallinoVuoto from "./pallinoVuoto.svg";
 
 export default function Curriculum(){
 
@@ -238,6 +240,22 @@ export default function Curriculum(){
         });
       };
 
+      const stampaPalliniPieni = (n) => {
+        const pallini = [];
+        for (let i = 0; i < n; i++) {
+          pallini.push(<img key={i} src={pallinoPieno} alt="Pallino Pieno" />);
+        }
+        return pallini;
+      };
+
+      const stampaPalliniVuoti = (n) => {
+        const pallini = [];
+        for (let i = 0; i < 5 - n; i++) {
+          pallini.push(<img key={i} src={pallinoVuoto} alt="Pallino Vuoto" />);
+        }
+        return pallini;
+      };
+
       useEffect(() => {
         filterCurriculum();
       }, []);
@@ -298,43 +316,43 @@ export default function Curriculum(){
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua1}</p><p class="lingue">{curriculum.valLingua1}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua1}</p>{stampaPalliniPieni(curriculum.valLingua1)} {stampaPalliniVuoti(curriculum.valLingua1)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua2 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua2}</p><p class="lingue">{curriculum.valLingua2}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua2}</p>{stampaPalliniPieni(curriculum.valLingua2)} {stampaPalliniVuoti(curriculum.valLingua2)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua3 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua3}</p><p class="lingue">{curriculum.valLingua3}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua3}</p>{stampaPalliniPieni(curriculum.valLingua3)} {stampaPalliniVuoti(curriculum.valLingua3)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua4 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua4}</p><p class="lingue">{curriculum.valLingua4}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua4}</p>{stampaPalliniPieni(curriculum.valLingua4)} {stampaPalliniVuoti(curriculum.valLingua4)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua5 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua5}</p><p class="lingue">{curriculum.valLingua5}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua5}</p>{stampaPalliniPieni(curriculum.valLingua5)} {stampaPalliniVuoti(curriculum.valLingua5)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua6 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua6}</p><p class="lingue">{curriculum.valLingua6}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua6}</p>{stampaPalliniPieni(curriculum.valLingua6)} {stampaPalliniVuoti(curriculum.valLingua6)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua7 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua7}</p><p class="lingue">{curriculum.valLingua7}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua7}</p>{stampaPalliniPieni(curriculum.valLingua7)} {stampaPalliniVuoti(curriculum.valLingua7)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua8 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua8}</p><p class="lingue">{curriculum.valLingua8}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua8}</p>{stampaPalliniPieni(curriculum.valLingua8)} {stampaPalliniVuoti(curriculum.valLingua8)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua9 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua9}</p><p class="lingue">{curriculum.valLingua9}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua9}</p>{stampaPalliniPieni(curriculum.valLingua9)} {stampaPalliniVuoti(curriculum.valLingua9)}</div>
                                         ))) : (<div></div>)}
                                         {curriculumData.lingua10 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua10}</p><p class="lingue">{curriculum.valLingua10}</p></div>
+                                            <div style={{display:"flex",flexDirection:"row"}}><p class="lingue">{curriculum.lingua10}</p>{stampaPalliniPieni(curriculum.valLingua10)} {stampaPalliniVuoti(curriculum.valLingua10)}</div>
                                         ))) : (<div></div>)}
                                     </div>
 
@@ -471,23 +489,23 @@ export default function Curriculum(){
 
                                             {curriculumData.compDigitale1 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale1}</p><p class="lingue">{curriculum.valCompDigitale1}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale1}</p>{stampaPalliniPieni(curriculum.valCompDigitale1)} {stampaPalliniVuoti(curriculum.valCompDigitale1)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale2 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale2}</p><p class="lingue">{curriculum.valCompDigitale2}</p></div>
+                                                <div style={{display:"flex"}}><p class="comp">{curriculum.compDigitale2}</p>{stampaPalliniPieni(curriculum.valCompDigitale2)} {stampaPalliniVuoti(curriculum.valCompDigitale2)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale3 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale3}</p><p class="lingue">{curriculum.valCompDigitale3}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale3}</p>{stampaPalliniPieni(curriculum.valCompDigitale3)} {stampaPalliniVuoti(curriculum.valCompDigitale3)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale4 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale4}</p><p class="lingue">{curriculum.valCompDigitale4}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale4}</p>{stampaPalliniPieni(curriculum.valCompDigitale4)} {stampaPalliniVuoti(curriculum.valCompDigitale4)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale5 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale5}</p><p class="lingue">{curriculum.valCompDigitale5}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale5}</p>{stampaPalliniPieni(curriculum.valCompDigitale5)} {stampaPalliniVuoti(curriculum.valCompDigitale5)}</div>
                                             ))) : (<div></div>)}
 
                                         </div>
@@ -495,23 +513,23 @@ export default function Curriculum(){
 
                                             {curriculumData.compDigitale6 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale6}</p><p class="lingue">{curriculum.valCompDigitale6}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale6}</p>{stampaPalliniPieni(curriculum.valCompDigitale6)} {stampaPalliniVuoti(curriculum.valCompDigitale6)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale7 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale7}</p><p class="lingue">{curriculum.valCompDigitale7}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale7}</p>{stampaPalliniPieni(curriculum.valCompDigitale7)} {stampaPalliniVuoti(curriculum.valCompDigitale7)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale8 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale8}</p><p class="lingue">{curriculum.valCompDigitale8}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale8}</p>{stampaPalliniPieni(curriculum.valCompDigitale8)} {stampaPalliniVuoti(curriculum.valCompDigitale8)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale9 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale9}</p><p class="lingue">{curriculum.valCompDigitale9}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale9}</p>{stampaPalliniPieni(curriculum.valCompDigitale9)} {stampaPalliniVuoti(curriculum.valCompDigitale9)}</div>
                                             ))) : (<div></div>)}
                                             {curriculumData.compDigitale10 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale10}</p><p class="lingue">{curriculum.valCompDigitale10}</p></div>
+                                                <div style={{display:"flex",flexDirection:"row"}}><p class="comp">{curriculum.compDigitale10}</p>{stampaPalliniPieni(curriculum.valCompDigitale10)} {stampaPalliniVuoti(curriculum.valCompDigitale10)}</div>
                                             ))) : (<div></div>)}
 
                                         </div>
