@@ -5,7 +5,6 @@ import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import Search from './pages/search/search';
 import Profile from './pages/profile/profile';
-import CurriculumHeader from './components/curriculumHeader/curriculumHeader';
 import Curriculum from './pages/curriculum/curriculum';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 //

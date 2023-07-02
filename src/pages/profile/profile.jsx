@@ -4,7 +4,7 @@ import profilePhoto from "./profilePhoto.svg"
 import pencil from "./pencil.svg"
 import Cookies from 'universal-cookie';
 import Button from '@mui/material/Button';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Airtable from 'airtable';
 
@@ -16,6 +16,11 @@ export default function Profile() {
   const email = cookie.get('email');
 
   const navigate = useNavigate();
+  useEffect(() => {
+    if(email==undefined)
+      navigate('/login')
+});
+
   const [error, setError] = useState('');
 
   const redirectToCurriculum = () => {

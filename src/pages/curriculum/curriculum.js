@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Airtable from 'airtable';
 import "./curriculum.css";
 import profilePhoto from "../profile/profilePhoto.svg"
@@ -12,10 +12,15 @@ import pallinoVuoto from "./pallinoVuoto.svg";
 
 export default function Curriculum() {
     const location = useLocation();
-    const email = location.state?.mail || '';
+    const email = location.state?.mail;
 
     const [setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (email == undefined)
+            navigate('/login')
+    });
 
     const filterCurriculum = () => {
         const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
