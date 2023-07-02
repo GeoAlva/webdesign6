@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Curricraft from "./Curricraft.svg"
@@ -20,15 +21,18 @@ const theme = createTheme({
 
 function CurriculumHeader() {
     const handleDownloadPDF = () => {
-      const upLayerDiv = document.querySelector(".upLayer");
-  
-      html2canvas(upLayerDiv).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, "PNG", 0, 0);
-        pdf.save("curriculum.pdf");
-      });
+        const upLayerDiv = document.querySelector(".upLayer");
+
+        html2canvas(upLayerDiv).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, "PNG", 0, 0);
+            pdf.save("curriculum.pdf");
+        });
     };
+
+    const location = useLocation();
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -75,7 +79,7 @@ function CurriculumHeader() {
                             }}
                         >Scarica PDF</Button>
 
-                        <Button variant="outlined"
+                        {useState(location.state.fromProfile==="true" ? (<Button variant="outlined"
                             href="/profile"
                             sx={{
                                 width: "max-content",
@@ -93,7 +97,25 @@ function CurriculumHeader() {
                                     border: "3px solid #008080",
                                 },
                             }}
-                        >Chiudi</Button>
+                        >Chiudi</Button>) : (<Button variant="outlined"
+                            href="/search"
+                            sx={{
+                                width: "max-content",
+                                px: 3,
+                                borderRadius: '30px',
+                                fontFamily: 'Open Sans',
+                                fontWeight: 'bold',
+                                fontSize: "15px",
+                                textTransform: 'none',
+                                border: "3px solid #008080",
+                                backgroundColor: 'rgb(236, 245, 246)',
+                                color: '#008080',
+                                '&:hover': {
+                                    color: '#008080',
+                                    border: "3px solid #008080",
+                                },
+                            }}
+                        >Chiudi</Button>))}
                     </div>
                 </Toolbar>
             </AppBar >

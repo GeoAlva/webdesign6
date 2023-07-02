@@ -325,7 +325,7 @@ export default function Search() {
     const navigate = useNavigate();
 
     const redirectToCurriculum = (mail) => {
-        navigate('/curriculum', { state: { mail: mail } })
+        navigate('/curriculum', { state: { mail: mail, fromProfile: 'false' } })
     }
 
     return (

@@ -13,6 +13,7 @@ import pallinoVuoto from "./pallinoVuoto.svg";
 export default function Curriculum() {
     const location = useLocation();
     const email = location.state?.mail;
+    const fromProfile = location.state.fromProfile;  //determina da dove si arriva al profilo true se si arriva dal profilo, false se si arriva da search
 
     const [setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);

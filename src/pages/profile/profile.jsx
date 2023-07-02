@@ -24,7 +24,7 @@ export default function Profile() {
   const [error, setError] = useState('');
 
   const redirectToCurriculum = () => {
-      navigate('/curriculum', { state: { mail: email } })
+      navigate('/curriculum', { state: { mail: email , fromProfile:'true'} })
   }
 
 
