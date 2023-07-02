@@ -406,11 +406,9 @@ export default function Curriculum() {
                                 <h1 className="titleSez"><img src="images/istruzione.png" class="icon"></img>Istruzione e formazione</h1>
                                 <hr />
                                 <div>
-
-                                    {curriculumData.altriStudi4 == "Sì" ? (
-                                        curriculumData.map((curriculum) => (
+                                    {curriculumData.map((curriculum) =>
+                                        curriculum.altriStudi4 == "Sì" ? (
                                             <div class="maturità">
-
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.studi4}</p>
                                                 <p>{curriculum.nomeIstitutoStudi4}</p>
                                                 <p>{curriculum.nomeCorsoStudi4}</p>
@@ -419,12 +417,13 @@ export default function Curriculum() {
                                                 <p>{curriculum.statoIstitutoStudi4}</p>
                                                 <br></br>
                                             </div>
-                                        ))) : (<div></div>)}
+                                        ) : (<div></div>))
+                                    }
 
-                                    {curriculumData.altriStudi3 == "Sì" ? (
-                                        curriculumData.map((curriculum) => (
+
+                                    {curriculumData.map((curriculum) =>
+                                        curriculum.altriStudi3 == "Sì" ? (
                                             <div class="maturità">
-
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.studi3}</p>
                                                 <p>{curriculum.nomeIstitutoStudi3}</p>
                                                 <p>{curriculum.nomeCorsoStudi3}</p>
@@ -433,12 +432,12 @@ export default function Curriculum() {
                                                 <p>{curriculum.statoIstitutoStudi3}</p>
                                                 <br></br>
                                             </div>
-                                        ))) : (<div></div>)}
+                                        ) : (<div></div>))
+                                    }
 
-                                    {curriculumData.altriStudi2 == "Sì" ? (
-                                        curriculumData.map((curriculum) => (
+                                    {curriculumData.map((curriculum) =>
+                                        curriculum.altriStudi2 == "Sì" ? (
                                             <div class="maturità">
-
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.studi2}</p>
                                                 <p>{curriculum.nomeIstitutoStudi2}</p>
                                                 <p>{curriculum.nomeCorsoStudi2}</p>
@@ -447,12 +446,12 @@ export default function Curriculum() {
                                                 <p>{curriculum.statoIstitutoStudi2}</p>
                                                 <br></br>
                                             </div>
-                                        ))) : (<div></div>)}
+                                        ) : (<div></div>))
+                                    }
 
-                                    {curriculumData.laurea !== "No" ? (
-                                        curriculumData.map((curriculum) => (
+                                    {curriculumData.map((curriculum) =>
+                                        curriculum.laurea == "Sì" ? (
                                             <div class="maturità">
-
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.tipoLaurea}</p>
                                                 <p>{curriculum.corso}</p>
                                                 <p>{curriculum.ambito}</p>
@@ -461,19 +460,21 @@ export default function Curriculum() {
                                                 <p>Valutazione: {curriculum.votoLiceo}/100</p>
                                                 <br></br>
                                             </div>
-                                        ))) : (<div></div>)}
+                                        ) : (<div></div>))
+                                    }
 
-                                    {curriculumData.diploma = "Sì" ? (
-                                        curriculumData.map((curriculum) => (
+
+                                    {curriculumData.map((curriculum) =>
+                                        curriculum.laurea == "Sì" ? (
                                             <div class="maturità">
-
                                                 <p style={{ fontWeight: "bold" }}>Diploma di maturità</p>
                                                 <p>{curriculum.categoriaDiploma} {curriculum.indirizzoDiploma} {curriculum.liceo}</p>
                                                 <p>{curriculum.provinciaLiceo} , {curriculum.statoLiceo}</p>
                                                 <p>Valutazione: {curriculum.votoLiceo}/100</p>
                                                 <br></br>
                                             </div>
-                                        ))) : (<div></div>)}
+                                        ) : (<div></div>))
+                                    }
 
                                 </div>
                             </div>
