@@ -495,9 +495,10 @@ export default function Curriculum() {
                                     }
 
                                 </div>
+                                
                             </div>
 
-                            {curriculumData.map((curriculum) => (
+                            {curriculumData.map((curriculum) => curriculum.compDigitale1 != null ?(
                                 <div class="section">
                                     <h1 className="titleSez"><img src="images/competenze.png" class="icon"></img>Competenze</h1>
                                     <hr />
@@ -576,9 +577,9 @@ export default function Curriculum() {
                                             ))) : (<div></div>)}
                                     </div>
                                 </div>
-                            ))}
+                            ) : ( <div></div>))}
 
-                            {curriculumData.map((curriculum) => (
+                            {curriculumData.map((curriculum) => curriculum.esp1 == "Sì" ?(
                                 <div class="section">
                                     <h1 className="titleSez"><img src="images/lavoro.png" class="icon"></img>Esperienze lavorative</h1>
                                     <hr />
@@ -634,8 +635,8 @@ export default function Curriculum() {
 
                                     </div>
                                 </div>
-                            ))}
-                            {curriculumData.map((curriculum) => (
+                            ) : (<div></div>))}
+                            {curriculumData.map((curriculum) => curriculum.espExtra1 == "Sì" ?(
                                 <div class="section">
                                     <h1 className="titleSez"><img src="images/esp-extra.png" class="icon"></img>Esperienze extra lavorative</h1>
                                     <hr />
@@ -679,7 +680,7 @@ export default function Curriculum() {
                                             ))) : (<div></div>)}
                                     </div>
                                 </div>
-                            ))}
+                            ) : (<div></div>))}
                             {curriculumData.map((curriculum) => (
                                 <div class="section">
                                     <h1 className="titleSez"><img src="images/info.png" class="icon"></img>Altre informazioni</h1>
