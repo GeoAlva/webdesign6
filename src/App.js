@@ -16,11 +16,12 @@ function App() {
         <CurriculumHeader />
       </header>)
     }
-
-    return (
-      <header className="App-header">
-        <AppHeader />
-      </header>)
+    else {
+      return (
+        <header className="App-header">
+          <AppHeader />
+        </header>)
+    }
   }
 
   return (
