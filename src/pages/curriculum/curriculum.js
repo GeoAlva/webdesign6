@@ -302,7 +302,7 @@ export default function Curriculum() {
                                     </div>
                                     <div class="utilsData"><PhoneIcon sx={{ color: "#087A87" }}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>
                                     <div class="utilsData"><EmailIcon sx={{ color: "#087A87" }}></EmailIcon> <p class="utilsDescription">{email}</p></div>
-                                    <div class="utilsData"><LanguageIcon sx={{ color: "#087A87" }}></LanguageIcon><p class="utilsDescription">{curriculum.sitoWeb}</p></div>
+                                    <div class="utilsData"><LanguageIcon sx={{ color: "#087A87" }}></LanguageIcon><a class="utilsDescription" href={curriculum.sitoWeb}>{curriculum.sitoWeb}</a></div>
                                 </div>
                             ))}
                             <div className="dataContainer">
