@@ -336,7 +336,7 @@ export default function Search() {
                         {currentCurricula.length > 0 ? (
                             currentCurricula.map((curriculum) => (
                                 <div className="curriculum-view" key={curriculum.id} onClick={() => redirectToCurriculum(curriculum.mail)} >
-                                    <img src={folderImg} className="folder-img" />
+                                    <img src={folderImg} className="folder-img" alt="folder-icon" />
                                     <div className="field" >
                                         <p className="nome-cognome-professione" >
                                             {`${curriculum.nome} ${curriculum.cognome} - ${curriculum.professione} (${curriculum.siglaProvinciale})`}

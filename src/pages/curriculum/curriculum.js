@@ -14,7 +14,7 @@ export default function Curriculum() {
     const location = useLocation();
     const email = location.state?.mail || '';
 
-    const [message, setMessage] = useState("");
+    const [setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
 
     const filterCurriculum = () => {
@@ -119,7 +119,6 @@ export default function Curriculum() {
                     annoFineStudi2: record.fields.annoFineStudi2,
                     tipoAltriStudi2: record.fields.tipoAltriStudi2,
                     annoInizioStudi2: record.fields.annoInizioStudi2,
-                    annoFineStudi2: record.fields.annoFineStudi2,
 
                     altriStudi3: record.fields.altriStudi3,
                     studi3: record.fields.studi3,
@@ -130,7 +129,6 @@ export default function Curriculum() {
                     annoFineStudi3: record.fields.annoFineStudi3,
                     tipoAltriStudi3: record.fields.tipoAltriStudi3,
                     annoInizioStudi3: record.fields.annoInizioStudi3,
-                    annoFineStudi3: record.fields.annoFineStudi3,
 
                     altriStudi4: record.fields.altriStudi4,
                     studi4: record.fields.studi4,
@@ -141,7 +139,6 @@ export default function Curriculum() {
                     annoFineStudi4: record.fields.annoFineStudi4,
                     tipoAltriStudi4: record.fields.tipoAltriStudi4,
                     annoInizioStudi4: record.fields.annoInizioStudi4,
-                    annoFineStudi4: record.fields.annoFineStudi4,
 
                     esp1: record.fields.esp1,
                     tipoEsp1: record.fields.tipologiaLavoro1,
@@ -372,10 +369,10 @@ export default function Curriculum() {
                                 <div className="dataContainer">
                                     <p className="lingueTitle">Social</p>
                                     <br></br>
-                                    <div class="utilsData"><img src="images/facebook.png" class="image"></img><p class="utilsDescription">{curriculum.fb}</p></div>
-                                    <div class="utilsData"><img src="images/twitter.png" class="image"></img><p class="utilsDescription">{curriculum.twitter}</p></div>
-                                    <div class="utilsData"><img src="images/instagram.png" class="image"></img><p class="utilsDescription">{curriculum.ig}</p></div>
-                                    <div class="utilsData"><img src="images/youtube.png" class="image"></img><p class="utilsDescription">{curriculum.yt}</p></div>
+                                    <div class="utilsData"><img src="images/facebook.png" class="image" alt="facebook-logo"></img><p class="utilsDescription">{curriculum.fb}</p></div>
+                                    <div class="utilsData"><img src="images/twitter.png" class="image" alt="twitter-logo"></img><p class="utilsDescription">{curriculum.twitter}</p></div>
+                                    <div class="utilsData"><img src="images/instagram.png" class="image" alt="instagram-logo"></img><p class="utilsDescription">{curriculum.ig}</p></div>
+                                    <div class="utilsData"><img src="images/youtube.png" class="image" alt="youtube-logo"></img><p class="utilsDescription">{curriculum.yt}</p></div>
                                     {curriculumData.altroSocial1 !== "" ? (
                                         curriculumData.map((curriculum) => (
                                             <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial1}</p><p class="utilsDescription">{curriculum.accountSocial1}</p></div>
@@ -412,11 +409,11 @@ export default function Curriculum() {
                             <br></br>
 
                             <div class="section">
-                                <h1 className="titleSez"><img src="images/istruzione.png" class="icon"></img>Istruzione e formazione</h1>
+                                <h1 className="titleSez"><img src="images/istruzione.png" class="icon" alt="icona-istruzione"></img>Istruzione e formazione</h1>
                                 <hr />
                                 <div>
                                     {curriculumData.map((curriculum) =>
-                                        curriculum.altriStudi4 == "Sì" ? (
+                                        curriculum.altriStudi4 === "Sì" ? (
                                             <div class="maturità">
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.studi4} {curriculumData.map((curriculum) =>
                                                     curriculum.annoFineStudi4 == null ? (<span style={{ float: "right" }}>dal {curriculum.annoInizioStudi4}</span>) : (<span style={{ float: "right" }}>{curriculum.annoInizioStudi4} - {curriculum.annoFineStudi4}</span>))}</p>
@@ -432,7 +429,7 @@ export default function Curriculum() {
 
 
                                     {curriculumData.map((curriculum) =>
-                                        curriculum.altriStudi3 == "Sì" ? (
+                                        curriculum.altriStudi3 === "Sì" ? (
                                             <div class="maturità">
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.studi3} {curriculumData.map((curriculum) =>
                                                     curriculum.annoFineStudi3 == null ? (<span style={{ float: "right" }}>dal {curriculum.annoInizioStudi3}</span>) : (<span style={{ float: "right" }}>{curriculum.annoInizioStudi3} - {curriculum.annoFineStudi3}</span>))}</p>
@@ -447,7 +444,7 @@ export default function Curriculum() {
                                     }
 
                                     {curriculumData.map((curriculum) =>
-                                        curriculum.altriStudi2 == "Sì" ? (
+                                        curriculum.altriStudi2 === "Sì" ? (
                                             <div class="maturità">
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.studi2} {curriculumData.map((curriculum) =>
                                                     curriculum.annoFineStudi2 == null ? (<span style={{ float: "right" }}>dal {curriculum.annoInizioStudi2}</span>) : (<span style={{ float: "right" }}>{curriculum.annoInizioStudi2} - {curriculum.annoFineStudi2}</span>))}</p>
@@ -462,7 +459,7 @@ export default function Curriculum() {
                                     }
 
                                     {curriculumData.map((curriculum) =>
-                                        curriculum.laurea == "Sì" ? (
+                                        curriculum.laurea === "Sì" ? (
                                             <div class="maturità">
                                                 <p style={{ fontWeight: "bold" }}>{curriculum.tipoLaurea} {curriculumData.map((curriculum) =>
                                                     curriculum.annoFineUni == null ? (<span style={{ float: "right" }}>dal {curriculum.annoInizioUni}</span>) : (<span style={{ float: "right" }}>{curriculum.annoInizioUni} - {curriculum.annoFineUni}</span>))}</p>
@@ -478,7 +475,7 @@ export default function Curriculum() {
 
 
                                     {curriculumData.map((curriculum) =>
-                                        curriculum.diploma == "Sì" ? (
+                                        curriculum.diploma === "Sì" ? (
                                             <div class="maturità">
                                                 <p style={{ fontWeight: "bold" }}>Diploma di maturità {curriculumData.map((curriculum) =>
                                                     curriculum.annoFineDiploma == null ? (<span style={{ float: "right" }}>dal {curriculum.annoInizioDiploma}</span>) : (<span style={{ float: "right" }}>{curriculum.annoInizioDiploma} - {curriculum.annoFineDiploma}</span>))}</p>
@@ -496,7 +493,7 @@ export default function Curriculum() {
 
                             {curriculumData.map((curriculum) => curriculum.compDigitale1 != null ? (
                                 <div class="section">
-                                    <h1 className="titleSez"><img src="images/competenze.png" class="icon"></img>Competenze</h1>
+                                    <h1 className="titleSez"><img src="images/competenze.png" class="icon" alt="icona-compenteze"></img>Competenze</h1>
                                     <hr />
                                     <div class="maturità">
 
@@ -575,13 +572,13 @@ export default function Curriculum() {
                                 </div>
                             ) : (<div></div>))}
 
-                            {curriculumData.map((curriculum) => curriculum.esp1 == "Sì" ? (
+                            {curriculumData.map((curriculum) => curriculum.esp1 === "Sì" ? (
                                 <div class="section">
-                                    <h1 className="titleSez"><img src="images/lavoro.png" class="icon"></img>Esperienze lavorative</h1>
+                                    <h1 className="titleSez"><img src="images/lavoro.png" class="icon" alt="icona-lavori"></img>Esperienze lavorative</h1>
                                     <hr />
                                     <div>
                                         {curriculumData.map((curriculum) =>
-                                            curriculum.esp1 == "Sì" ? (
+                                            curriculum.esp1 === "Sì" ? (
                                                 <div class="maturità">
 
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione1} {curriculumData.map((curriculum) =>
@@ -595,7 +592,7 @@ export default function Curriculum() {
 
 
                                         {curriculumData.map((curriculum) =>
-                                            curriculum.esp2 == "Sì" ? (
+                                            curriculum.esp2 === "Sì" ? (
                                                 <div class="maturità">
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione2} {curriculumData.map((curriculum) =>
                                                         curriculum.fineLavoro2 == null ? (<span style={{ float: "right" }}>da {curriculum.inizioLavoro2}</span>) : (<span style={{ float: "right" }}>{curriculum.inizioLavoro2} - {curriculum.fineLavoro2}</span>))}</p>
@@ -607,7 +604,7 @@ export default function Curriculum() {
                                         }
 
                                         {curriculumData.map((curriculum) =>
-                                            curriculum.esp3 == "Sì" ? (
+                                            curriculum.esp3 === "Sì" ? (
                                                 <div class="maturità">
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione3} {curriculumData.map((curriculum) =>
                                                         curriculum.fineLavoro3 == null ? (<span style={{ float: "right" }}>da {curriculum.inizioLavoro3}</span>) : (<span style={{ float: "right" }}>{curriculum.inizioLavoro3} - {curriculum.fineLavoro3}</span>))}</p>
@@ -619,7 +616,7 @@ export default function Curriculum() {
                                         }
 
                                         {curriculumData.map((curriculum) =>
-                                            curriculum.esp4 == "Sì" ? (
+                                            curriculum.esp4 === "Sì" ? (
                                                 <div class="maturità">
                                                     <p style={{ fontWeight: "bold" }}>{curriculum.mansione4} {curriculumData.map((curriculum) =>
                                                         curriculum.fineLavoro4 == null ? (<span style={{ float: "right" }}>da {curriculum.inizioLavoro4}</span>) : (<span style={{ float: "right" }}>{curriculum.inizioLavoro4} - {curriculum.fineLavoro4}</span>))}</p>
@@ -632,9 +629,9 @@ export default function Curriculum() {
                                     </div>
                                 </div>
                             ) : (<div></div>))}
-                            {curriculumData.map((curriculum) => curriculum.espExtra1 == "Sì" ? (
+                            {curriculumData.map((curriculum) => curriculum.espExtra1 === "Sì" ? (
                                 <div class="section">
-                                    <h1 className="titleSez"><img src="images/esp-extra.png" class="icon"></img>Esperienze extra lavorative</h1>
+                                    <h1 className="titleSez"><img src="images/esp-extra.png" class="icon" alt="icona-esperienze-extra"></img>Esperienze extra lavorative</h1>
                                     <hr />
                                     <div>
 
@@ -679,7 +676,7 @@ export default function Curriculum() {
                             ) : (<div></div>))}
                             {curriculumData.map((curriculum) => (
                                 <div class="section">
-                                    <h1 className="titleSez"><img src="images/info.png" class="icon"></img>Altre informazioni</h1>
+                                    <h1 className="titleSez"><img src="images/info.png" class="icon" alt="icona-altre-info"></img>Altre informazioni</h1>
                                     <hr />
                                     <div>
                                         <div class="maturità">
