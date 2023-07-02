@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
 import Airtable from 'airtable';
 import Cookies from 'universal-cookie';
@@ -13,9 +13,11 @@ import pallinoPieno from "./pallinoPieno.svg";
 import pallinoVuoto from "./pallinoVuoto.svg";
 
 export default function Curriculum() {
+    const location = useLocation();
+    const email = location.state?.mail || '';
 
     const cookie = new Cookies();
-    const email = cookie.get('email');
+    //const email = cookie.get('email');
     const [message, setMessage] = useState("");
     const [curriculumData, setCurriculumData] = useState([]);
 
