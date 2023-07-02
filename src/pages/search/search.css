@@ -8,6 +8,8 @@
 }
 
 .search .left-search {
+    display: flex;
+    flex-direction: column;
     float: left;
     width: 80%;
     height: 10%;
@@ -16,6 +18,7 @@
     margin-left: 50px;
     margin-top: 20px;
     z-index: 0;
+    min-height: 800px;
 }
 
 .curriculum-grid {
@@ -163,13 +166,14 @@ p {
 
 .page-buttons {
     width: 100%;
-    margin-top: 70px;
+    margin-top: auto;
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
     align-items: center;
     row-gap: 40px;
     column-gap: 100px;
+    bottom: 0;
 }
 
 .indietro-1 {
@@ -179,7 +183,6 @@ p {
     border: 3px solid rgba(8, 122, 135, 1);
     border-radius: 30px;
     box-sizing: border-box;
-    top: 800px;
     left: 190px;
     cursor: pointer;
 }
@@ -204,7 +207,6 @@ p {
     border: 3px solid rgba(8, 122, 135, 1);
     border-radius: 30px;
     box-sizing: border-box;
-    top: 800px;
     left: 400px;
     cursor: pointer;
 }
