@@ -106,7 +106,8 @@ p {
     margin: 0;
 }
 .not-found {
-    margin-top: 350px;
+    margin-top: 290px;
+    margin-right: 50px;
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
     font-size: 36px;
