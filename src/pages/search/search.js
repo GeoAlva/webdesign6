@@ -210,11 +210,11 @@ export default function Search() {
         }
 
         if (citta !== "") {
-            filterConditions.push(`{cittaResidenza} = '${citta}'`);
+            filterConditions.push(`LOWER({cittaResidenza}) = '${citta.toLowerCase()}'`);
         }
 
         if (provincia !== "") {
-            filterConditions.push(`{provinciaResidenza} = '${provincia}'`);
+            filterConditions.push(`LOWER({provinciaResidenza}) = '${provincia.toLowerCase()}'`);
         }
 
         const filteredOptions = {
