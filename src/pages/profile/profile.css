@@ -14,17 +14,21 @@
     justify-content: center;
 }
 
-.left .user {
+.user {
     padding: 40px 4vw 70px 4vw;
-    font-family: "Open Sans";
-    font-weight: bold;
     width: 20vw;
     border: solid;
     border-width: 3px;
     border-color: #087a87;
-    border-radius: 68px;
+    border-radius: 45.333px;
     margin: auto;
     margin-top: 15vh;
+}
+
+.userCard {
+    padding: 40px 4vw 70px 4vw;
+    font-family: "Open Sans";
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,8 +85,13 @@
     font-size: 32px;
 }
 
-.data {
+.data-web {
+    display: block;
     margin-top: 3vh;
+}
+
+.data-mobile {
+    display: none;
 }
 
 .infoGrid {
@@ -95,7 +104,12 @@
     font-weight: bold;
 }
 
-.update {
+.update-web {
+    margin-top: 60px;
+    display: none;
+}
+
+.update-mobile {
     margin-top: 60px;
     display: none;
 }
@@ -178,4 +192,88 @@
     transition-duration: 200ms;
     color: #239bab;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .profile-page {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .profile-page .left {
+        width: 100%;
+        height: max-content;
+        margin-top: 30px;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .data-mobile {
+        display: block;
+        margin-top: 100px;
+    }
+
+    .data-web {
+        display: none;
+    }
+
+    .user {
+        padding: 20px 4vw 10px 4vw;
+        margin-top: 20px;
+        width: 85%;
+        height: 480px;
+        border-radius: 52.425px;
+    }
+
+    .userCard {
+        padding: 20px 4vw 10px 4vw;
+        font-family: "Open Sans";
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-page .right {
+        position: relative;
+        width: 100%;
+        height: max-content;
+        right: 0;
+    }
+
+    .infoGrid {
+        display: none;
+    }
+    .inner {
+        margin-top: 5px;
+        margin-bottom: 50px;
+    }
+
+    .inner .personale {
+        font-size: 27px;
+    }
+
+    .mobile-confirm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .update-btn-mobile {
+        min-width: 120px;
+        width: 140px;
+        height: 40px;
+        border-radius: 50px;
+
+        outline: none;
+        background-color: transparent;
+        color: #087a87;
+        margin-top: 2vh;
+        font-family: "Open Sans", sans-serif;
+        font-weight: bold;
+        font-size: 19px;
+        margin-bottom: 3vh;
+        border: 3px solid #087a87;
+    }
 }

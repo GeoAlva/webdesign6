@@ -124,7 +124,20 @@ export default function Profile() {
     <>
       <div class='profile-page'>
         <div class='left'>
+        <div className="data-mobile"><p className='settings'> Dati di Accesso
+              <Button onClick={showFormMobile}
+                variant='text' sx={{
+                  fontFamily: 'Open Sans',
+                  fontWeight: 'bold',
+                  color:'#087A87',
+                  textTransform: "none"
+                }}>
+                <img src={pencil} alt="pencil icon" width={"10px"} />
+                Modifica </Button>
+            </p>
+            </div>
           <div class='user'>
+            <div className='userCard' id="userCard" >
             {
               curriculumData.length === 0 ? (
                 <img className="profileImg" src={profilePhoto} alt="Profile" />
@@ -210,6 +223,60 @@ export default function Profile() {
               }}
             >Modifica Curriculum</Button>
 
+
+
+</div>
+<div className='updateInCard'>
+<div className='update-mobile' id='update-mobile'>
+              <form onSubmit={handleUpdate} className='updateForm'>
+                <div className="update-element">
+                  <img src="images/update-persona.png" alt="" className="update-icons" />
+                  <input type="email" id="email" name="email" className="update-form-input" placeholder=" " required />
+                  <label className="update-floating-label" htmlFor="email">
+                    E-mail
+                  </label>
+                </div>
+
+                <div className="update-element">
+                  <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+                  <input type="password" id="pass" name="pass" className="update-form-input" placeholder=" " required />
+                  <label className="update-floating-label" htmlFor="pass">
+                    Password
+                  </label>
+                </div>
+                <div className="update-element">
+                  <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+                  <input
+                    type="password"
+                    id="confirm_pass"
+                    name="confirm_pass"
+                    className="update-form-input"
+                    placeholder=" "
+                    required
+                  />
+                  <label className="update-floating-label" htmlFor="confirm_pass">
+                    Conferma password
+                  </label>
+                </div>
+
+                {error && <p className="error">{error}</p>}
+<div className='mobile-confirm'>
+                <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn-mobile" />
+                <Button variant='text'
+                  onClick={showForm}
+                  sx={{
+                    textDecoration: 'underline',
+                    fontFamily: 'Open Sans',
+                    fontWeight: 'bold',
+                    fontSize: '24',
+                    textTransform: "none",
+                  }}>
+                  Annulla </Button>
+                  </div>
+              </form>
+
+            </div>
+          </div>
           </div>
         </div>
         <div class='right'>
@@ -240,7 +307,7 @@ export default function Profile() {
             >Sfoglia i Curriculum</Button>
 
             < br className='web' />< br className='web' />
-            <div className="data"><p className='settings'> Dati di Accesso
+            <div className="data-web"><p className='settings'> Dati di Accesso
               <Button onClick={showForm}
                 variant='text' sx={{
                   fontFamily: 'Open Sans',
@@ -262,7 +329,7 @@ export default function Profile() {
               <div className='mailGrid'>Password:</div>
               <div className='fieldGrid'>*******</div>
             </div>
-            <div className='update' id='update'>
+            <div className='update-web' id='update-web'>
               <form onSubmit={handleUpdate} className='updateForm'>
                 <div className="update-element">
                   <img src="images/update-persona.png" alt="" className="update-icons" />
@@ -323,13 +390,26 @@ export default function Profile() {
 
 
 function showForm() {
-  var show = document.getElementById('update');
+  var show = document.getElementById('update-web');
   if (show.style.display === "" || show.style.display === "none") {
     show.style.display = "block";
   } else {
     show.style.display = "none";
   }
 }
+
+function showFormMobile() {
+  var show = document.getElementById('update-mobile');
+  let user = document.getElementById('userCard');
+  if (show.style.display === "" || show.style.display === "none") {
+    show.style.display = "block";
+    user.style.display="none";
+  } else {
+    show.style.display = "none";
+    user.style.display="flex";
+  }
+}
+
 
 
 async function checkEmailExists(email) {
