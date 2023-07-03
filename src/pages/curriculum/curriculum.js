@@ -255,7 +255,7 @@ export default function Curriculum() {
     const stampaPalliniPieni = (n) => {
         const pallini = [];
         for (let i = 0; i < n; i++) {
-            pallini.push(<img key={i} src={pallinoPieno} alt="Pallino Pieno" />);
+            pallini.push(<img key={i} style={{margin: "4px"}} src={pallinoPieno} alt="Pallino Pieno" />);
         }
         return pallini;
     };
@@ -263,7 +263,7 @@ export default function Curriculum() {
     const stampaPalliniVuoti = (n) => {
         const pallini = [];
         for (let i = 0; i < 5 - n; i++) {
-            pallini.push(<img key={i} src={pallinoVuoto} alt="Pallino Vuoto" />);
+            pallini.push(<img key={i} style={{margin: "4px"}} src={pallinoVuoto} alt="Pallino Vuoto" />);
         }
         return pallini;
     };

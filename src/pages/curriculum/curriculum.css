@@ -37,7 +37,7 @@ hr {
     background-color: #087a87;
     height: 2px;
     margin: -20px 0 30px 55px;
-    width: 85%;
+    width: 100;
 }
 
 .leftInfo {
@@ -133,12 +133,14 @@ hr {
     font-size: small;
     margin-right:auto;
     padding-right: 10px;
+    align-self: center;
 }
 
 .comp {
     margin-left: 20px;
     padding-right: 10px;
     margin-right:auto;
+    align-self: center;
 }
 
 .utilsData {
@@ -197,4 +199,8 @@ hr {
 .altreInfo {
     margin-right: 10px;
     font-family: Open Sans;
+}
+
+span{
+    color:#087a87;
 }
