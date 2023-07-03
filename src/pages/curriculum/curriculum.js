@@ -328,7 +328,7 @@ export default function Curriculum() {
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.lingua1}</p><div class="containerpallini">{stampaPalliniPieni(curriculum.valLingua1)} {stampaPalliniVuoti(curriculum.valLingua1)}</div></div>
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.lingua1}</p>{stampaPalliniPieni(curriculum.valLingua1)} {stampaPalliniVuoti(curriculum.valLingua1)}</div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua2 !== "" ? (
                                             curriculumData.map((curriculum) => (
