@@ -298,7 +298,7 @@ export default function Curriculum() {
                             })}
                             {curriculumData.map((curriculum) => (
                                 <div class="utilities">
-                                    <p className="nome_cognome">{curriculum.nome} {curriculum.cognome}</p>
+                                    <p className="nome_cognome">{curriculum.nome} <span className="cognome">{curriculum.cognome}</span></p>
                                     <p classname="profesione">{curriculum.professione}</p>
                                     <p className="data">{curriculum.dataNascita}</p>
                                 </div>

@@ -73,6 +73,13 @@ hr {
 
 .nome_cognome {
     color: #000000;
+    font-weight: normal;
+    font-family: Open Sans;
+    font-size: larger;
+}
+
+.cognome{
+    color: #000000;
     font-weight: bolder;
     font-family: Open Sans;
     font-size: larger;
