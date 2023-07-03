@@ -11,20 +11,23 @@ import Airtable from 'airtable';
 
 export default function Profile() {
 
+  const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
+  const [curriculumData, setCurriculumData] = useState([]);
+
   const cookie = new Cookies();
 
   const email = cookie.get('email');
 
   const navigate = useNavigate();
   useEffect(() => {
-    if(email==undefined)
+    if (email == undefined)
       navigate('/login')
-});
+  });
 
   const [error, setError] = useState('');
 
   const redirectToCurriculum = () => {
-      navigate('/curriculum', { state: { mail: email , fromProfile:'true'} })
+    navigate('/curriculum', { state: { mail: email, fromProfile: 'true' } })
   }
 
 
@@ -55,10 +58,6 @@ export default function Profile() {
       const data = encoder.encode(password);
       const hashBuffer = await crypto.subtle.digest('SHA-256', data);
       const hashedPassword = Array.from(new Uint8Array(hashBuffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
-
-
-
-      const base = new Airtable({ apiKey: 'keyIXV1obmywgbWZE' }).base('app7EHcO1NO4VD6sc');
 
       base('Utenti').select({
         filterByFormula: `Email = '${email}'`,
@@ -102,13 +101,40 @@ export default function Profile() {
     }
   };
 
+  useEffect(() => {
+    base('Curriculum').select({
+      filterByFormula: `Email = '${email}'`,
+      maxRecords: 1,
+      }).firstPage((err, records) => {
+      if (err) {
+        console.error('Errore durante il recupero dei curriculum filtrati:', err);
+        return;
+      }
+      const filteredData = records.map((record) => {
+        return {
+          foto: record.fields.foto,
+        };
+      });
+
+      setCurriculumData(filteredData);
+    });
+  }, []);
 
   return (
     <>
       <div class='profile-page'>
         <div class='left'>
           <div class='user'>
-            <img src={profilePhoto} alt="Profile" width={'195px'} />
+            {curriculumData.length == 0 ? (
+                <img className="profileImg" src={profilePhoto} alt="Profile" />
+              ) : null
+            }
+            {curriculumData.map((curriculum) => {
+              return curriculum.foto != null ? (
+                <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" width={'195px'} />
+              ) : ( <img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} />
+              );
+            })}
             <br />
             <p className="cardEmail">{email}</p>
             <br />
