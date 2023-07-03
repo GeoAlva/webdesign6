@@ -105,7 +105,7 @@ export default function Profile() {
     base('Curriculum').select({
       filterByFormula: `Email = '${email}'`,
       maxRecords: 1,
-      }).firstPage((err, records) => {
+    }).firstPage((err, records) => {
       if (err) {
         console.error('Errore durante il recupero dei curriculum filtrati:', err);
         return;
@@ -125,11 +125,15 @@ export default function Profile() {
       <div class='profile-page'>
         <div class='left'>
           <div class='user'>
+            {
+              curriculumData.length === 0 ? (
+                <img className="profileImg" src={profilePhoto} alt="Profile" />
+              ) : null
+            }
             {curriculumData.map((curriculum) => {
               return curriculum.foto != null ? (
                 <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" width={'195px'} />
-              ) : ( <img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} />
-              );
+              ) : null
             })}
             <br />
             <p className="cardEmail">{email}</p>
