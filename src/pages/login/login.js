@@ -63,7 +63,7 @@ export default function Login() {
 
           <input type="submit" id="submit" name="submit" value="Accedi" className="btn" />
           <p className="account">Non hai un account?</p>
-          <a href="/signup">Registrati</a>
+          <a href="/signup" className='no-account'>Registrati</a>
           <  br className='web' />
         </form>
 

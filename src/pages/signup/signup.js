@@ -93,7 +93,7 @@ export default function Signin() {
 
           <input type="submit" id="submit" name="submit" value="Registrati" className="btn" />
           <p className="account">Hai già un account?</p>
-          <a href="/login">Accedi</a>
+          <a href="/login" className='no-account'>Accedi</a>
           < br className='web' />
         </form>
 
