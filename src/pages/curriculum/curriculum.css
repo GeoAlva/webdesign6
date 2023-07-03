@@ -139,7 +139,6 @@ hr {
 }
 
 .comp {
-    margin-left: 20px;
     padding-right: 10px;
     margin-right:auto;
     align-self: center;
@@ -206,4 +205,8 @@ hr {
 
 .maturità span {
     color: #087a87;
+  }
+  .titolino {
+    margin-bottom: 5px;
+    font-weight: bold;
   }
