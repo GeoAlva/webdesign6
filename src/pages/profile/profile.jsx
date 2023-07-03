@@ -133,7 +133,7 @@ export default function Profile() {
             {curriculumData.map((curriculum) => {
               return curriculum.foto != null ? (
                 <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" width={'195px'} />
-              ) : null
+              ) : ( <img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} /> );
             })}
             <br />
             <p className="cardEmail">{email}</p>
