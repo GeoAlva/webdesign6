@@ -241,7 +241,8 @@ export default function Search() {
             } else {
                 setShowPagination(true);
             }
-            setCurriculumData(filteredData);
+            const sortedData = [...filteredData].sort((a, b) => a.cognome.localeCompare(b.cognome));
+            setCurriculumData(sortedData);
 
             if (filteredData.length === 0) {
                 setMessage("Ci dispiace, la ricerca\n non ha prodotto risultati");
