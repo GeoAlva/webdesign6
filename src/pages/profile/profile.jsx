@@ -125,10 +125,6 @@ export default function Profile() {
       <div class='profile-page'>
         <div class='left'>
           <div class='user'>
-            {curriculumData.length == 0 ? (
-                <img className="profileImg" src={profilePhoto} alt="Profile" />
-              ) : null
-            }
             {curriculumData.map((curriculum) => {
               return curriculum.foto != null ? (
                 <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" width={'195px'} />
