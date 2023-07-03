@@ -210,11 +210,11 @@ export default function Search() {
         }
 
         if (citta !== "") {
-            filterConditions.push(`{cittaResidenza} = '${citta}'`);
+            filterConditions.push(`LOWER({cittaResidenza}) = '${citta.toLowerCase()}'`);
         }
 
         if (provincia !== "") {
-            filterConditions.push(`{provinciaResidenza} = '${provincia}'`);
+            filterConditions.push(`LOWER({provinciaResidenza}) = '${provincia.toLowerCase()}'`);
         }
 
         const filteredOptions = {
@@ -395,14 +395,14 @@ export default function Search() {
                             </div>
 
                             <h5>Località</h5>
-                            <div class="radioButtons">
+                            <div class="localita">
                                 <FormControl>
-                                    <Grid container spacing={8} direction="row">
+                                    <Grid container spacing={26} direction="row">
                                         <Grid item xs={6} >
-                                            <TextField label="Città" value={citta} onChange={handleCittaChange} variant="standard" className="loc" />
+                                            <TextField label={<span className="label-citta">Città</span>} id="cittaTextField" value={citta} onChange={handleCittaChange} variant="standard" className="loc" />
                                         </Grid>
                                         <Grid item xs={6} >
-                                            <TextField label="Sigla Provinciale" value={provincia} onChange={handleProvinciaChange} variant="standard" className="loc" />
+                                            <TextField label={<span className="label-provincia">Sigla provinciale</span>} id="provinciaTextField" value={provincia} onChange={handleProvinciaChange} variant="standard" className="loc" />
                                         </Grid>
                                     </Grid>
                                 </FormControl>

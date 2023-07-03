@@ -53,9 +53,43 @@
     display: none;
 }
 .radioButtons {
-    margin-left: 10.5vh;
+    margin-left: 10vh;
+    margin-top: -30px;
 }
 
+.localita{
+    margin-left: 10vh;
+    margin-top: -35px;
+    width: 100%;
+}
+
+#cittaTextField {
+    margin-bottom: 7px;
+    width: 100%;
+  }
+  .label-citta{
+    color: #000;
+font-size: 22px;
+font-family: Open Sans;
+font-style: normal;
+font-weight: 400;
+line-height: normal; 
+}
+  
+  #provinciaTextField {
+    margin-bottom: 7px;
+    width: 100%;
+  }
+
+  .label-provincia{
+    color: #000;
+font-size: 22px;
+font-family: Open Sans;
+font-style: normal;
+font-weight: 400;
+line-height: normal; 
+}
+  
 h5 {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
