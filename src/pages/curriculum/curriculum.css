@@ -63,7 +63,6 @@ hr {
 
 .profileImg {
     margin-bottom: 10px;
-    height: 45%;
     width: 45%;
     align-self: center;
 }
@@ -93,13 +92,13 @@ hr {
 
 .container {
     position: relative;
+    padding: 20px;
 }
 
 .dataContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    align-items: center;
 }
 
 .image {
@@ -117,6 +116,7 @@ hr {
     text-align: center;
     font-family: Open Sans;
     font-size: medium;
+    align-self: center;
 }
 
 .lingueTitle {
@@ -127,6 +127,7 @@ hr {
     text-align: center;
     font-family: Open Sans;
     font-size: medium;
+    align-self: center;
 }
 
 .lingue {
@@ -134,7 +135,6 @@ hr {
     font-family: Open Sans;
     font-size: small;
     margin-right: auto;
-    padding-right: 10px;
     align-self: center;
 }
 
@@ -206,3 +206,4 @@ hr {
 span{
     color:#087a87;
 }
+

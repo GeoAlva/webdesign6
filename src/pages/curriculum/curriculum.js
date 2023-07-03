@@ -263,7 +263,7 @@ export default function Curriculum() {
     const stampaPalliniVuoti = (n) => {
         const pallini = [];
         for (let i = 0; i < 5 - n; i++) {
-            pallini.push(<img key={i} style={{margin: "4px"}} src={pallinoVuoto} alt="Pallino Vuoto" />);
+            pallini.push(<img key={i} style={{margin: "4px"}}  src={pallinoVuoto} alt="Pallino Vuoto" />);
         }
         return pallini;
     };
@@ -304,7 +304,7 @@ export default function Curriculum() {
                                 <div className="dataContainer">
                                     <p className="contatti">Contatti</p>
                                     <div class="utilsData">
-                                        <LocationOnIcon sx={{ color: "#087A87" }}></LocationOnIcon>
+                                        <LocationOnIcon sx={{ alignSelf:"center", color: "#087A87" }}></LocationOnIcon>
                                         <div style={{ display: "flex", flexDirection: "column" }}>
                                             <p class="utilsDescription">{curriculum.indirizzo}</p>
                                             <p class="utilsDescription">{curriculum.CAP} {curriculum.cittàRes} ({curriculum.siglaProvinciale})</p>
@@ -319,16 +319,16 @@ export default function Curriculum() {
                             <div className="dataContainer">
                                 <p className="lingueTitle" style={{ marginLeft: "10px" }}>Lingue</p>
 
-                                <div style={{ display: "flex", marginTop: "10px" }}>
+                                <div style={{  marginTop: "10px" }}>
 
                                     <div style={{ display: "flex", flexDirection: "column" }}>
                                         {curriculumData.linguaMadre !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue">(madrelingua)</p></div>
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue"style={{ marginLeft:"30px" }}>(madrelingua)</p></div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.lingua1}</p>{stampaPalliniPieni(curriculum.valLingua1)} {stampaPalliniVuoti(curriculum.valLingua1)}</div>
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.lingua1}</p><div class="containerpallini">{stampaPalliniPieni(curriculum.valLingua1)} {stampaPalliniVuoti(curriculum.valLingua1)}</div></div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua2 !== "" ? (
                                             curriculumData.map((curriculum) => (
@@ -406,7 +406,7 @@ export default function Curriculum() {
                                 <p className="lingueTitle">Hobby</p>
                                 {curriculumData.hobby !== "" ? (
                                     curriculumData.map((curriculum) => (
-                                        <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.hobby}</p></div>
+                                        <div style={{ display: "flex", flexDirection: "row", marginTop:"20px",alignSelf:"center" }}><p class="lingue">{curriculum.hobby}</p></div>
                                     ))) : (<div></div>)}
                             </div>
                                 ) : (<div></div>))
@@ -416,8 +416,8 @@ export default function Curriculum() {
                     <div class="rightInfo">
                         {curriculumData.map((curriculum) => 
                         curriculum.sesso == "Non voglio rispondere" || curriculum.sesso == null ?(
-                            <p className="sesso">Nazionalità: {curriculum.nazionalità}</p>
-                        ):(<p className="sesso">Sesso: {curriculum.sesso} / Nazionalità: {curriculum.nazionalità}</p>))}
+                            <p className="sesso">Nazionalità: <b>{curriculum.nazionalità}</b></p>
+                        ):(<p className="sesso">Sesso: <b>{curriculum.sesso}</b> / Nazionalità: <b>{curriculum.nazionalità}</b></p>))}
                         <div>
 
                             <br></br>
