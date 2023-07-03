@@ -286,7 +286,12 @@ export default function Curriculum() {
                             }
                             {curriculumData.map((curriculum) => {
                                 return curriculum.foto != null ? (
-                                    <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" />
+                                    <img className="profileImg" src={curriculum.foto[0].url} style={{
+                                        width: '195px',
+                                        borderRadius: '50%',
+                                        objectFit: 'cover',
+                                        objectPosition: 'center',
+                                      }}alt="Profile" />
                                 ) : (
                                     <img className="profileImg" src={profilePhoto} alt="Profile" />
                                 );
