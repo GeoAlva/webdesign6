@@ -132,13 +132,13 @@ export default function Profile() {
             }
             {curriculumData.map((curriculum) =>
               curriculum.foto != null ? (
-                <img className="profileImg" src={curriculum.foto[0].url} alt="Profile"   style={{
+                <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" style={{
                   width: '195px',
                   borderRadius: '50%',
                   objectFit: 'cover',
                   objectPosition: 'center',
                 }} />
-              ) : ( <img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} /> )
+              ) : (<img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} />)
             )}
             <br />
             <p className="cardEmail">{email}</p>
@@ -153,14 +153,15 @@ export default function Profile() {
                 fontWeight: 'bold',
                 borderRadius: '30px',
                 fontFamily: 'Open Sans',
-                fontSize: "15px",
+                fontSize: "17px",
                 textTransform: 'none',
-                border: "3px solid #008080",
-                backgroundColor: 'transparent',
-                color: '#000000',
+                border: "2px solid #087A87",
+                backgroundColor: '#ffffff',
+                color: '#087A87',
                 '&:hover': {
-                  color: '#008080',
-                  border: "3px solid #008080",
+                  color: '#ffffff',
+                  backgroundColor: '#087A87',
+                  border: "2px solid #087A87",
                 },
               }}
             >Crea Curriculum</Button>
@@ -174,14 +175,15 @@ export default function Profile() {
                 fontWeight: 'bold',
                 borderRadius: '30px',
                 fontFamily: 'Open Sans',
-                fontSize: "15px",
+                fontSize: "17px",
                 textTransform: 'none',
-                border: "3px solid #008080",
-                backgroundColor: 'transparent',
-                color: '#000000',
+                border: "2px solid #087A87",
+                backgroundColor: '#ffffff',
+                color: '#087A87',
                 '&:hover': {
-                  color: '#008080',
-                  border: "3px solid #008080",
+                  color: '#ffffff',
+                  backgroundColor: '#087A87',
+                  border: "2px solid #087A87",
                 },
               }}
             >Visualizza Curriculum</Button>
@@ -195,14 +197,15 @@ export default function Profile() {
                 fontWeight: 'bold',
                 borderRadius: '30px',
                 fontFamily: 'Open Sans',
-                fontSize: "15px",
+                fontSize: "17px",
                 textTransform: 'none',
-                border: "3px solid #008080",
-                backgroundColor: 'transparent',
-                color: '#000000',
+                border: "2px solid #087A87",
+                backgroundColor: '#ffffff',
+                color: '#087A87',
                 '&:hover': {
-                  color: '#008080',
-                  border: "3px solid #008080",
+                  color: '#ffffff',
+                  backgroundColor: '#087A87',
+                  border: "2px solid #087A87",
                 },
               }}
             >Modifica Curriculum</Button>
@@ -217,20 +220,21 @@ export default function Profile() {
               //link di test
               href="/search"
               sx={{
-                width: "312px",
-                height: "51px",
+                width: "auto",
+                height: "auto",
                 px: 3,
                 fontWeight: 'bold',
                 borderRadius: '30px',
                 fontFamily: 'Open Sans',
-                fontSize: "15px",
+                fontSize: "17px",
                 textTransform: 'none',
-                border: "3px solid #008080",
-                backgroundColor: '#ffffff',
-                color: '#000000',
+                border: "2px solid #087A87",
+                backgroundColor: 'transparent',
+                color: '#087A87',
                 '&:hover': {
-                  color: '#008080',
-                  border: "3px solid #008080",
+                  color: '#ffffff',
+                  backgroundColor: '#087A87',
+                  border: "2px solid #087A87",
                 },
               }}
             >Sfoglia i Curriculum</Button>
@@ -240,6 +244,8 @@ export default function Profile() {
               <Button onClick={showForm}
                 variant='text' sx={{
                   fontFamily: 'Open Sans',
+                  fontWeight: 'bold',
+                  color:'#087A87',
                   textTransform: "none"
                 }}>
                 <img src={pencil} alt="pencil icon" width={"10px"} />
@@ -251,9 +257,9 @@ export default function Profile() {
             < br className='web' />
 
             <div className='infoGrid'>
-              <div className='mailGrid'>Email</div>
+              <div className='mailGrid'>Email:</div>
               <div className='fieldGrid'>{email}</div>
-              <div className='mailGrid'>Password</div>
+              <div className='mailGrid'>Password:</div>
               <div className='fieldGrid'>*******</div>
             </div>
             <div className='update' id='update'>
