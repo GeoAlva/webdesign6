@@ -75,12 +75,13 @@ export default function Home() {
                                         fontFamily: 'Open Sans',
                                         fontSize: "15px",
                                         textTransform: 'none',
-                                        border: "2px solid #008080",
+                                        border: "2px solid #087A87",
                                         backgroundColor: '#ffffff',
                                         color: '#000000',
                                         '&:hover': {
-                                            color: '#008080',
-                                            border: "2px solid #008080",
+                                            color: '#ffffff',
+                                            backgroundColor: '#087A87',
+                                            border: "2px solid #087A87",
                                         },
                                     }}
                                 >Inizia</Button>
@@ -95,12 +96,13 @@ export default function Home() {
                                         fontFamily: 'Open Sans',
                                         fontSize: "15px",
                                         textTransform: 'none',
-                                        border: "2px solid #008080",
+                                        border: "2px solid #087A87",
                                         backgroundColor: '#ffffff',
                                         color: '#000000',
                                         '&:hover': {
-                                            color: '#008080',
-                                            border: "2px solid #008080",
+                                            color: '#ffffff',
+                                            backgroundColor: '#087A87',
+                                            border: "2px solid #087A87",
                                         },
                                     }}
                                 >Sfoglia i curriculum</Button>
