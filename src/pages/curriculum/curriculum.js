@@ -303,15 +303,22 @@ export default function Curriculum() {
                             {curriculumData.map((curriculum) => {
                                 return curriculum.foto != null ? (
                                     <img className="profileImg" src={curriculum.foto[0].url} style={{
-                                        width: '140px',
-                                        height: '140px',
+                                        width: '170px',
+                                        height: '170px',
                                         borderRadius: '50%',
                                         objectFit: 'cover',
                                         objectPosition: 'center',
                                         marginTop: "70px"
                                     }} alt="Profile" />
                                 ) : (
-                                    <img className="profileImg" src={profilePhoto} alt="Profile" />
+                                    <img className="profileImg" src={profilePhoto} style={{
+                                        width: '170px',
+                                        height: '170px',
+                                        borderRadius: '50%',
+                                        objectFit: 'cover',
+                                        objectPosition: 'center',
+                                        marginTop: "70px"
+                                    }}alt="Profile" />
                                 );
                             })}
                             {curriculumData.map((curriculum) => (
