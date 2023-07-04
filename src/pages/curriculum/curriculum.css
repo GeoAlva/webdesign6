@@ -25,6 +25,7 @@
     background-color: #ffffff;
     width: 80%;
     height: 2000px;
+    max-height: max-content;
     margin-top: 120px;
     margin-bottom: 100px;
     justify-content: flex-start;
