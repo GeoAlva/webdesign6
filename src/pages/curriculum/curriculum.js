@@ -439,12 +439,12 @@ export default function Curriculum() {
                                 curriculum.hobby != null ? (
                                     <div className="dataContainer">
                                         <p className="hobbyTitle">Hobby</p>
-                                        <div style={{ marginTop: "85px" }}></div>
+                                        <div style={{ marginTop: "65px" }}></div>
                                         {curriculum.hobby !== "" ? (
                                             <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", marginTop: "20px" }}>
                                                 {curriculum.hobby.split(", ").map((hobby, index) => (
                                                     <p key={index} className={index % 2 === 0 ? "hobbyL" : "hobbyR"}
-                                                        style={{ width: "45%", textAlign: index % 2 === 0 ? "left" : "right" }}>{hobby}
+                                                        style={{ marginTop: "12px", width: "45%", textAlign: index % 2 === 0 ? "left" : "right" }}>{hobby}
                                                     </p>
                                                 ))}
                                             </div>) :
