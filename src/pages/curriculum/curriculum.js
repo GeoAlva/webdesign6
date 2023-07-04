@@ -330,7 +330,7 @@ export default function Curriculum() {
                                     <div style={{ display: "flex", flexDirection: "column" }}>
                                         {curriculumData.linguaMadre !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "130px" }}>(madrelingua)</p></div>
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "30px" }}>(madrelingua)</p></div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                             curriculumData.map((curriculum) => (
@@ -386,20 +386,21 @@ export default function Curriculum() {
                                     {curriculum.twitter != null ?(<div class="utilsData"><img src="images/twitter.png" class="image" alt="twitter-logo"></img><p class="utilsDescription">twitter/{curriculum.twitter}</p></div>):(<div></div>)}
                                     {curriculum.ig != null ?(<div class="utilsData"><img src="images/instagram.png" class="image" alt="instagram-logo"></img><p class="utilsDescription">instagram/{curriculum.ig}</p></div>):(<div></div>)}
                                     {curriculum.yt != null ?(<div class="utilsData"><img src="images/youtube.png" class="image" alt="youtube-logo"></img><p class="utilsDescription">youtube/{curriculum.yt}</p></div>):(<div></div>)}
-                                    {curriculumData.altroSocial1 != "" ? (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial1} / {curriculum.accountSocial1}</p></div>
-                                        ) : (<div></div>)}
-                                    {curriculumData.altroSocial2 != "" ? (
+                                    {curriculumData.altroSocial1 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial2} / {curriculum.accountSocial2}</p></div>
+                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial1}</p><p class="utilsDescription">{curriculum.accountSocial1}</p></div>
                                         ))) : (<div></div>)}
-                                    {curriculumData.altroSocial3 != "" ? (
+                                    {curriculumData.altroSocial2 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial3} / {curriculum.accountSocial3}</p></div>
+                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial2}</p><p class="utilsDescription">{curriculum.accountSocial2}</p></div>
                                         ))) : (<div></div>)}
-                                    {curriculumData.altroSocial4 != "" ? (
+                                    {curriculumData.altroSocial3 !== "" ? (
                                         curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial4} / {curriculum.accountSocial4}</p></div>
+                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial3}</p><p class="utilsDescription">{curriculum.accountSocial3}</p></div>
+                                        ))) : (<div></div>)}
+                                    {curriculumData.altroSocial4 !== "" ? (
+                                        curriculumData.map((curriculum) => (
+                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial4}</p><p class="utilsDescription">{curriculum.accountSocial4}</p></div>
                                         ))) : (<div></div>)}
 
                                 </div>
