@@ -26,7 +26,6 @@
 }
 
 .userCard {
-    padding: 40px 4vw 70px 4vw;
     font-family: "Open Sans";
     font-weight: bold;
     display: flex;
@@ -218,15 +217,14 @@
     }
 
     .user {
-        padding: 20px 4vw 10px 4vw;
+        padding: 20px 4vw 4vw;
         margin-top: 20px;
         width: 85%;
-        height: 480px;
+        height: 440px;
         border-radius: 52.425px;
     }
 
     .userCard {
-        padding: 20px 4vw 10px 4vw;
         font-family: "Open Sans";
         font-weight: bold;
         display: flex;

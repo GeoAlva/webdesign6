@@ -161,7 +161,7 @@ export default function Profile() {
               href="https://airtable.com/shrMHq5TbbUJMNQFw"
               sx={{
                 width: "318px",
-                mb: "30px",
+                my: "15px",
                 px: 3,
                 fontWeight: 'bold',
                 borderRadius: '30px',
@@ -183,7 +183,7 @@ export default function Profile() {
               onClick={() => redirectToCurriculum()}
               sx={{
                 width: "318px",
-                mb: "30px",
+                my: "15px",
                 px: 3,
                 fontWeight: 'bold',
                 borderRadius: '30px',
@@ -205,7 +205,7 @@ export default function Profile() {
               href="https://airtable.com/shr3QfyQZSmspN6uU"
               sx={{
                 width: "318px",
-                mb: "30px",
+                my: "15px",
                 px: 3,
                 fontWeight: 'bold',
                 borderRadius: '30px',
