@@ -251,6 +251,7 @@ hr {
 }
 
 .titleSez {
+    display: flex;
     font-family: Open Sans;
     font-size: 32;
     text-decoration: none;

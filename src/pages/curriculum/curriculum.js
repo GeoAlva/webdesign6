@@ -719,7 +719,7 @@ export default function Curriculum() {
                             ) : (<div></div>))}
                             {curriculumData.map((curriculum) => (
                                 <div class="section">
-                                    <h1 className="titleSez"><img src="images/info.png" class="icon" alt="icona-altre-info"></img>Altre informazioni</h1>
+                                    <h1 className="titleSez"><img src="images/info.png" style={{height:"50%"}} class="icon" alt="icona-altre-info"></img>Altre informazioni</h1>
                                     <hr />
                                     <div>
                                         <div class="maturità">
