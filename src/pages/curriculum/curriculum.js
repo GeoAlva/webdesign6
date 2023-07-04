@@ -9,6 +9,9 @@ import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
 import pallinoPieno from "./pallinoPieno.svg";
 import pallinoVuoto from "./pallinoVuoto.svg";
+import Button from '@mui/material/Button'
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Curriculum() {
     const location = useLocation();
@@ -255,7 +258,7 @@ export default function Curriculum() {
     const stampaPalliniPieni = (n) => {
         const pallini = [];
         for (let i = 0; i < n; i++) {
-            pallini.push(<img key={i} style={{margin: "4px"}} src={pallinoPieno} alt="Pallino Pieno" />);
+            pallini.push(<img key={i} style={{ margin: "4px" }} src={pallinoPieno} alt="Pallino Pieno" class="pallino" />);
         }
         return pallini;
     };
@@ -263,7 +266,7 @@ export default function Curriculum() {
     const stampaPalliniVuoti = (n) => {
         const pallini = [];
         for (let i = 0; i < 5 - n; i++) {
-            pallini.push(<img key={i} style={{margin: "4px"}}  src={pallinoVuoto} alt="Pallino Vuoto" />);
+            pallini.push(<img key={i} style={{ margin: "4px" }} src={pallinoVuoto} alt="Pallino Vuoto" class="pallino" />);
         }
         return pallini;
     };
@@ -271,6 +274,19 @@ export default function Curriculum() {
     useEffect(() => {
         filterCurriculum();
     }, []);
+
+    const handleDownloadPDF = () => {
+        const upLayerDiv = document.querySelector(".upLayer");
+
+        html2canvas(upLayerDiv, { scale: 1.1 }).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF('p', 'pt', "a4");
+            let pdfWidth = pdf.internal.pageSize.getWidth();
+            let pdfHeight = pdf.internal.pageSize.getHeight();
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save("curriculum.pdf");
+        });
+    };
 
     return (
         <div className='curriculum'>
@@ -291,7 +307,7 @@ export default function Curriculum() {
                                         borderRadius: '50%',
                                         objectFit: 'cover',
                                         objectPosition: 'center',
-                                      }}alt="Profile" />
+                                    }} alt="Profile" />
                                 ) : (
                                     <img className="profileImg" src={profilePhoto} alt="Profile" />
                                 );
@@ -309,7 +325,7 @@ export default function Curriculum() {
                                 <div className="dataContainer">
                                     <p className="contatti">Contatti</p>
                                     <div class="utilsData">
-                                        <LocationOnIcon sx={{ alignSelf:"center", color: "#087A87" }}></LocationOnIcon>
+                                        <LocationOnIcon sx={{ alignSelf: "center", color: "#087A87" }}></LocationOnIcon>
                                         <div style={{ display: "flex", flexDirection: "column" }}>
                                             <p class="utilsDescription">{curriculum.indirizzo}</p>
                                             <p class="utilsDescription">{curriculum.CAP} {curriculum.cittàRes} ({curriculum.siglaProvinciale})</p>
@@ -324,12 +340,12 @@ export default function Curriculum() {
                             <div className="dataContainer">
                                 <p className="lingueTitle" style={{ marginLeft: "10px" }}>Lingue</p>
 
-                                <div style={{  marginTop: "10px" }}>
+                                <div style={{ marginTop: "10px" }}>
 
                                     <div style={{ display: "flex", flexDirection: "column" }}>
                                         {curriculumData.linguaMadre !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue"style={{ marginLeft:"30px" }}>(madrelingua)</p></div>
+                                                <div style={{ display: "flex", flexDirection: "row" }} class="lingue-mobile"><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "30px" }}>(madrelingua)</p></div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                             curriculumData.map((curriculum) => (
@@ -405,24 +421,24 @@ export default function Curriculum() {
                                     </div>
 
                                 ) : (<div></div>))}
-                                {curriculumData.map((curriculum) =>
+                            {curriculumData.map((curriculum) =>
                                 curriculum.hobby !== "" ? (
-                            <div className="dataContainer">
-                                <p className="lingueTitle">Hobby</p>
-                                {curriculumData.hobby !== "" ? (
-                                    curriculumData.map((curriculum) => (
-                                        <div style={{ display: "flex", flexDirection: "row", marginTop:"20px",alignSelf:"center" }}><p class="lingue">{curriculum.hobby}</p></div>
-                                    ))) : (<div></div>)}
-                            </div>
+                                    <div className="dataContainer">
+                                        <p className="lingueTitle">Hobby</p>
+                                        {curriculumData.hobby !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{ display: "flex", flexDirection: "row", marginTop: "20px", alignSelf: "center" }}><p class="lingue">{curriculum.hobby}</p></div>
+                                            ))) : (<div></div>)}
+                                    </div>
                                 ) : (<div></div>))
-                                    }
+                            }
                         </div>
                     </div>
                     <div class="rightInfo">
-                        {curriculumData.map((curriculum) => 
-                        curriculum.sesso == "Non voglio rispondere" || curriculum.sesso == null ?(
-                            <p className="sesso">Nazionalità: <b>{curriculum.nazionalità}</b></p>
-                        ):(<p className="sesso">Sesso: <b>{curriculum.sesso}</b> / Nazionalità: <b>{curriculum.nazionalità}</b></p>))}
+                        {curriculumData.map((curriculum) =>
+                            curriculum.sesso == "Non voglio rispondere" || curriculum.sesso == null ? (
+                                <p className="sesso">Nazionalità: <b>{curriculum.nazionalità}</b></p>
+                            ) : (<p className="sesso">Sesso: <b>{curriculum.sesso}</b> / Nazionalità: <b>{curriculum.nazionalità}</b></p>))}
                         <div>
 
                             <br></br>
@@ -486,7 +502,7 @@ export default function Curriculum() {
                                                 <p>{curriculum.ambito}</p>
                                                 <p>{curriculum.nomeUni}</p>
                                                 <p>{curriculum.cittaUni}({curriculum.provUni}) , {curriculum.statoUni}</p>
-                                                {curriculumData.map((curriculum) => curriculum.votoLaurea !== null ? (<p>Valutazione: {curriculum.votoLaurea}/110</p>):(<div></div>))}
+                                                {curriculumData.map((curriculum) => curriculum.votoLaurea !== null ? (<p>Valutazione: {curriculum.votoLaurea}/110</p>) : (<div></div>))}
                                                 <br></br>
                                             </div>
                                         ) : (<div></div>))
@@ -500,7 +516,7 @@ export default function Curriculum() {
                                                     curriculum.annoFineDiploma == null ? (<span style={{ float: "right" }}>dal {curriculum.annoInizioDiploma}</span>) : (<span style={{ float: "right" }}>{curriculum.annoInizioDiploma} - {curriculum.annoFineDiploma}</span>))}</p>
                                                 <p>{curriculum.categoriaDiploma} {curriculum.indirizzoDiploma} {curriculum.liceo}</p>
                                                 <p>{curriculum.provinciaLiceo} , {curriculum.statoLiceo}</p>
-                                                {curriculum.votoLiceo !== null ?(<p>Valutazione: {curriculum.votoLiceo}/100</p>):(<div></div>)}
+                                                {curriculum.votoLiceo !== null ? (<p>Valutazione: {curriculum.votoLiceo}/100</p>) : (<div></div>)}
                                                 <br></br>
                                             </div>
                                         ) : (<div></div>))
@@ -543,7 +559,7 @@ export default function Curriculum() {
                                                     ))) : (<div></div>)}
 
                                             </div>
-                                            <div style={{ display: "flex", flexDirection: "column", marginLeft:"auto",marginRight:"50px"}}>
+                                            <div style={{ display: "flex", flexDirection: "column", marginLeft: "auto", marginRight: "50px" }}>
 
                                                 {curriculumData.compDigitale6 !== "" ? (
                                                     curriculumData.map((curriculum) => (
@@ -711,6 +727,85 @@ export default function Curriculum() {
                             ))}
                         </div>
                     </div>
+
+                </div>
+
+                <div className="curriculumButtonsMobile">
+                    <Button variant="outlined"
+                        sx={{
+                            width: "250px",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Condividi via e-mail</Button>
+
+                    <Button variant="outlined" onClick={handleDownloadPDF}
+                        sx={{
+                            width: "250px",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Scarica PDF</Button>
+
+                    {useState(location.state.fromProfile === "true" ? (<Button variant="outlined"
+                        href="/profile"
+                        sx={{
+                            width: "250px",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Chiudi</Button>) : (<Button variant="outlined"
+                        href="/search"
+                        sx={{
+                            width: "max-content",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Chiudi</Button>))}
 
                 </div>
             </div>
