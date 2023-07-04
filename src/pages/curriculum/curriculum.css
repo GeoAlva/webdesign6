@@ -44,7 +44,7 @@ hr {
 
 .leftInfo {
     background-color: rgba(8, 122, 135, 0.08);
-    width: 27%;
+    width: 40%;
     height: 100%;
     z-index: 2;
     display: flex;
@@ -75,26 +75,29 @@ hr {
     color: #000000;
     font-weight: normal;
     font-family: Open Sans;
-    font-size: larger;
+    font-size: 34px;
 }
 
 .cognome{
     color: #000000;
     font-weight: bolder;
     font-family: Open Sans;
-    font-size: larger;
+    font-size: 34px;
 }
 
 .professione {
     color: #000000;
+    font-weight: normal;
     font-family: Open Sans;
-    font-size: medium;
+    margin-top: 5px;
+    font-size: 25px;
 }
 
 .data {
     color: #000000;
     font-family: Open Sans;
-    font-size: smaller;
+    margin-top: 16px;
+    font-size: 16px;
 }
 
 .container {
@@ -109,38 +112,92 @@ hr {
 }
 
 .image {
-    width: 22px;
-    height: 22px;
+    width: 32px;
+    height: 32px;
 }
 
 .contatti {
     position: absolute;
-    top: -12px;
-    width: 120px;
+    top:-2px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 40px;
     background-color: #087a87;
-    border-radius: 12px;
+    border-radius: 19px;
     color: #fff;
     text-align: center;
     font-family: Open Sans;
-    font-size: medium;
-    align-self: center;
-}
+    font-size: 19px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
 
 .lingueTitle {
-    width: 120px;
+    position: absolute;
+    margin-top: 40px;
+    width: 220px;
+    height: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #087a87;
-    border-radius: 12px;
+    border-radius: 19px;
     color: #fff;
     text-align: center;
     font-family: Open Sans;
-    font-size: medium;
-    align-self: center;
+    font-size: 19px;
+    display: flex;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
 }
+
+.socialTitle {
+    position: absolute;
+    margin-top: 40px;
+    width: 220px;
+    height: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #087a87;
+    border-radius: 19px;
+    color: #fff;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 19px;
+    display: flex;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+}
+
+.hobbyTitle {
+    position: absolute;
+    margin-top: 40px;
+    width: 220px;
+    height: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #087a87;
+    border-radius: 19px;
+    color: #fff;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 19px;
+    display: flex;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 .lingue {
     text-align: center;
     font-family: Open Sans;
-    font-size: small;
+    font-size: 16px;
     margin-right: auto;
     align-self: center;
 }
@@ -159,7 +216,7 @@ hr {
 
 .utilsDescription {
     color: #000;
-    font-size: 12px;
+    font-size: 16px;
     font-family: Open Sans;
     font-style: normal;
     margin-top: 3px;
