@@ -252,6 +252,7 @@ hr {
 }
 
 .titleSez {
+    display: flex;
     font-family: Open Sans;
     font-size: 32;
     text-decoration: none;
@@ -259,6 +260,7 @@ hr {
 
 .maturità {
     font-family: Open Sans;
+    font-size: 20px;
     margin-left: 53px;
 }
 
