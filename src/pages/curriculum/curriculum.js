@@ -327,16 +327,22 @@ export default function Curriculum() {
                                 <div className="dataContainer">
                                     <p className="contatti">Contatti</p>
                                     <div class="utilsData">
-                                        <LocationOnIcon sx={{ alignSelf: "center", color: "#087A87", fontSize: 35 }}></LocationOnIcon>
-                                        <div style={{ display: "flex", flexDirection: "column" }}>
-                                            <p class="utilsDescription">{curriculum.indirizzo}</p>
-                                            <p class="utilsDescription">{curriculum.CAP} {curriculum.cittàRes} ({curriculum.siglaProvinciale})</p>
-                                            <p class="utilsDescription">{curriculum.statoRes}</p>
-                                        </div>
+                                        {curriculum.indirizzo != null || curriculum.CAP != null || curriculum.statoRes != null ? (
+                                            <>
+                                                <LocationOnIcon sx={{ alignSelf: "center", color: "#087A87", fontSize: 35 }} />
+                                                <div style={{ display: "flex", flexDirection: "column" }}>
+                                                    <p className="utilsDescription">{curriculum.indirizzo}</p>
+                                                    <p className="utilsDescription">{curriculum.CAP} {curriculum.cittàRes} ({curriculum.siglaProvinciale})</p>
+                                                    <p className="utilsDescription">{curriculum.statoRes}</p>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <div></div>
+                                        )}
                                     </div>
-                                    <div class="utilsData"><PhoneIcon sx={{ color: "#087A87", fontSize: 35 }}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>
-                                    <div class="utilsData"><EmailIcon sx={{ color: "#087A87", fontSize: 35 }}></EmailIcon> <p class="utilsDescription">{email}</p></div>
-                                    <div class="utilsData"><LanguageIcon sx={{ color: "#087A87", fontSize: 35 }}></LanguageIcon><a class="utilsDescription" href={curriculum.sitoWeb}>{curriculum.sitoWeb}</a></div>
+                                    {curriculum.tel != null ? (<div class="utilsData"><PhoneIcon sx={{ color: "#087A87", fontSize: 35 }}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>) : (<div></div>)}
+                                    {curriculum.email != null ? (<div class="utilsData"><EmailIcon sx={{ color: "#087A87", fontSize: 35 }}></EmailIcon> <p class="utilsDescription">{email}</p></div>) : (<div></div>)}
+                                    {curriculum.sitoWeb != null ? (<div class="utilsData"><LanguageIcon sx={{ color: "#087A87", fontSize: 35 }}></LanguageIcon><a class="utilsDescription" href={curriculum.sitoWeb}>{curriculum.sitoWeb}</a></div>) : (<div></div>)}
                                 </div>
                             ))}
                             <div className="dataContainer">
@@ -719,7 +725,7 @@ export default function Curriculum() {
                             ) : (<div></div>))}
                             {curriculumData.map((curriculum) => (
                                 <div class="section">
-                                    <h1 className="titleSez"><img src="images/info.png" style={{height:"50%"}} class="icon" alt="icona-altre-info"></img>Altre informazioni</h1>
+                                    <h1 className="titleSez"><img src="images/info.png" style={{ height: "50%" }} class="icon" alt="icona-altre-info"></img>Altre informazioni</h1>
                                     <hr />
                                     <div>
                                         <div class="maturità">
