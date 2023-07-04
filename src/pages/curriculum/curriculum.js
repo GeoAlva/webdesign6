@@ -288,6 +288,7 @@ export default function Curriculum() {
                                 return curriculum.foto != null ? (
                                     <img className="profileImg" src={curriculum.foto[0].url} style={{
                                         width: '195px',
+                                        height: '195px',
                                         borderRadius: '50%',
                                         objectFit: 'cover',
                                         objectPosition: 'center',
