@@ -124,159 +124,159 @@ export default function Profile() {
     <>
       <div class='profile-page'>
         <div class='left'>
-        <div className="data-mobile"><p className='settings'> Dati di Accesso
-              <Button onClick={showFormMobile}
-                variant='text' sx={{
-                  fontFamily: 'Open Sans',
-                  fontWeight: 'bold',
-                  color:'#087A87',
-                  textTransform: "none"
-                }}>
-                <img src={pencil} alt="pencil icon" width={"10px"} />
-                Modifica </Button>
-            </p>
-            </div>
+          <div className="data-mobile"><p className='settings'> Dati di Accesso
+            <Button onClick={showFormMobile}
+              variant='text' sx={{
+                fontFamily: 'Open Sans',
+                fontWeight: 'bold',
+                color: '#087A87',
+                textTransform: "none"
+              }}>
+              <img src={pencil} alt="pencil icon" width={"10px"} />
+              Modifica </Button>
+          </p>
+          </div>
           <div class='user'>
             <div className='userCard' id="userCard" >
-            {
-              curriculumData.length === 0 ? (
-                <img className="profileImg" src={profilePhoto} alt="Profile" />
-              ) : null
-            }
-            {curriculumData.map((curriculum) =>
-              curriculum.foto != null ? (
-                <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" style={{
-                  width: '195px',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                }} />
-              ) : (<img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} />)
-            )}
-            <br />
-            <p className="cardEmail">{email}</p>
-            <br />
-            <Button variant="outlined"
-              //link di test
-              href="https://airtable.com/shrMHq5TbbUJMNQFw"
-              sx={{
-                width: "318px",
-                my: "15px",
-                px: 3,
-                fontWeight: 'bold',
-                borderRadius: '30px',
-                fontFamily: 'Open Sans',
-                fontSize: "17px",
-                textTransform: 'none',
-                border: "2px solid #087A87",
-                backgroundColor: '#ffffff',
-                color: '#087A87',
-                '&:hover': {
-                  color: '#ffffff',
-                  backgroundColor: '#087A87',
+              {
+                curriculumData.length === 0 ? (
+                  <img className="profileImg" src={profilePhoto} alt="Profile" />
+                ) : null
+              }
+              {curriculumData.map((curriculum) =>
+                curriculum.foto != null ? (
+                  <img className="profileImg" src={curriculum.foto[0].url} alt="Profile" style={{
+                    width: '195px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }} />
+                ) : (<img className="profileImg" src={profilePhoto} alt="Profile" width={'195px'} />)
+              )}
+              <br />
+              <p className="cardEmail">{email}</p>
+              <br />
+              <Button variant="outlined"
+                //link di test
+                href="https://airtable.com/shrMHq5TbbUJMNQFw"
+                sx={{
+                  width: "318px",
+                  my: "15px",
+                  px: 3,
+                  fontWeight: 'bold',
+                  borderRadius: '30px',
+                  fontFamily: 'Open Sans',
+                  fontSize: "17px",
+                  textTransform: 'none',
                   border: "2px solid #087A87",
-                },
-              }}
-            >Crea Curriculum</Button>
+                  backgroundColor: '#ffffff',
+                  color: '#087A87',
+                  '&:hover': {
+                    color: '#ffffff',
+                    backgroundColor: '#087A87',
+                    border: "2px solid #087A87",
+                  },
+                }}
+              >Crea Curriculum</Button>
 
-            <Button variant="outlined"
-              onClick={() => redirectToCurriculum()}
-              sx={{
-                width: "318px",
-                my: "15px",
-                px: 3,
-                fontWeight: 'bold',
-                borderRadius: '30px',
-                fontFamily: 'Open Sans',
-                fontSize: "17px",
-                textTransform: 'none',
-                border: "2px solid #087A87",
-                backgroundColor: '#ffffff',
-                color: '#087A87',
-                '&:hover': {
-                  color: '#ffffff',
-                  backgroundColor: '#087A87',
+              <Button variant="outlined"
+                onClick={() => redirectToCurriculum()}
+                sx={{
+                  width: "318px",
+                  my: "15px",
+                  px: 3,
+                  fontWeight: 'bold',
+                  borderRadius: '30px',
+                  fontFamily: 'Open Sans',
+                  fontSize: "17px",
+                  textTransform: 'none',
                   border: "2px solid #087A87",
-                },
-              }}
-            >Visualizza Curriculum</Button>
+                  backgroundColor: '#ffffff',
+                  color: '#087A87',
+                  '&:hover': {
+                    color: '#ffffff',
+                    backgroundColor: '#087A87',
+                    border: "2px solid #087A87",
+                  },
+                }}
+              >Visualizza Curriculum</Button>
 
-            <Button variant="outlined"
-              href="https://airtable.com/shr3QfyQZSmspN6uU"
-              sx={{
-                width: "318px",
-                my: "15px",
-                px: 3,
-                fontWeight: 'bold',
-                borderRadius: '30px',
-                fontFamily: 'Open Sans',
-                fontSize: "17px",
-                textTransform: 'none',
-                border: "2px solid #087A87",
-                backgroundColor: '#ffffff',
-                color: '#087A87',
-                '&:hover': {
-                  color: '#ffffff',
-                  backgroundColor: '#087A87',
+              <Button variant="outlined"
+                href="https://airtable.com/shr3QfyQZSmspN6uU"
+                sx={{
+                  width: "318px",
+                  my: "15px",
+                  px: 3,
+                  fontWeight: 'bold',
+                  borderRadius: '30px',
+                  fontFamily: 'Open Sans',
+                  fontSize: "17px",
+                  textTransform: 'none',
                   border: "2px solid #087A87",
-                },
-              }}
-            >Modifica Curriculum</Button>
+                  backgroundColor: '#ffffff',
+                  color: '#087A87',
+                  '&:hover': {
+                    color: '#ffffff',
+                    backgroundColor: '#087A87',
+                    border: "2px solid #087A87",
+                  },
+                }}
+              >Modifica Curriculum</Button>
 
 
-
-</div>
-<div className='updateInCard'>
-<div className='update-mobile' id='update-mobile'>
-              <form onSubmit={handleUpdate} className='updateForm'>
-                <div className="update-element">
-                  <img src="images/update-persona.png" alt="" className="update-icons" />
-                  <input type="email" id="email" name="email" className="update-form-input" placeholder=" " required />
-                  <label className="update-floating-label" htmlFor="email">
-                    E-mail
-                  </label>
-                </div>
-
-                <div className="update-element">
-                  <img src="images/update-lucchetto.png" alt="" className="update-icons" />
-                  <input type="password" id="pass" name="pass" className="update-form-input" placeholder=" " required />
-                  <label className="update-floating-label" htmlFor="pass">
-                    Password
-                  </label>
-                </div>
-                <div className="update-element">
-                  <img src="images/update-lucchetto.png" alt="" className="update-icons" />
-                  <input
-                    type="password"
-                    id="confirm_pass"
-                    name="confirm_pass"
-                    className="update-form-input"
-                    placeholder=" "
-                    required
-                  />
-                  <label className="update-floating-label" htmlFor="confirm_pass">
-                    Conferma password
-                  </label>
-                </div>
-
-                {error && <p className="error">{error}</p>}
-<div className='mobile-confirm'>
-                <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn-mobile" />
-                <Button variant='text'
-                  onClick={showForm}
-                  sx={{
-                    textDecoration: 'underline',
-                    fontFamily: 'Open Sans',
-                    fontWeight: 'bold',
-                    fontSize: '24',
-                    textTransform: "none",
-                  }}>
-                  Annulla </Button>
-                  </div>
-              </form>
 
             </div>
-          </div>
+            <div className='updateInCard'>
+              <div className='update-mobile' id='update-mobile'>
+                <form onSubmit={handleUpdate} className='updateForm'>
+                  <div className="update-element">
+                    <img src="images/update-persona.png" alt="" className="update-icons" />
+                    <input type="email" id="email" name="email" className="update-form-input" placeholder=" " required />
+                    <label className="update-floating-label" htmlFor="email">
+                      E-mail
+                    </label>
+                  </div>
+
+                  <div className="update-element">
+                    <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+                    <input type="password" id="pass" name="pass" className="update-form-input" placeholder=" " required />
+                    <label className="update-floating-label" htmlFor="pass">
+                      Password
+                    </label>
+                  </div>
+                  <div className="update-element">
+                    <img src="images/update-lucchetto.png" alt="" className="update-icons" />
+                    <input
+                      type="password"
+                      id="confirm_pass"
+                      name="confirm_pass"
+                      className="update-form-input"
+                      placeholder=" "
+                      required
+                    />
+                    <label className="update-floating-label" htmlFor="confirm_pass">
+                      Conferma password
+                    </label>
+                  </div>
+
+                  {error && <p className="error">{error}</p>}
+                  <div className='mobile-confirm'>
+                    <input type="submit" id="submit" name="submit" value="Conferma" className="update-btn-mobile" />
+                    <Button variant='text'
+                      onClick={showForm}
+                      sx={{
+                        textDecoration: 'underline',
+                        fontFamily: 'Open Sans',
+                        fontWeight: 'bold',
+                        fontSize: '24',
+                        textTransform: "none",
+                      }}>
+                      Annulla </Button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
           </div>
         </div>
         <div class='right'>
@@ -312,7 +312,7 @@ export default function Profile() {
                 variant='text' sx={{
                   fontFamily: 'Open Sans',
                   fontWeight: 'bold',
-                  color:'#087A87',
+                  color: '#087A87',
                   textTransform: "none"
                 }}>
                 <img src={pencil} alt="pencil icon" width={"10px"} />
@@ -403,10 +403,10 @@ function showFormMobile() {
   let user = document.getElementById('userCard');
   if (show.style.display === "" || show.style.display === "none") {
     show.style.display = "block";
-    user.style.display="none";
+    user.style.display = "none";
   } else {
     show.style.display = "none";
-    user.style.display="flex";
+    user.style.display = "flex";
   }
 }
 

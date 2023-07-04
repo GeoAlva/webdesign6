@@ -10,6 +10,7 @@
     left: 0;
     height: 100%;
 }
+
 .right {
     width: fit-content;
     right: 0;
@@ -20,6 +21,7 @@
 .web {
     display: block;
 }
+
 .mobile {
     display: none;
 }

@@ -19,134 +19,134 @@ const theme = createTheme({
     },
 });
 
-function logout(){
-    
+function logout() {
+
     const cookie = new Cookies();
     cookie.remove('email');
     window.location.replace('/');
 
 }
 
-function ButtonLoader(){
+function ButtonLoader() {
     let location = useLocation();
-    if(location.pathname === '/login' || location.pathname === '/signup' ) return;
-    else if(location.pathname==='/curriculum'){
-        if (window.screen.width >= 600){
-            return (<CurriculumHeader/>)
+    if (location.pathname === '/login' || location.pathname === '/signup') return;
+    else if (location.pathname === '/curriculum') {
+        if (window.screen.width >= 600) {
+            return (<CurriculumHeader />)
         }
         else return;
     }
-     
 
-    else if(document.cookie.startsWith("email=") && location.pathname==="/profile"){
-        return(<>
+
+    else if (document.cookie.startsWith("email=") && location.pathname === "/profile") {
+        return (<>
             <Button variant="text"
-            onClick={logout}
-            sx={{
-                px: 3,
-                            mr: 4,
-                            fontWeight: 'bold',
-                            borderRadius: '20px',
-                            fontFamily: 'Open Sans',
-                            fontWeight:'Bold',
-                            fontSize: "18px",
-                            textTransform: 'none',
-                            backgroundColor: '#transparent',
-                            textDecoration:'underline',
-                            color: '#087A87',
-                            '&:hover': {
-                                color: '#087A87',
-                                textDecoration:'underline',
-                            },
-            }}
+                onClick={logout}
+                sx={{
+                    px: 3,
+                    mr: 4,
+                    fontWeight: 'bold',
+                    borderRadius: '20px',
+                    fontFamily: 'Open Sans',
+                    fontWeight: 'Bold',
+                    fontSize: "18px",
+                    textTransform: 'none',
+                    backgroundColor: '#transparent',
+                    textDecoration: 'underline',
+                    color: '#087A87',
+                    '&:hover': {
+                        color: '#087A87',
+                        textDecoration: 'underline',
+                    },
+                }}
             >Esci</Button>
-            
-            </>)
-        
+
+        </>)
+
     }
 
-    else if(document.cookie.startsWith("email=")){
-        return(<>
-        <Button variant="text"
-            href="/profile"
-            sx={{
-                width:'250px',
+    else if (document.cookie.startsWith("email=")) {
+        return (<>
+            <Button variant="text"
+                href="/profile"
+                sx={{
+                    width: '250px',
 
-                            mr: 3,
-                            fontWeight: 'bold',
-                            borderRadius: '20px',
-                            fontFamily: 'Open Sans',
-                            fontWeight:'Bold',
-                            fontSize: "18px",
-                            textTransform: 'none',
-                            backgroundColor: '#transparent',
-                            textDecoration:'underline',
-                            color: '#087A87',
-                            '&:hover': {
-                                color: '#087A87',
-                                textDecoration:'underline',
-                            },
-            }}
+                    mr: 3,
+                    fontWeight: 'bold',
+                    borderRadius: '20px',
+                    fontFamily: 'Open Sans',
+                    fontWeight: 'Bold',
+                    fontSize: "18px",
+                    textTransform: 'none',
+                    backgroundColor: '#transparent',
+                    textDecoration: 'underline',
+                    color: '#087A87',
+                    '&:hover': {
+                        color: '#087A87',
+                        textDecoration: 'underline',
+                    },
+                }}
             >Il mio profilo</Button>
             <Button variant="text"
-            onClick={logout}
+                onClick={logout}
+                sx={{
+                    px: 3,
+                    mr: 4,
+                    fontWeight: 'bold',
+                    borderRadius: '20px',
+                    fontFamily: 'Open Sans',
+                    fontWeight: 'Bold',
+                    fontSize: "18px",
+                    textTransform: 'none',
+                    backgroundColor: '#transparent',
+                    textDecoration: 'underline',
+                    color: '#087A87',
+                    '&:hover': {
+                        color: '#087A87',
+                        textDecoration: 'underline',
+                    },
+                }}
+            >Esci</Button>
+
+        </>)
+    }
+    else return (<>
+        <Button variant="text"
+            href="/login"
             sx={{
                 px: 3,
-                            mr: 4,
-                            fontWeight: 'bold',
-                            borderRadius: '20px',
-                            fontFamily: 'Open Sans',
-                            fontWeight:'Bold',
-                            fontSize: "18px",
-                            textTransform: 'none',
-                            backgroundColor: '#transparent',
-                            textDecoration:'underline',
-                            color: '#087A87',
-                            '&:hover': {
-                                color: '#087A87',
-                                textDecoration:'underline',
-                            },
+                mx: 2,
+                borderRadius: '20px',
+                fontFamily: 'Open Sans',
+                fontSize: "20px",
+                textTransform: 'none',
+                backgroundColor: '#transparent',
+                color: '#087A87',
+
             }}
-            >Esci</Button>
-            
-            </>)
-    }
-    else return(<>
-    <Button variant="text"
-                        href="/login"
-                        sx={{
-                            px: 3,
-                            mx: 2,
-                            borderRadius: '20px',
-                            fontFamily: 'Open Sans',
-                            fontSize: "20px",
-                            textTransform: 'none',
-                            backgroundColor: '#transparent',
-                            color: '#087A87',
+        >Accedi</Button>
 
-                        }}
-                    >Accedi</Button>
-
-                    <Button variant="text"
-                        href="/signup"
-                        sx={{
-                            px: 3,
-                            mr: 4,
-                            fontWeight: 'bold',
-                            borderRadius: '20px',
-                            fontFamily: 'Open Sans',
-                            fontWeight:'Bold',
-                            fontSize: "20px",
-                            textTransform: 'none',
-                            backgroundColor: '#transparent',
-                            textDecoration:'underline',
-                            color: '#087A87',
-                            '&:hover': {
-                                color: '#087A87',
-                                textDecoration:'underline',
-                            },
-                        }}
-                    >Registrati</Button></>
+        <Button variant="text"
+            href="/signup"
+            sx={{
+                px: 3,
+                mr: 4,
+                fontWeight: 'bold',
+                borderRadius: '20px',
+                fontFamily: 'Open Sans',
+                fontWeight: 'Bold',
+                fontSize: "20px",
+                textTransform: 'none',
+                backgroundColor: '#transparent',
+                textDecoration: 'underline',
+                color: '#087A87',
+                '&:hover': {
+                    color: '#087A87',
+                    textDecoration: 'underline',
+                },
+            }}
+        >Registrati</Button></>
 
     )
 }
@@ -156,19 +156,19 @@ function ButtonLoader(){
 
 function AppHeader() {
     let location = useLocation();
-    if(location.pathname==='/curriculum' && window.screen.width <= 600){
-            return;
+    if (location.pathname === '/curriculum' && window.screen.width <= 600) {
+        return;
     }
 
-        return (
+    return (
         <ThemeProvider theme={theme}>
             <AppBar color="transparent" elevation={0}  >
                 <Toolbar className='header'>
-                    <a href="/" class="logo"><img src={Curricraft} alt="Curricraft logo" style={{width:"98px", height:"87px"}} /></a>
+                    <a href="/" class="logo"><img src={Curricraft} alt="Curricraft logo" style={{ width: "98px", height: "87px" }} /></a>
                     <div className='separator'></div>
 
-            {ButtonLoader()}
-                    
+                    {ButtonLoader()}
+
                 </Toolbar>
             </AppBar >
         </ThemeProvider>

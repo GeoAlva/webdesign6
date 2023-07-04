@@ -77,6 +77,7 @@ hr {
     font-weight: normal;
     font-family: Open Sans;
     font-size: 34px;
+    margin-top: 20px;
 }
 
 .cognome {
@@ -238,6 +239,7 @@ hr {
     display: flex;
     justify-content: right;
     flex-direction: column;
+    margin-left: 50px;
 }
 
 .section {
@@ -272,6 +274,7 @@ hr {
 .maturità span {
     color: #087a87;
 }
+
 .titolino {
     margin-bottom: 5px;
     font-weight: bold;
@@ -285,6 +288,7 @@ hr {
     text-align: left;
     margin-left: 5%;
 }
+
 .hobbyR {
     text-align: right;
     margin-right: 5%;
@@ -301,18 +305,22 @@ hr {
         overflow-x: scroll;
         overflow-y: scroll;
     }
+
     .lowLayer .upLayer {
         width: max-content;
         overflow-x: scroll;
         overflow-y: scroll;
         margin-inline: 20px;
     }
+
     .pallino {
         height: 17px;
     }
+
     .lingue {
         margin-left: 10px;
     }
+
     .curriculumButtonsMobile {
         display: grid;
         grid-template-columns: auto;

@@ -113,8 +113,8 @@
     font-family: "Open Sans", sans-serif;
 }
 
-.login input:focus ~ .floating-label,
-.form-input:not(:placeholder-shown).form-input:not(:focus) ~ .floating-label {
+.login input:focus~.floating-label,
+.form-input:not(:placeholder-shown).form-input:not(:focus)~.floating-label {
     top: 0.5em;
     font-size: 0.75rem;
     padding: 0 0.125em;

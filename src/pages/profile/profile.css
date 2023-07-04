@@ -74,6 +74,7 @@
 .inner {
     margin-top: 9vh;
 }
+
 .inner .personale {
     font-size: 36px;
 }
@@ -98,6 +99,7 @@
     display: grid;
     grid-template-columns: auto auto;
 }
+
 .mailGrid {
     font-size: 24;
     font-weight: bold;
@@ -154,9 +156,8 @@
     font-family: "Open Sans", sans-serif;
 }
 
-.updateForm input:focus ~ .update-floating-label,
-.update-form-input:not(:placeholder-shown).update-form-input:not(:focus)
-    ~ .update-floating-label {
+.updateForm input:focus~.update-floating-label,
+.update-form-input:not(:placeholder-shown).update-form-input:not(:focus)~.update-floating-label {
     top: 0.5em;
     font-size: 0.75rem;
     padding: 0 0.125em;
@@ -169,6 +170,7 @@
     margin-right: 0px;
     padding-right: 0px;
 }
+
 .update-btn {
     min-width: 120px;
     width: 140px;
@@ -186,6 +188,7 @@
     border: 3px solid #087a87;
     margin-right: 50px;
 }
+
 .update-btn:hover {
     background-color: #ffffff;
     transition-duration: 200ms;
@@ -243,6 +246,7 @@
     .infoGrid {
         display: none;
     }
+
     .inner {
         margin-top: 5px;
         margin-bottom: 50px;
