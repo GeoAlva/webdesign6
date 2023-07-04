@@ -287,11 +287,12 @@ export default function Curriculum() {
                             {curriculumData.map((curriculum) => {
                                 return curriculum.foto != null ? (
                                     <img className="profileImg" src={curriculum.foto[0].url} style={{
-                                        width: '195px',
-                                        height: '195px',
+                                        width: '140px',
+                                        height: '140px',
                                         borderRadius: '50%',
                                         objectFit: 'cover',
                                         objectPosition: 'center',
+                                        marginTop: "70px"
                                     }} alt="Profile" />
                                 ) : (
                                     <img className="profileImg" src={profilePhoto} alt="Profile" />
@@ -404,19 +405,19 @@ export default function Curriculum() {
                                 </div>
 
                             ))}
-                            {curriculumData.map((curriculum) =>
+                            {curriculumData.map((curriculum) => 
                                 curriculum.hobby !== "" ? (
                                     <div className="dataContainer">
                                         <p className="hobbyTitle">Hobby</p>
                                         <div style={{ marginTop: "85px" }}></div>
                                         {curriculum.hobby !== "" ? (
                                             <div style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}>
-                                                <div style={{ width: "100%", textAlign: "left" }}>
+                                                <div style={{ width: "50%", textAlign: "left" }}>
                                                     {curriculum.hobby.split(", ").slice(0, 5).map((hobby, index) => (
                                                         <p key={index} className="lingue">{hobby}</p>
                                                     ))}
                                                 </div>
-                                                <div style={{ width: "100%", textAlign: "left"}}>
+                                                <div style={{ width: "50%%", textAlign: "left"}}>
                                                     {curriculum.hobby.split(", ").slice(5).map((hobby, index) => (
                                                         <p key={index} className="lingue">{hobby}</p>
                                                     ))}
