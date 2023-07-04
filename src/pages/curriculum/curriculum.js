@@ -303,10 +303,12 @@ export default function Curriculum() {
                             {curriculumData.map((curriculum) => {
                                 return curriculum.foto != null ? (
                                     <img className="profileImg" src={curriculum.foto[0].url} style={{
-                                        width: '195px',
+                                        width: '140px',
+                                        height: '140px',
                                         borderRadius: '50%',
                                         objectFit: 'cover',
                                         objectPosition: 'center',
+                                        marginTop: "70px"
                                     }} alt="Profile" />
                                 ) : (
                                     <img className="profileImg" src={profilePhoto} alt="Profile" />
@@ -315,7 +317,7 @@ export default function Curriculum() {
                             {curriculumData.map((curriculum) => (
                                 <div class="utilities">
                                     <p className="nome_cognome">{curriculum.nome} <span className="cognome">{curriculum.cognome}</span></p>
-                                    <p classname="profesione">{curriculum.professione}</p>
+                                    <p className="professione">{curriculum.professione}</p>
                                     <p className="data">{curriculum.dataNascita}</p>
                                 </div>
                             ))}
@@ -325,27 +327,26 @@ export default function Curriculum() {
                                 <div className="dataContainer">
                                     <p className="contatti">Contatti</p>
                                     <div class="utilsData">
-                                        <LocationOnIcon sx={{ alignSelf: "center", color: "#087A87" }}></LocationOnIcon>
+                                        <LocationOnIcon sx={{ alignSelf: "center", color: "#087A87", fontSize: 35 }}></LocationOnIcon>
                                         <div style={{ display: "flex", flexDirection: "column" }}>
                                             <p class="utilsDescription">{curriculum.indirizzo}</p>
                                             <p class="utilsDescription">{curriculum.CAP} {curriculum.cittàRes} ({curriculum.siglaProvinciale})</p>
                                             <p class="utilsDescription">{curriculum.statoRes}</p>
                                         </div>
                                     </div>
-                                    <div class="utilsData"><PhoneIcon sx={{ color: "#087A87" }}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>
-                                    <div class="utilsData"><EmailIcon sx={{ color: "#087A87" }}></EmailIcon> <p class="utilsDescription">{email}</p></div>
-                                    <div class="utilsData"><LanguageIcon sx={{ color: "#087A87" }}></LanguageIcon><a class="utilsDescription" href={curriculum.sitoWeb}>{curriculum.sitoWeb}</a></div>
+                                    <div class="utilsData"><PhoneIcon sx={{ color: "#087A87", fontSize: 35 }}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>
+                                    <div class="utilsData"><EmailIcon sx={{ color: "#087A87", fontSize: 35 }}></EmailIcon> <p class="utilsDescription">{email}</p></div>
+                                    <div class="utilsData"><LanguageIcon sx={{ color: "#087A87", fontSize: 35 }}></LanguageIcon><a class="utilsDescription" href={curriculum.sitoWeb}>{curriculum.sitoWeb}</a></div>
                                 </div>
                             ))}
                             <div className="dataContainer">
-                                <p className="lingueTitle" style={{ marginLeft: "10px" }}>Lingue</p>
-
-                                <div style={{ marginTop: "10px" }}>
+                                <p className="lingueTitle">Lingue</p>
+                                <div style={{ marginTop: "85px" }}>
 
                                     <div style={{ display: "flex", flexDirection: "column" }}>
                                         {curriculumData.linguaMadre !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }} class="lingue-mobile"><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "30px" }}>(madrelingua)</p></div>
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue ">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "130px" }}>(madrelingua)</p></div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                             curriculumData.map((curriculum) => (
@@ -392,15 +393,15 @@ export default function Curriculum() {
                                     <br></br>
                                 </div>
                             </div>
-                            {curriculumData.map((curriculum) =>
-                                curriculum.fb == "" && curriculum.twitter == "" && curriculum.ig == "" && curriculum.yt == "" && curriculum.altroSocial1 == null ? (
+                            {curriculumData.map((curriculum) => (
+                                curriculum.fb != null || curriculum.yt != null || curriculum.twitter != null || curriculum.ig != null || curriculum.altroSocial1 != null ? (
                                     <div className="dataContainer">
-                                        <p className="lingueTitle">Social</p>
-                                        <br></br>
-                                        <div class="utilsData"><img src="images/facebook.png" class="image" alt="facebook-logo"></img><p class="utilsDescription">{curriculum.fb}</p></div>
-                                        <div class="utilsData"><img src="images/twitter.png" class="image" alt="twitter-logo"></img><p class="utilsDescription">{curriculum.twitter}</p></div>
-                                        <div class="utilsData"><img src="images/instagram.png" class="image" alt="instagram-logo"></img><p class="utilsDescription">{curriculum.ig}</p></div>
-                                        <div class="utilsData"><img src="images/youtube.png" class="image" alt="youtube-logo"></img><p class="utilsDescription">{curriculum.yt}</p></div>
+                                        <p className="socialTitle">Social</p>
+                                        <div style={{ marginTop: "85px" }}></div>
+                                        {curriculum.fb != null ? (<div class="utilsData"><img src="images/facebook.png" class="image" alt="facebook-logo"></img><p class="utilsDescription">facebook/{curriculum.fb}</p></div>) : (<div></div>)}
+                                        {curriculum.twitter != null ? (<div class="utilsData"><img src="images/twitter.png" class="image" alt="twitter-logo"></img><p class="utilsDescription">twitter/{curriculum.twitter}</p></div>) : (<div></div>)}
+                                        {curriculum.ig != null ? (<div class="utilsData"><img src="images/instagram.png" class="image" alt="instagram-logo"></img><p class="utilsDescription">instagram/{curriculum.ig}</p></div>) : (<div></div>)}
+                                        {curriculum.yt != null ? (<div class="utilsData"><img src="images/youtube.png" class="image" alt="youtube-logo"></img><p class="utilsDescription">youtube/{curriculum.yt}</p></div>) : (<div></div>)}
                                         {curriculumData.altroSocial1 !== "" ? (
                                             curriculumData.map((curriculum) => (
                                                 <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial1}</p><p class="utilsDescription">{curriculum.accountSocial1}</p></div>
@@ -419,21 +420,28 @@ export default function Curriculum() {
                                             ))) : (<div></div>)}
 
                                     </div>
-
-                                ) : (<div></div>))}
+                                ) : (<div></div>)
+                            ))}
                             {curriculumData.map((curriculum) =>
-                                curriculum.hobby !== "" ? (
+                                curriculum.hobby != null ? (
                                     <div className="dataContainer">
-                                        <p className="lingueTitle">Hobby</p>
-                                        {curriculumData.hobby !== "" ? (
-                                            curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row", marginTop: "20px", alignSelf: "center" }}><p class="lingue">{curriculum.hobby}</p></div>
-                                            ))) : (<div></div>)}
+                                        <p className="hobbyTitle">Hobby</p>
+                                        <div style={{ marginTop: "85px" }}></div>
+                                        {curriculum.hobby !== "" ? (
+                                            <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", marginTop: "20px" }}>
+                                                {curriculum.hobby.split(", ").map((hobby, index) => (
+                                                    <p key={index} className={index % 2 === 0 ? "hobbyL" : "hobbyR"}
+                                                        style={{ width: "45%", textAlign: index % 2 === 0 ? "left" : "right" }}>{hobby}
+                                                    </p>
+                                                ))}
+                                            </div>) :
+                                            (<div></div>)}
                                     </div>
-                                ) : (<div></div>))
-                            }
-                        </div>
-                    </div>
+                                ) : (
+                                    <div></div>
+                                ))}
+                        </div >
+                    </div >
                     <div class="rightInfo">
                         {curriculumData.map((curriculum) =>
                             curriculum.sesso == "Non voglio rispondere" || curriculum.sesso == null ? (
@@ -728,7 +736,7 @@ export default function Curriculum() {
                         </div>
                     </div>
 
-                </div>
+                </div >
 
                 <div className="curriculumButtonsMobile">
                     <Button variant="outlined"
@@ -808,8 +816,8 @@ export default function Curriculum() {
                     >Chiudi</Button>))}
 
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
         ;
 }
