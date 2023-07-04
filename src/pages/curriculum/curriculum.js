@@ -346,7 +346,7 @@ export default function Curriculum() {
                                     <div style={{ display: "flex", flexDirection: "column" }}>
                                         {curriculumData.linguaMadre !== "" ? (
                                             curriculumData.map((curriculum) => (
-                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue ">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "130px" }}>(madrelingua)</p></div>
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="lingue">{curriculum.linguaMadre}</p><p class="lingue" style={{ marginLeft: "30px" }}>(madrelingua)</p></div>
                                             ))) : (<div></div>)}
                                         {curriculumData.lingua1 !== "" ? (
                                             curriculumData.map((curriculum) => (
