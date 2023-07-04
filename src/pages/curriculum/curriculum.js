@@ -9,6 +9,9 @@ import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
 import pallinoPieno from "./pallinoPieno.svg";
 import pallinoVuoto from "./pallinoVuoto.svg";
+import Button from '@mui/material/Button'
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Curriculum() {
     const location = useLocation();
@@ -255,7 +258,7 @@ export default function Curriculum() {
     const stampaPalliniPieni = (n) => {
         const pallini = [];
         for (let i = 0; i < n; i++) {
-            pallini.push(<img key={i} style={{ margin: "4px" }} src={pallinoPieno} alt="Pallino Pieno" />);
+            pallini.push(<img key={i} style={{ margin: "4px" }} src={pallinoPieno} alt="Pallino Pieno" class="pallino" />);
         }
         return pallini;
     };
@@ -263,7 +266,7 @@ export default function Curriculum() {
     const stampaPalliniVuoti = (n) => {
         const pallini = [];
         for (let i = 0; i < 5 - n; i++) {
-            pallini.push(<img key={i} style={{ margin: "4px" }} src={pallinoVuoto} alt="Pallino Vuoto" />);
+            pallini.push(<img key={i} style={{ margin: "4px" }} src={pallinoVuoto} alt="Pallino Vuoto" class="pallino" />);
         }
         return pallini;
     };
@@ -271,6 +274,19 @@ export default function Curriculum() {
     useEffect(() => {
         filterCurriculum();
     }, []);
+
+    const handleDownloadPDF = () => {
+        const upLayerDiv = document.querySelector(".upLayer");
+
+        html2canvas(upLayerDiv, { scale: 1.1 }).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF('p', 'pt', "a4");
+            let pdfWidth = pdf.internal.pageSize.getWidth();
+            let pdfHeight = pdf.internal.pageSize.getHeight();
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save("curriculum.pdf");
+        });
+    };
 
     return (
         <div className='curriculum'>
@@ -377,55 +393,55 @@ export default function Curriculum() {
                                     <br></br>
                                 </div>
                             </div>
-                            {curriculumData.map((curriculum) => ( 
+                            {curriculumData.map((curriculum) => (
                                 curriculum.fb != null || curriculum.yt != null || curriculum.twitter != null || curriculum.ig != null || curriculum.altroSocial1 != null ? (
-                                <div className="dataContainer">
-                                    <p className="socialTitle">Social</p>
-                                    <div style={{ marginTop: "85px" }}></div>
-                                    {curriculum.fb != null ?(<div class="utilsData"><img src="images/facebook.png" class="image" alt="facebook-logo"></img><p class="utilsDescription">facebook/{curriculum.fb}</p></div>):(<div></div>)}
-                                    {curriculum.twitter != null ?(<div class="utilsData"><img src="images/twitter.png" class="image" alt="twitter-logo"></img><p class="utilsDescription">twitter/{curriculum.twitter}</p></div>):(<div></div>)}
-                                    {curriculum.ig != null ?(<div class="utilsData"><img src="images/instagram.png" class="image" alt="instagram-logo"></img><p class="utilsDescription">instagram/{curriculum.ig}</p></div>):(<div></div>)}
-                                    {curriculum.yt != null ?(<div class="utilsData"><img src="images/youtube.png" class="image" alt="youtube-logo"></img><p class="utilsDescription">youtube/{curriculum.yt}</p></div>):(<div></div>)}
-                                    {curriculumData.altroSocial1 !== "" ? (
-                                        curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial1}</p><p class="utilsDescription">{curriculum.accountSocial1}</p></div>
-                                        ))) : (<div></div>)}
-                                    {curriculumData.altroSocial2 !== "" ? (
-                                        curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial2}</p><p class="utilsDescription">{curriculum.accountSocial2}</p></div>
-                                        ))) : (<div></div>)}
-                                    {curriculumData.altroSocial3 !== "" ? (
-                                        curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial3}</p><p class="utilsDescription">{curriculum.accountSocial3}</p></div>
-                                        ))) : (<div></div>)}
-                                    {curriculumData.altroSocial4 !== "" ? (
-                                        curriculumData.map((curriculum) => (
-                                            <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial4}</p><p class="utilsDescription">{curriculum.accountSocial4}</p></div>
-                                        ))) : (<div></div>)}
+                                    <div className="dataContainer">
+                                        <p className="socialTitle">Social</p>
+                                        <div style={{ marginTop: "85px" }}></div>
+                                        {curriculum.fb != null ? (<div class="utilsData"><img src="images/facebook.png" class="image" alt="facebook-logo"></img><p class="utilsDescription">facebook/{curriculum.fb}</p></div>) : (<div></div>)}
+                                        {curriculum.twitter != null ? (<div class="utilsData"><img src="images/twitter.png" class="image" alt="twitter-logo"></img><p class="utilsDescription">twitter/{curriculum.twitter}</p></div>) : (<div></div>)}
+                                        {curriculum.ig != null ? (<div class="utilsData"><img src="images/instagram.png" class="image" alt="instagram-logo"></img><p class="utilsDescription">instagram/{curriculum.ig}</p></div>) : (<div></div>)}
+                                        {curriculum.yt != null ? (<div class="utilsData"><img src="images/youtube.png" class="image" alt="youtube-logo"></img><p class="utilsDescription">youtube/{curriculum.yt}</p></div>) : (<div></div>)}
+                                        {curriculumData.altroSocial1 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial1}</p><p class="utilsDescription">{curriculum.accountSocial1}</p></div>
+                                            ))) : (<div></div>)}
+                                        {curriculumData.altroSocial2 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial2}</p><p class="utilsDescription">{curriculum.accountSocial2}</p></div>
+                                            ))) : (<div></div>)}
+                                        {curriculumData.altroSocial3 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial3}</p><p class="utilsDescription">{curriculum.accountSocial3}</p></div>
+                                            ))) : (<div></div>)}
+                                        {curriculumData.altroSocial4 !== "" ? (
+                                            curriculumData.map((curriculum) => (
+                                                <div style={{ display: "flex", flexDirection: "row" }}><p class="utilsDescription" style={{ marginRight: "10px" }}>{curriculum.altroSocial4}</p><p class="utilsDescription">{curriculum.accountSocial4}</p></div>
+                                            ))) : (<div></div>)}
 
-                                </div>
-                                ):(<div></div>)
+                                    </div>
+                                ) : (<div></div>)
                             ))}
-                            {curriculumData.map((curriculum) => 
+                            {curriculumData.map((curriculum) =>
                                 curriculum.hobby != null ? (
-                            <div className="dataContainer">
-                                <p className="hobbyTitle">Hobby</p>
-                                <div style={{ marginTop: "85px" }}></div>
-                                {curriculum.hobby !== "" ? (
-                                    <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", marginTop: "20px" }}>
-                                        {curriculum.hobby.split(", ").map((hobby, index) => (
-                                            <p key={index} className={index % 2 === 0 ? "hobbyL" : "hobbyR"}
-                                            style={{ width: "45%", textAlign: index % 2 === 0 ? "left" : "right" }}>{hobby}
-                                            </p>
-                                ))}
-                                </div>) : 
-                                (<div></div>)}
-                                </div>
+                                    <div className="dataContainer">
+                                        <p className="hobbyTitle">Hobby</p>
+                                        <div style={{ marginTop: "85px" }}></div>
+                                        {curriculum.hobby !== "" ? (
+                                            <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", marginTop: "20px" }}>
+                                                {curriculum.hobby.split(", ").map((hobby, index) => (
+                                                    <p key={index} className={index % 2 === 0 ? "hobbyL" : "hobbyR"}
+                                                        style={{ width: "45%", textAlign: index % 2 === 0 ? "left" : "right" }}>{hobby}
+                                                    </p>
+                                                ))}
+                                            </div>) :
+                                            (<div></div>)}
+                                    </div>
                                 ) : (
-                                <div></div>
+                                    <div></div>
                                 ))}
-                        </div>
-                    </div>
+                        </div >
+                    </div >
                     <div class="rightInfo">
                         {curriculumData.map((curriculum) =>
                             curriculum.sesso == "Non voglio rispondere" || curriculum.sesso == null ? (
@@ -720,9 +736,88 @@ export default function Curriculum() {
                         </div>
                     </div>
 
+                </div >
+
+                <div className="curriculumButtonsMobile">
+                    <Button variant="outlined"
+                        sx={{
+                            width: "250px",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Condividi via e-mail</Button>
+
+                    <Button variant="outlined" onClick={handleDownloadPDF}
+                        sx={{
+                            width: "250px",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Scarica PDF</Button>
+
+                    {useState(location.state.fromProfile === "true" ? (<Button variant="outlined"
+                        href="/profile"
+                        sx={{
+                            width: "250px",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Chiudi</Button>) : (<Button variant="outlined"
+                        href="/search"
+                        sx={{
+                            width: "max-content",
+                            px: 3,
+                            borderRadius: '30px',
+                            fontFamily: 'Open Sans',
+                            fontWeight: 'bold',
+                            fontSize: "15px",
+                            textTransform: 'none',
+                            border: "3px solid #008080",
+                            backgroundColor: 'rgb(236, 245, 246)',
+                            color: '#008080',
+                            '&:hover': {
+                                color: '#008080',
+                                border: "3px solid #008080",
+                            },
+                        }}
+                    >Chiudi</Button>))}
+
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
         ;
 }
