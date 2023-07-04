@@ -30,9 +30,15 @@ function logout(){
 function ButtonLoader(){
     let location = useLocation();
     if(location.pathname === '/login' || location.pathname === '/signup' ) return;
-    if(location.pathname==='/curriculum') return <CurriculumHeader/>
+    else if(location.pathname==='/curriculum'){
+        if (window.screen.width >= 600){
+            return (<CurriculumHeader/>)
+        }
+        else return;
+    }
+     
 
-    if(document.cookie.startsWith("email=") && location.pathname==="/profile"){
+    else if(document.cookie.startsWith("email=") && location.pathname==="/profile"){
         return(<>
             <Button variant="text"
             onClick={logout}
@@ -149,6 +155,10 @@ function ButtonLoader(){
 
 
 function AppHeader() {
+    let location = useLocation();
+    if(location.pathname==='/curriculum' && window.screen.width <= 600){
+            return;
+    }
 
         return (
         <ThemeProvider theme={theme}>

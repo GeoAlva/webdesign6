@@ -20,7 +20,7 @@ export default function Profile() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (email == undefined)
+    if (email === undefined)
       navigate('/login')
   });
 
