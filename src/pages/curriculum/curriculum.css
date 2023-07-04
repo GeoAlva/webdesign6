@@ -285,3 +285,7 @@ margin-left: 5%;
 text-align: right;
 margin-right: 5%;
 }
+
+.utilsData img, .utilsData svg{
+    margin-right: 10px;
+}
