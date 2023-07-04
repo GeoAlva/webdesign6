@@ -23,16 +23,15 @@ function CurriculumHeader() {
     const handleDownloadPDF = () => {
         const upLayerDiv = document.querySelector(".upLayer");
 
-        setTimeout(() => {
-            html2canvas(upLayerDiv, { scale: 1.1 }).then((canvas) => {
-                const imgData = canvas.toDataURL("image/png");
-                const pdf = new jsPDF('p', 'pt', "a4");
-                let pdfWidth = pdf.internal.pageSize.getWidth();
-                let pdfHeight = pdf.internal.pageSize.getHeight();
-                pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-                pdf.save("curriculum.pdf");
-            });
-        }, 1000);
+        html2canvas(upLayerDiv, { scale: 1.1 }).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF('p', 'pt', "a4");
+            let pdfWidth = pdf.internal.pageSize.getWidth();
+            let pdfHeight = pdf.internal.pageSize.getHeight();
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save("curriculum.pdf");
+        });
+
     };
 
     const location = useLocation();
