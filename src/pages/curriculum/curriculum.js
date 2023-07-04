@@ -405,30 +405,22 @@ export default function Curriculum() {
                             ))}
                             {curriculumData.map((curriculum) =>
                                 curriculum.hobby !== "" ? (
-                                    <div className="dataContainer">
-                                        <p className="hobbyTitle">Hobby</p>
-                                        <div style={{ marginTop: "85px" }}></div>
-                                        {curriculum.hobby !== "" ? (
-                                            <div style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}>
-                                                <div style={{ width: "100%", textAlign: "left" }}>
-                                                    {curriculum.hobby.split(", ").slice(0, 5).map((hobby, index) => (
-                                                        <p key={index} className="lingue">{hobby}</p>
-                                                    ))}
-                                                </div>
-                                                <div style={{ width: "100%", textAlign: "left"}}>
-                                                    {curriculum.hobby.split(", ").slice(5).map((hobby, index) => (
-                                                        <p key={index} className="lingue">{hobby}</p>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <div></div>
-                                        )}
-                                    </div>
+                            <div className="dataContainer">
+                                <p className="hobbyTitle">Hobby</p>
+                                <div style={{ marginTop: "85px" }}></div>
+                                {curriculum.hobby !== "" ? (
+                                    <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", marginTop: "20px" }}>
+                                        {curriculum.hobby.split(", ").map((hobby, index) => (
+                                            <p key={index} className={index % 2 === 0 ? "hobbyL" : "hobbyR"}
+                                            style={{ width: "45%", textAlign: index % 2 === 0 ? "left" : "right" }}>{hobby}
+                                            </p>
+                                ))}
+                                </div>) : 
+                                (<div></div>)}
+                                </div>
                                 ) : (
-                                    <div></div>
-                                )
-                            )}
+                                <div></div>
+                                ))}
                         </div>
                     </div>
                     <div class="rightInfo">

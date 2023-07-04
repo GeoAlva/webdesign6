@@ -274,3 +274,12 @@ hr {
     margin-bottom: 5px;
     font-weight: bold;
   }
+
+.hobbyL{
+text-align: left;
+margin-left: 5%;
+}
+.hobbyR{
+text-align: right;
+margin-right: 5%;
+}
