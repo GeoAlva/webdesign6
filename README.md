@@ -23,7 +23,8 @@ Simone Pedrazzi (S3903661)
 
 ## Design del Sito
 
-E' possibile vedere il design realizzato su figma da [qui](https://www.figma.com/file/LCXaswj9uJbOpGGBwP6r26/Web-Design?type=design&node-id=0%3A1&mode=design&t=25nHOCr9bVJCBh0V-1)
+E' possibile vedere il design del sito realizzato su figma da [qui per la versione Desktop](https://www.figma.com/proto/LCXaswj9uJbOpGGBwP6r26/Web-Design?type=design&node-id=634-8447&t=c7nh7Pdl7u12XdQp-1&scaling=scale-down&page-id=634%3A878&starting-point-node-id=634%3A8447&mode=design)
+oppure da [qui per la versione mobile](https://www.figma.com/proto/LCXaswj9uJbOpGGBwP6r26/Web-Design?type=design&node-id=634-13256&t=x93imMlprpqmjUsG-1&scaling=scale-down&page-id=113%3A5&starting-point-node-id=634%3A13256&mode=design)
 
 ## Available Scripts
 
