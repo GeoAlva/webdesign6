@@ -55,6 +55,7 @@ export default function Curriculum() {
                     cittàRes: record.fields.cittaResidenza,
                     sitoWeb: record.fields.sitoWebPersonale,
                     tel: record.fields.Telefono,
+                    email: record.fields.Email,
 
                     fb: record.fields.Facebook,
                     twitter: record.fields.Twitter,
@@ -348,7 +349,7 @@ export default function Curriculum() {
                                         )}
                                     </div>
                                     {curriculum.tel != null ? (<div class="utilsData"><PhoneIcon sx={{ color: "#087A87", fontSize: 35 }}></PhoneIcon><p class="utilsDescription">{curriculum.tel}</p></div>) : (<div></div>)}
-                                    {curriculum.email != null ? (<div class="utilsData"><EmailIcon sx={{ color: "#087A87", fontSize: 35 }}></EmailIcon> <p class="utilsDescription">{email}</p></div>) : (<div></div>)}
+                                    {curriculum.email != null ? (<div class="utilsData"><EmailIcon sx={{ color: "#087A87", fontSize: 35 }}></EmailIcon> <p class="utilsDescription">{curriculum.email}</p></div>) : (<div></div>)}
                                     {curriculum.sitoWeb != null ? (<div class="utilsData"><LanguageIcon sx={{ color: "#087A87", fontSize: 35 }}></LanguageIcon><a class="utilsDescription" href={curriculum.sitoWeb}>{curriculum.sitoWeb}</a></div>) : (<div></div>)}
                                 </div>
                             ))}
